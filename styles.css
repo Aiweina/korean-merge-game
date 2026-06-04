@@ -621,23 +621,16 @@ h1 {
   font-weight: 700;
 }
 
-.chapter2-practice {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.chapter2-practice[hidden] {
-  display: none;
-}
-
-.syllable-builder,
 .aspiration-practice {
   padding: 14px;
   border: 2px solid var(--line);
   border-radius: 8px;
   background: #fffdf8;
   box-shadow: var(--shadow);
+}
+
+.aspiration-practice[hidden] {
+  display: none;
 }
 
 .practice-heading {
@@ -662,57 +655,6 @@ h1 {
   font-weight: 900;
 }
 
-.syllable-formula {
-  min-height: 92px;
-  display: grid;
-  grid-template-columns: 64px 24px 64px 32px 76px;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 14px 0 10px;
-}
-
-.formula-tile {
-  width: 64px;
-  height: 64px;
-  display: grid;
-  place-items: center;
-  border: 2px solid #d7b98f;
-  border-radius: 8px;
-  background: #fff7de;
-  font-size: 34px;
-  font-weight: 900;
-  transition: transform 260ms ease, box-shadow 260ms ease;
-}
-
-.formula-tile.vowel {
-  background: #edf9f3;
-  border-color: var(--mint);
-}
-
-.formula-tile.result {
-  width: 76px;
-  background: #fff2ea;
-  border-color: var(--rose);
-}
-
-.syllable-formula.is-merging .formula-tile:not(.result) {
-  transform: translateX(12px);
-}
-
-.syllable-formula.is-merging .formula-tile.result {
-  transform: scale(1.12);
-  box-shadow: 0 0 22px rgba(220, 166, 74, 0.7);
-}
-
-.formula-operator,
-.formula-arrow {
-  text-align: center;
-  color: var(--coffee);
-  font-size: 26px;
-  font-weight: 900;
-}
-
 .aspiration-listen {
   width: 100%;
   margin: 14px 0 10px;
@@ -731,18 +673,22 @@ h1 {
   border: 2px solid #d7b98f;
   border-radius: 8px;
   background: #fff7de;
+  color: var(--ink);
   font-size: 30px;
   font-weight: 900;
+  text-shadow: none;
 }
 
 .aspiration-option.is-correct {
   border-color: var(--mint);
   background: #edf9f3;
+  color: #155f52;
 }
 
 .aspiration-option.is-wrong {
   border-color: var(--rose);
   background: #fff2ea;
+  color: #9b4138;
 }
 
 .practice-status {
@@ -1437,22 +1383,4 @@ body.map-active .chapter-map h2 {
     font-size: 26px;
   }
 
-  .chapter2-practice {
-    grid-template-columns: 1fr;
-  }
-
-  .syllable-formula {
-    grid-template-columns: 52px 18px 52px 24px 62px;
-    gap: 4px;
-  }
-
-  .formula-tile {
-    width: 52px;
-    height: 52px;
-    font-size: 29px;
-  }
-
-  .formula-tile.result {
-    width: 62px;
-  }
 }

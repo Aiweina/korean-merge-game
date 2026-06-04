@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>韓語合成咖啡店</title>
-  <link rel="stylesheet" href="./styles.css?v=94">
+  <link rel="stylesheet" href="./styles.css?v=95">
 </head>
 <body>
   <main class="app-shell">
@@ -81,37 +81,17 @@
       <div id="doubleConsonantGrid" class="materials-grid double-consonant-grid"></div>
     </section>
 
-    <section id="chapter2Practice" class="chapter2-practice" aria-label="第二章音節實作" hidden>
-      <div class="syllable-builder">
-        <div class="practice-heading">
-          <div>
-            <p class="label">音節組合</p>
-            <h2>把聲音合成一杯</h2>
-          </div>
-          <button id="mergeSyllableBtn" type="button">合成</button>
+    <section id="aspirationPractice" class="aspiration-practice" aria-label="送氣音比較小遊戲" hidden>
+      <div class="practice-heading">
+        <div>
+          <p class="label">送氣音比較</p>
+          <h2>聽出多一口氣</h2>
         </div>
-        <div id="syllableFormula" class="syllable-formula" aria-live="polite">
-          <span id="builderConsonant" class="formula-tile">ㄱ</span>
-          <span class="formula-operator">+</span>
-          <span class="formula-tile vowel">ㅏ</span>
-          <span class="formula-arrow">→</span>
-          <span id="builderResult" class="formula-tile result">가</span>
-        </div>
-        <p id="builderMemory" class="practice-status">選一張音節卡，再按下合成。</p>
+        <button id="newAspirationBtn" type="button">換一題</button>
       </div>
-
-      <div class="aspiration-practice">
-        <div class="practice-heading">
-          <div>
-            <p class="label">送氣音比較</p>
-            <h2>聽出多一口氣</h2>
-          </div>
-          <button id="newAspirationBtn" type="button">換一題</button>
-        </div>
-        <button id="aspirationSpeakBtn" type="button" class="aspiration-listen">播放發音</button>
-        <div id="aspirationOptions" class="aspiration-options"></div>
-        <p id="aspirationStatus" class="practice-status" aria-live="polite">播放聲音後，選出正確音節。</p>
-      </div>
+      <button id="aspirationSpeakBtn" type="button" class="aspiration-listen">播放發音</button>
+      <div id="aspirationOptions" class="aspiration-options"></div>
+      <p id="aspirationStatus" class="practice-status" aria-live="polite">播放聲音後，選出正確音節。</p>
     </section>
 
     <div class="quiz-entry-actions">
@@ -167,6 +147,6 @@
 
   </main>
 
-  <script src="./app.js?v=92"></script>
+  <script src="./app.js?v=93"></script>
 </body>
 </html>

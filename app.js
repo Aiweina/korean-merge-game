@@ -178,51 +178,51 @@ let prologue = [
 const chapter1Lessons = lessons;
 const chapter1Prologue = prologue;
 
-const chapter2Lessons = [
-  { target: "가", sound: "가", english: "ga", spirit: "開門加", image: "./assets/spirits/ch2-ga.webp?v=3", title: "第二章音節卡", memory: "ㄱ 加上 ㅏ，像把第一扇門打開。", meaning: "加是第二章的第一杯咖啡，短短一聲把子音和母音接起來。", hint: "ㄱ + ㅏ = 가", category: "basicVowel" },
-  { target: "나", sound: "나", english: "na", spirit: "小路拿", image: "./assets/spirits/ch2-na.webp?v=3", title: "第二章音節卡", memory: "ㄴ 加上 ㅏ，舌尖輕碰後走出小路。", meaning: "拿負責把客人帶到座位，聲音柔和但很清楚。", hint: "ㄴ + ㅏ = 나", category: "basicVowel" },
-  { target: "다", sound: "다", english: "da", spirit: "石階達", image: "./assets/spirits/ch2-da.webp?v=3", title: "第二章音節卡", memory: "ㄷ 加上 ㅏ，像腳步踏上石階。", meaning: "達會把訂單一步一步送到櫃台。", hint: "ㄷ + ㅏ = 다", category: "basicVowel" },
-  { target: "라", sound: "라", english: "ra/la", spirit: "風帶拉", image: "./assets/spirits/ch2-ra.webp?v=3", title: "第二章音節卡", memory: "ㄹ 加上 ㅏ，聲音像飄帶輕輕轉彎。", meaning: "拉在咖啡香裡繞圈，提醒你韓文音節會連起來。", hint: "ㄹ + ㅏ = 라", category: "basicVowel" },
-  { target: "마", sound: "마", english: "ma", spirit: "工匠媽", image: "./assets/spirits/ch2-ma.webp?v=3", title: "第二章音節卡", memory: "ㅁ 加上 ㅏ，雙唇合起再打開。", meaning: "媽會把聲音磨得圓圓的，像熱牛奶泡泡。", hint: "ㅁ + ㅏ = 마", category: "basicVowel" },
-  { target: "바", sound: "바", english: "ba/pa", spirit: "風鈴吧", image: "./assets/spirits/ch2-ba.webp?v=3", title: "第二章音節卡", memory: "ㅂ 加上 ㅏ，雙唇輕輕彈開。", meaning: "吧是櫃台旁的小風鈴，提醒你出聲要有彈性。", hint: "ㅂ + ㅏ = 바", category: "compoundVowel" },
-  { target: "사", sound: "사", english: "sa", spirit: "細沙撒", image: "./assets/spirits/ch2-sa.webp?v=3", title: "第二章音節卡", memory: "ㅅ 加上 ㅏ，氣流像細沙滑過。", meaning: "撒會替咖啡撒上糖粉，聲音細細的。", hint: "ㅅ + ㅏ = 사", category: "compoundVowel" },
-  { target: "아", sound: "아", english: "a", spirit: "透明阿", image: "./assets/spirits/ch2-a.webp?v=3", title: "第二章音節卡", memory: "ㅇ 在開頭安靜，讓 ㅏ 自己發光。", meaning: "阿是透明圓端出的第一杯清晨水。", hint: "ㅇ + ㅏ = 아", category: "compoundVowel" },
-  { target: "자", sound: "자", english: "ja", spirit: "鈴匠札", image: "./assets/spirits/ch2-ja.webp?v=3", title: "第二章音節卡", memory: "ㅈ 加上 ㅏ，像短短的 j 音。", meaning: "札會把客人的名字寫在杯套上。", hint: "ㅈ + ㅏ = 자", category: "basicConsonant" },
-  { target: "차", sound: "차", english: "cha", spirit: "清風茶", image: "./assets/spirits/ch2-cha.webp?v=3", title: "第二章音節卡", memory: "ㅊ 加上 ㅏ，比 ㅈ 多一口氣。", meaning: "茶把窗戶打開，聲音帶著清楚的風。", hint: "ㅊ + ㅏ = 차", category: "basicConsonant" },
-  { target: "카", sound: "카", english: "ka", spirit: "石門卡", image: "./assets/spirits/ch2-ka.webp?v=3", title: "第二章音節卡", memory: "ㅋ 加上 ㅏ，比 ㄱ 多一口氣，像推開厚重石門。", meaning: "卡會用清楚的送氣聲推開咖啡館外的石門。", hint: "ㅋ + ㅏ = 카", category: "basicConsonant" },
-  { target: "타", sound: "타", english: "ta", spirit: "踏步塔", image: "./assets/spirits/ch2-ta.webp?v=3", title: "第二章音節卡", memory: "ㅌ 加上 ㅏ，比 ㄷ 多一口氣，腳步更俐落。", meaning: "塔沿著送餐路線踏出清楚又有風的步伐。", hint: "ㅌ + ㅏ = 타", category: "basicConsonant" },
-  { target: "파", sound: "파", english: "pa", spirit: "蒲公英帕", image: "./assets/spirits/ch2-pa.webp?v=3", title: "第二章音節卡", memory: "ㅍ 加上 ㅏ，比 ㅂ 多一口氣，像吹飛蒲公英。", meaning: "帕吹起一陣小風，讓花園裡的蒲公英一起旅行。", hint: "ㅍ + ㅏ = 파", category: "basicConsonant" },
-  { target: "하", sound: "하", english: "ha", spirit: "呼吸哈", image: "./assets/spirits/ch2-ha.webp?v=3", title: "第二章音節卡", memory: "ㅎ 加上 ㅏ，像對玻璃輕輕呵氣後張口說 아。", meaning: "哈在清晨玻璃上留下柔軟霧氣，提醒你放鬆呼吸。", hint: "ㅎ + ㅏ = 하", category: "basicConsonant" }
+const section12Lessons = [
+  { target: "가", sound: "가", english: "ga", spirit: "開門加", image: "./assets/spirits/ch2-ga.webp?v=3", title: "1-2 音節卡", memory: "ㄱ 加上 ㅏ，像把第一扇門打開。", meaning: "加是第一章第二節的第一杯咖啡，短短一聲把子音和母音接起來。", hint: "ㄱ + ㅏ = 가", category: "basicVowel" },
+  { target: "나", sound: "나", english: "na", spirit: "小路拿", image: "./assets/spirits/ch2-na.webp?v=3", title: "1-2 音節卡", memory: "ㄴ 加上 ㅏ，舌尖輕碰後走出小路。", meaning: "拿負責把客人帶到座位，聲音柔和但很清楚。", hint: "ㄴ + ㅏ = 나", category: "basicVowel" },
+  { target: "다", sound: "다", english: "da", spirit: "石階達", image: "./assets/spirits/ch2-da.webp?v=3", title: "1-2 音節卡", memory: "ㄷ 加上 ㅏ，像腳步踏上石階。", meaning: "達會把訂單一步一步送到櫃台。", hint: "ㄷ + ㅏ = 다", category: "basicVowel" },
+  { target: "라", sound: "라", english: "ra/la", spirit: "風帶拉", image: "./assets/spirits/ch2-ra.webp?v=3", title: "1-2 音節卡", memory: "ㄹ 加上 ㅏ，聲音像飄帶輕輕轉彎。", meaning: "拉在咖啡香裡繞圈，提醒你韓文音節會連起來。", hint: "ㄹ + ㅏ = 라", category: "basicVowel" },
+  { target: "마", sound: "마", english: "ma", spirit: "工匠媽", image: "./assets/spirits/ch2-ma.webp?v=3", title: "1-2 音節卡", memory: "ㅁ 加上 ㅏ，雙唇合起再打開。", meaning: "媽會把聲音磨得圓圓的，像熱牛奶泡泡。", hint: "ㅁ + ㅏ = 마", category: "basicVowel" },
+  { target: "바", sound: "바", english: "ba/pa", spirit: "風鈴吧", image: "./assets/spirits/ch2-ba.webp?v=3", title: "1-2 音節卡", memory: "ㅂ 加上 ㅏ，雙唇輕輕彈開。", meaning: "吧是櫃台旁的小風鈴，提醒你出聲要有彈性。", hint: "ㅂ + ㅏ = 바", category: "compoundVowel" },
+  { target: "사", sound: "사", english: "sa", spirit: "細沙撒", image: "./assets/spirits/ch2-sa.webp?v=3", title: "1-2 音節卡", memory: "ㅅ 加上 ㅏ，氣流像細沙滑過。", meaning: "撒會替咖啡撒上糖粉，聲音細細的。", hint: "ㅅ + ㅏ = 사", category: "compoundVowel" },
+  { target: "아", sound: "아", english: "a", spirit: "透明阿", image: "./assets/spirits/ch2-a.webp?v=3", title: "1-2 音節卡", memory: "ㅇ 在開頭安靜，讓 ㅏ 自己發光。", meaning: "阿是透明圓端出的第一杯清晨水。", hint: "ㅇ + ㅏ = 아", category: "compoundVowel" },
+  { target: "자", sound: "자", english: "ja", spirit: "鈴匠札", image: "./assets/spirits/ch2-ja.webp?v=3", title: "1-2 音節卡", memory: "ㅈ 加上 ㅏ，像短短的 j 音。", meaning: "札會把客人的名字寫在杯套上。", hint: "ㅈ + ㅏ = 자", category: "basicConsonant" },
+  { target: "차", sound: "차", english: "cha", spirit: "清風茶", image: "./assets/spirits/ch2-cha.webp?v=3", title: "1-2 音節卡", memory: "ㅊ 加上 ㅏ，比 ㅈ 多一口氣。", meaning: "茶把窗戶打開，聲音帶著清楚的風。", hint: "ㅊ + ㅏ = 차", category: "basicConsonant" },
+  { target: "카", sound: "카", english: "ka", spirit: "石門卡", image: "./assets/spirits/ch2-ka.webp?v=3", title: "1-2 音節卡", memory: "ㅋ 加上 ㅏ，比 ㄱ 多一口氣，像推開厚重石門。", meaning: "卡會用清楚的送氣聲推開咖啡館外的石門。", hint: "ㅋ + ㅏ = 카", category: "basicConsonant" },
+  { target: "타", sound: "타", english: "ta", spirit: "踏步塔", image: "./assets/spirits/ch2-ta.webp?v=3", title: "1-2 音節卡", memory: "ㅌ 加上 ㅏ，比 ㄷ 多一口氣，腳步更俐落。", meaning: "塔沿著送餐路線踏出清楚又有風的步伐。", hint: "ㅌ + ㅏ = 타", category: "basicConsonant" },
+  { target: "파", sound: "파", english: "pa", spirit: "蒲公英帕", image: "./assets/spirits/ch2-pa.webp?v=3", title: "1-2 音節卡", memory: "ㅍ 加上 ㅏ，比 ㅂ 多一口氣，像吹飛蒲公英。", meaning: "帕吹起一陣小風，讓花園裡的蒲公英一起旅行。", hint: "ㅍ + ㅏ = 파", category: "basicConsonant" },
+  { target: "하", sound: "하", english: "ha", spirit: "呼吸哈", image: "./assets/spirits/ch2-ha.webp?v=3", title: "1-2 音節卡", memory: "ㅎ 加上 ㅏ，像對玻璃輕輕呵氣後張口說 아。", meaning: "哈在清晨玻璃上留下柔軟霧氣，提醒你放鬆呼吸。", hint: "ㅎ + ㅏ = 하", category: "basicConsonant" }
 ];
 
-const chapter2Prologue = [
+const section12Prologue = [
   {
     speaker: "旁白",
-    image: "./assets/1-01.webp",
+    image: "./assets/1-02-1.webp",
     text: "第一天的 40 音訓練完成後，天使惡魔館的櫃台亮起第二盞燈。"
   },
   {
     speaker: "陽",
-    image: "./assets/1-04.webp",
-    text: "第二章開始囉。這次不是只認單一字母，要把子音和母音合成一個音節。"
+    image: "./assets/1-02-2.webp",
+    text: "新的訓練開始囉。今天不是只認單一字母，要把子音和母音合成一個音節。"
   },
   {
     speaker: "Jumbo",
-    image: "./assets/1-05.webp",
-    text: "汪！先從最常見的 ㅏ 系列開始：가、나、다、라、마。"
+    image: "./assets/1-02-3.webp",
+    text: "汪！(先從最常見的 ㅏ 系列開始：가、나、다、라、마。)"
   },
   {
     speaker: "你",
-    image: "./assets/1-03.webp",
-    text: "原來韓文像拼積木一樣，子音和母音可以合在同一格。"
+    image: "./assets/1-02-4.webp",
+    text: "原來韓文跟羅馬拼音一樣。"
   },
   {
     speaker: "陽",
-    image: "./assets/1-02.webp",
-    text: "沒錯。先完成第二章訓練，再試著通過音節測驗吧。",
+    image: "./assets/1-02-5.webp",
+    text: "沒錯。先完成 1-2 訓練，再試著通過音節測驗吧。",
     choices: [
-      { text: "開始第二章", feedback: "Jumbo把第二章音節卡推到你面前。" },
-      { text: "我想先觀察", feedback: "智允笑著說：可以，先看每張卡怎麼拼。" }
+      { text: "開始吧~", feedback: "Jumbo把 1-2 音節卡推到你面前。" },
+      { text: "我想先觀察", feedback: "陽：別看了，直接開始啦！" }
     ]
   }
 ];
@@ -230,10 +230,10 @@ const chapter2Prologue = [
 const chapters = [
   {
     number: 1,
-    sceneChapter: "Chapter 1",
-    sceneTitle: "晨光咖啡新人訓練",
-    prologueChapter: "Chapter 1：第一天上工",
-    trainingIntro: "教育訓練開始。現在跟著智允找出 ㅏ。",
+    sceneChapter: "Day 1",
+    sceneTitle: "天使惡魔館咖啡新人訓練",
+    prologueChapter: "第一天：報到",
+    trainingIntro: "教育訓練開始。現在跟著Jumbo找出 ㅏ。",
     skippedIntro: "已跳過劇情，進入新人教育訓練。",
     quizLabel: "新人教育訓練測驗",
     quizTitle: "40 音確認",
@@ -251,15 +251,15 @@ const chapters = [
     prologue: chapter1Prologue
   },
   {
-    number: 2,
-    sceneChapter: "Chapter 2",
+    number: "1-2",
+    sceneChapter: "第一章・1-2",
     sceneTitle: "音節咖啡實作",
-    prologueChapter: "Chapter 2：音節拼讀",
-    trainingIntro: "第二章開始。先從 ㅏ 系列音節練習拼讀。",
-    skippedIntro: "已跳過第二章劇情，進入音節訓練。",
+    prologueChapter: "第一章第二節：音節拼讀",
+    trainingIntro: "第二節開始。先從 ㅏ 系列音節練習拼讀。",
+    skippedIntro: "已跳過第二節劇情，進入音節訓練。",
     quizLabel: "音節拼讀測驗",
     quizTitle: "ㅏ 系列確認",
-    quizConfirm: "第二章測驗囉?要確定呢~",
+    quizConfirm: "第二節測驗囉?要確定呢~",
     quizImage: "./assets/quiz-dog-teacher.webp",
     passImage: "./assets/1O.webp",
     failImage: "./assets/1X.webp",
@@ -269,8 +269,8 @@ const chapters = [
       basicConsonant: "進階音節 6",
       doubleConsonant: ""
     },
-    lessons: chapter2Lessons,
-    prologue: chapter2Prologue
+    lessons: section12Lessons,
+    prologue: section12Prologue
   }
 ];
 
@@ -291,8 +291,19 @@ const chapterSubchapters = {
   1: Array.from({ length: 10 }, (_, index) => ({
     id: `1-${index + 1}`,
     label: `1-${index + 1}`,
-    built: index === 0,
-    chapterIndex: 0
+    built: index <= 1,
+    chapterIndex: 0,
+    ...(index === 0 ? {
+      sceneTitle: "天使惡魔館新人訓練：韓文 40 音",
+      quizLabel: "1-1 韓文 40 音測驗",
+      quizTitle: "40 音確認",
+      quizConfirm: "要開始 1-1 韓文 40 音測驗嗎？",
+      trainingIntro: "1-1 教育訓練開始。先認識完整的韓文 40 音。",
+      skippedIntro: "已跳過劇情，進入 1-1 韓文 40 音訓練。"
+    } : {}),
+    ...(index === 1 ? {
+      chapterIndex: 1
+    } : {})
   }))
 };
 
@@ -347,12 +358,7 @@ const subchapterMapScreen = document.querySelector("#subchapterMapScreen");
 const subchapterMapGrid = document.querySelector("#subchapterMapGrid");
 const subchapterMapStatus = document.querySelector("#subchapterMapStatus");
 const backToChapterMapBtn = document.querySelector("#backToChapterMapBtn");
-const chapter2Practice = document.querySelector("#chapter2Practice");
-const mergeSyllableBtn = document.querySelector("#mergeSyllableBtn");
-const syllableFormula = document.querySelector("#syllableFormula");
-const builderConsonant = document.querySelector("#builderConsonant");
-const builderResult = document.querySelector("#builderResult");
-const builderMemory = document.querySelector("#builderMemory");
+const aspirationPractice = document.querySelector("#aspirationPractice");
 const newAspirationBtn = document.querySelector("#newAspirationBtn");
 const aspirationSpeakBtn = document.querySelector("#aspirationSpeakBtn");
 const aspirationOptions = document.querySelector("#aspirationOptions");
@@ -376,11 +382,6 @@ let pendingQuizType = "basic";
 let activeQuizType = "basic";
 let aspirationAnswer = null;
 
-const chapter2Consonants = {
-  "가": "ㄱ", "나": "ㄴ", "다": "ㄷ", "라": "ㄹ", "마": "ㅁ", "바": "ㅂ", "사": "ㅅ",
-  "아": "ㅇ", "자": "ㅈ", "차": "ㅊ", "카": "ㅋ", "타": "ㅌ", "파": "ㅍ", "하": "ㅎ"
-};
-
 const aspirationPairs = [
   ["가", "카"],
   ["다", "타"],
@@ -394,6 +395,21 @@ function normalizePhrase(parts) {
 
 function currentChapter() {
   return chapters[activeChapterIndex];
+}
+
+function currentSubchapter() {
+  if (!activeSubchapterId) {
+    return null;
+  }
+
+  return Object.values(chapterSubchapters)
+    .flat()
+    .find((subchapter) => subchapter.id === activeSubchapterId) || null;
+}
+
+function currentSubchapterMapChapter() {
+  const subchapter = currentSubchapter();
+  return subchapter ? Number(subchapter.id.split("-")[0]) : currentChapter().number;
 }
 
 function loadProgress() {
@@ -644,9 +660,12 @@ function setCategoryVisibility(titleElement, gridElement, label) {
 function applyChapter(index, showPrologue = true, updateUrl = true) {
   activeChapterIndex = Math.max(0, Math.min(index, chapters.length - 1));
   const chapter = currentChapter();
+  const subchapter = currentSubchapter();
 
-  lessons = chapter.lessons;
-  prologue = chapter.prologue;
+  lessons = subchapter?.lessonTargets
+    ? chapter.lessons.filter((lesson) => subchapter.lessonTargets.includes(lesson.target))
+    : chapter.lessons;
+  prologue = subchapter?.prologue || chapter.prologue;
   lessonIndex = 0;
   prologueIndex = 0;
   quizQuestions = [];
@@ -655,20 +674,20 @@ function applyChapter(index, showPrologue = true, updateUrl = true) {
   quizWrong = 0;
 
   sceneChapter.textContent = chapter.sceneChapter;
-  sceneTitle.textContent = chapter.sceneTitle;
-  prologueChapter.textContent = chapter.prologueChapter;
-  quizLabel.textContent = chapter.quizLabel;
-  quizTitle.textContent = chapter.quizTitle;
-  confirmText.textContent = chapter.quizConfirm;
+  sceneTitle.textContent = subchapter?.sceneTitle || chapter.sceneTitle;
+  prologueChapter.textContent = subchapter?.prologueChapter || chapter.prologueChapter;
+  quizLabel.textContent = subchapter?.quizLabel || chapter.quizLabel;
+  quizTitle.textContent = subchapter?.quizTitle || chapter.quizTitle;
+  confirmText.textContent = subchapter?.quizConfirm || chapter.quizConfirm;
   quizImage.src = chapter.quizImage;
   quizImage.alt = "狗狗老師在黑板前出題";
 
-  setCategoryVisibility(basicVowelTitle, basicVowelGrid, chapter.materials.basicVowel);
-  setCategoryVisibility(compoundVowelTitle, compoundVowelGrid, chapter.materials.compoundVowel);
-  setCategoryVisibility(basicConsonantTitle, basicConsonantGrid, chapter.materials.basicConsonant);
-  setCategoryVisibility(doubleConsonantTitle, doubleConsonantGrid, chapter.materials.doubleConsonant);
-  chapter2Practice.hidden = chapter.number !== 2;
-
+  const materials = subchapter?.materials || chapter.materials;
+  setCategoryVisibility(basicVowelTitle, basicVowelGrid, materials.basicVowel);
+  setCategoryVisibility(compoundVowelTitle, compoundVowelGrid, materials.compoundVowel);
+  setCategoryVisibility(basicConsonantTitle, basicConsonantGrid, materials.basicConsonant);
+  setCategoryVisibility(doubleConsonantTitle, doubleConsonantGrid, materials.doubleConsonant);
+  aspirationPractice.hidden = activeSubchapterId !== "1-2";
   document.body.classList.remove("quiz-active");
   document.body.classList.remove("map-active");
   document.body.classList.remove("submap-active");
@@ -676,10 +695,9 @@ function applyChapter(index, showPrologue = true, updateUrl = true) {
   closeQuizConfirm();
   buildMaterials();
   updateView();
-  if (chapter.number === 2) {
+  if (activeSubchapterId === "1-2") {
     newAspirationQuestion();
   }
-
   if (showPrologue) {
     document.body.classList.add("prologue-active");
     updatePrologue();
@@ -708,28 +726,6 @@ function updateView() {
   document.querySelectorAll(".material-btn").forEach((button) => {
     button.classList.toggle("selected", button.dataset.value === lesson.target);
   });
-
-  updateSyllableBuilder(lesson);
-}
-
-function updateSyllableBuilder(lesson) {
-  if (currentChapter().number !== 2) {
-    return;
-  }
-
-  builderConsonant.textContent = chapter2Consonants[lesson.target] || "";
-  builderResult.textContent = lesson.target;
-  builderMemory.textContent = lesson.hint;
-  syllableFormula.classList.remove("is-merging");
-}
-
-function mergeSelectedSyllable() {
-  const lesson = lessons[lessonIndex];
-  syllableFormula.classList.remove("is-merging");
-  void syllableFormula.offsetWidth;
-  syllableFormula.classList.add("is-merging");
-  builderMemory.textContent = `${chapter2Consonants[lesson.target]} 和 ㅏ 合成 ${lesson.target}。${lesson.memory}`;
-  speakKorean(lesson.sound);
 }
 
 function newAspirationQuestion() {
@@ -799,14 +795,14 @@ function nextPrologue() {
 
   markCurrentStoryViewed();
   document.body.classList.remove("prologue-active");
-  feedbackText.textContent = currentChapter().trainingIntro;
+  feedbackText.textContent = currentSubchapter()?.trainingIntro || currentChapter().trainingIntro;
   speakKorean(lessons[lessonIndex].sound);
 }
 
 function skipPrologue() {
   markCurrentStoryViewed();
   document.body.classList.remove("prologue-active");
-  feedbackText.textContent = currentChapter().skippedIntro;
+  feedbackText.textContent = currentSubchapter()?.skippedIntro || currentChapter().skippedIntro;
   updateView();
 }
 
@@ -822,7 +818,7 @@ function openQuizConfirm(quizType) {
   pendingQuizType = quizType;
   confirmText.textContent = quizType === "pronunciation"
     ? "要開始選做的發音測驗嗎？需要使用麥克風。"
-    : "要開始基礎測驗嗎？通過後就算完成這一節。";
+    : currentSubchapter()?.quizConfirm || "要開始基礎測驗嗎？通過後就算完成這一節。";
   confirmOverlay.classList.add("is-visible");
 }
 
@@ -1131,8 +1127,9 @@ function renderQuizResult() {
   } else {
     if (activeSubchapterId) {
       completeSubchapter(activeSubchapterId);
-      if (isChapterComplete(chapter.number)) {
-        completeChapter(chapter.number);
+      const mapChapterNumber = currentSubchapterMapChapter();
+      if (isChapterComplete(mapChapterNumber)) {
+        completeChapter(mapChapterNumber);
       }
     } else {
       completeChapter(chapter.number);
@@ -1144,7 +1141,7 @@ function renderQuizResult() {
     subchapterButton.type = "button";
     subchapterButton.textContent = "回到第一章小地圖";
     subchapterButton.addEventListener("click", () => {
-      openSubchapterMap(chapter.number);
+      openSubchapterMap(currentSubchapterMapChapter());
     });
     quizResultActions.appendChild(subchapterButton);
   } else if (activeChapterIndex < chapters.length - 1) {
@@ -1278,7 +1275,7 @@ readyQuizBtn.addEventListener("click", () => openQuizConfirm("basic"));
 pronunciationQuizBtn.addEventListener("click", () => openQuizConfirm("pronunciation"));
 reviewStoryBtn.addEventListener("click", reviewStory);
 returnToSubchapterMapBtn.addEventListener("click", () => {
-  const chapterNumber = currentChapter().number;
+  const chapterNumber = currentSubchapterMapChapter();
 
   if (chapterSubchapters[chapterNumber]) {
     openSubchapterMap(chapterNumber);
@@ -1304,7 +1301,6 @@ quizSpeakBtn.addEventListener("click", () => {
   }
 });
 quizMicBtn.addEventListener("click", startQuizListening);
-mergeSyllableBtn.addEventListener("click", mergeSelectedSyllable);
 newAspirationBtn.addEventListener("click", newAspirationQuestion);
 aspirationSpeakBtn.addEventListener("click", () => {
   if (aspirationAnswer) {
