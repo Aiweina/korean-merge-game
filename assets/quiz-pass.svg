@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="測驗過關">
-  <rect width="960" height="540" fill="#e4f3ec"/>
-  <rect x="120" y="86" width="720" height="360" rx="30" fill="#fffdf8" stroke="#91cdb7" stroke-width="10"/>
-  <circle cx="300" cy="250" r="94" fill="#cfeee2"/>
-  <text x="300" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="126" font-weight="700" fill="#2f8b7b">○</text>
-  <text x="560" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="700" fill="#2f8b7b">過關！</text>
-  <text x="560" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#7c6b5c">Chapter clear</text>
-  <path d="M440 350h240" stroke="#d99b35" stroke-width="18" stroke-linecap="round"/>
-</svg>

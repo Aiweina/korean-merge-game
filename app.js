@@ -8,46 +8,46 @@ const order = {
 };
 
 let lessons = [
-  { target: "ㅏ", sound: "아", english: "a", spirit: "朝光阿", image: "./assets/spirits/01-314f.png?v=10", title: "基本母音音靈", memory: "嘴巴自然打開，像看見清晨第一道光。", meaning: "ㅏ 是第一位醒來的音靈。它把花園的門推開，說：先把聲音放輕鬆。", hint: "嘴巴自然打開，像看見清晨第一道光。" },
-  { target: "ㅑ", sound: "야", english: "ya", spirit: "招手雅", image: "./assets/spirits/02-3151.png?v=10", title: "基本母音音靈", memory: "在 a 前面加一點 y 的滑音，像遠遠喊朋友。", meaning: "ㅑ 喜歡站在路口招手。它的聲音比 ㅏ 多一個小小的起步。", hint: "在 a 前面加一點 y 的滑音，像遠遠喊朋友。" },
-  { target: "ㅓ", sound: "어", english: "eo", spirit: "回聲歐", image: "./assets/spirits/03-3153.png?v=10", title: "基本母音音靈", memory: "聲音往內收，像在山洞裡聽見回音。", meaning: "ㅓ 住在花園深處。它不急著往外跑，而是把聲音收進胸口。", hint: "聲音往內收，像在山洞裡聽見回音。" },
-  { target: "ㅕ", sound: "여", english: "yeo", spirit: "引路悠", image: "./assets/spirits/04-3155.png?v=10", title: "基本母音音靈", memory: "在 eo 前滑進 y，像轉彎進入小徑。", meaning: "ㅕ 會替迷路的人點燈。它把 ㅓ 的回音加上一個柔軟的開頭。", hint: "在 eo 前滑進 y，像轉彎進入小徑。" },
-  { target: "ㅗ", sound: "오", english: "o", spirit: "高塔喔", image: "./assets/spirits/05-3157.png?v=10", title: "基本母音音靈", memory: "嘴唇微圓，聲音往上抬。", meaning: "ㅗ 守著一座小高塔。它一出聲，天空就亮一格。", hint: "嘴唇微圓，聲音往上抬。" },
-  { target: "ㅛ", sound: "요", english: "yo", spirit: "小帽悠", image: "./assets/spirits/06-315b.png?v=10", title: "基本母音音靈", memory: "yo 像先跳一下再往上抬。", meaning: "ㅛ 是 ㅗ 的孩子氣版本，總是戴著小帽子在花叢裡跳。", hint: "yo 像先跳一下再往上抬。" },
-  { target: "ㅜ", sound: "우", english: "u", spirit: "水滴嗚", image: "./assets/spirits/07-315c.png?v=10", title: "基本母音音靈", memory: "嘴唇微圓，聲音往下流。", meaning: "ㅜ 掌管池塘。它的聲音低低落下，讓乾掉的土重新變軟。", hint: "嘴唇微圓，聲音往下流。" },
-  { target: "ㅠ", sound: "유", english: "yu", spirit: "雨線優", image: "./assets/spirits/08-3160.png?v=10", title: "基本母音音靈", memory: "yu 像細雨落下前先滑過一點 y。", meaning: "ㅠ 帶來溫柔的雨。它讓 ㅜ 的水滴多了一條細細的起跑線。", hint: "yu 像細雨落下前先滑過一點 y。" },
-  { target: "ㅡ", sound: "으", english: "eu", spirit: "地平恩", image: "./assets/spirits/09-3161.png?v=10", title: "基本母音音靈", memory: "嘴巴放平，聲音穩穩地貼著地面。", meaning: "ㅡ 是花園的地平線。它不張揚，卻讓所有聲音有地方站。", hint: "嘴巴放平，聲音穩穩地貼著地面。" },
-  { target: "ㅣ", sound: "이", english: "i", spirit: "直光伊", image: "./assets/spirits/10-3163.png?v=10", title: "基本母音音靈", memory: "嘴角輕輕拉開，聲音細而亮。", meaning: "ㅣ 像一束直直的光。它一出現，圖鑑上的線條都變清楚。", hint: "嘴角輕輕拉開，聲音細而亮。" },
-  { target: "ㅐ", sound: "애", english: "ae", spirit: "琥珀愛", image: "./assets/spirits/11-3150.png?v=10", title: "複合母音音靈", memory: "ae 像明亮的 e/a 之間。", meaning: "ㅐ 收藏琥珀色的聲音。它讓花園的光變得更清澈。", hint: "ae 像明亮的 e/a 之間。" },
-  { target: "ㅒ", sound: "얘", english: "yae", spirit: "小葉耶", image: "./assets/spirits/12-3152.png?v=10", title: "複合母音音靈", memory: "在 ae 前滑進 y。", meaning: "ㅒ 是會說悄悄話的音靈。它把 ㅐ 加上一個輕巧的開頭。", hint: "在 ae 前滑進 y。" },
-  { target: "ㅔ", sound: "에", english: "e", spirit: "銀鈴欸", image: "./assets/spirits/13-3154.png?v=10", title: "複合母音音靈", memory: "e 聲短而乾淨。", meaning: "ㅔ 掛著銀鈴。它的聲音像清楚的一點亮光。", hint: "e 聲短而乾淨。" },
-  { target: "ㅖ", sound: "예", english: "ye", spirit: "禮貌耶", image: "./assets/spirits/14-3156.png?v=10", title: "複合母音音靈", memory: "在 e 前加 y，像溫柔打招呼。", meaning: "ㅖ 很有禮貌。它出現時，花園入口會輕輕點頭。", hint: "在 e 前加 y，像溫柔打招呼。" },
-  { target: "ㅘ", sound: "와", english: "wa", spirit: "橋上哇", image: "./assets/spirits/15-3158.png?v=10", title: "複合母音音靈", memory: "ㅗ 和 ㅏ 合在一起，像 wa。", meaning: "ㅘ 是橋樑音靈。它把高塔的 ㅗ 和朝光的 ㅏ 接在一起。", hint: "ㅗ 和 ㅏ 合在一起，像 wa。" },
-  { target: "ㅙ", sound: "왜", english: "wae", spirit: "問號歪", image: "./assets/spirits/16-3159.png?v=10", title: "複合母音音靈", memory: "wae 像 wa 加明亮 e。", meaning: "ㅙ 喜歡問為什麼。它每問一次，地圖就多一個可探索的角落。", hint: "wae 像 wa 加明亮 e。" },
-  { target: "ㅚ", sound: "외", english: "oe", spirit: "外光喂", image: "./assets/spirits/17-315a.png?v=10", title: "複合母音音靈", memory: "oe 現代發音常接近 we。", meaning: "ㅚ 站在花園外圍，把遠處的光帶回來。", hint: "oe 現代發音常接近 we。" },
-  { target: "ㅝ", sound: "워", english: "wo", spirit: "水窩沃", image: "./assets/spirits/18-315d.png?v=15", title: "複合母音音靈", memory: "ㅜ 和 ㅓ 合在一起，像 wo。", meaning: "ㅝ 住在水窩旁。它把往下的水聲轉進深處回音。", hint: "ㅜ 和 ㅓ 合在一起，像 wo。" },
-  { target: "ㅞ", sound: "웨", english: "we", spirit: "波紋威", image: "./assets/spirits/19-315e.png?v=15", title: "複合母音音靈", memory: "we 像水面一圈圈擴散。", meaning: "ㅞ 會在池塘上畫波紋。它的聲音乾淨又有流動感。", hint: "we 像水面一圈圈擴散。" },
-  { target: "ㅟ", sound: "위", english: "wi", spirit: "風尾微", image: "./assets/spirits/20-315f.png?v=15", title: "複合母音音靈", memory: "wi 像 u 滑向 i。", meaning: "ㅟ 跟著風尾跑。它把水滴 ㅜ 拉成一條亮亮的線。", hint: "wi 像 u 滑向 i。" },
-  { target: "ㅢ", sound: "의", english: "ui", spirit: "書頁義", image: "./assets/spirits/21-3162.png?v=10", title: "複合母音音靈", memory: "ui 從 ㅡ 滑向 ㅣ。", meaning: "ㅢ 躲在舊書頁裡。它是比較特別的音，像一段被摺起來的路。", hint: "ui 從 ㅡ 滑向 ㅣ。" },
-  { target: "ㄱ", sound: "가", english: "g/k", spirit: "鑰匙記憶", image: "./assets/spirits/22-3131.png?v=1", title: "基本子音音靈", memory: "舌根輕碰後放開，像開門的一下。", meaning: "ㄱ 是守門音靈。它用短短的聲音打開第一道花園門。", hint: "舌根輕碰後放開，像開門的一下。" },
-  { target: "ㄲ", sound: "까", english: "kk", spirit: "雙鑰匙", image: "./assets/spirits/23-3132.png?v=1", title: "雙子音音靈", memory: "比 ㄱ 更緊，像把聲音先收住再放開。", meaning: "ㄲ 帶著兩把鑰匙。它不是更大聲，而是更緊、更集中。", hint: "比 ㄱ 更緊，像把聲音先收住再放開。" },
-  { target: "ㄴ", sound: "나", english: "n", spirit: "小路尼", image: "./assets/spirits/24-3134.png?v=1", title: "基本子音音靈", memory: "舌尖碰上方，聲音從鼻腔滑出。", meaning: "ㄴ 鋪出一條安靜小路。它說，慢慢走也能到下一個音。", hint: "舌尖碰上方，聲音從鼻腔滑出。" },
-  { target: "ㄷ", sound: "다", english: "d/t", spirit: "石階達", image: "./assets/spirits/25-3137.png?v=1", title: "基本子音音靈", memory: "舌尖輕敲上方，像踩上一階石階。", meaning: "ㄷ 收集石階。每一次 da，花園就多一個能站穩的地方。", hint: "舌尖輕敲上方，像踩上一階石階。" },
-  { target: "ㄸ", sound: "따", english: "tt", spirit: "雙石階", image: "./assets/spirits/26-3138.png?v=1", title: "雙子音音靈", memory: "比 ㄷ 更緊，舌尖先蓄力。", meaning: "ㄸ 會把石階敲出清脆聲。它的力量藏在出聲前一瞬間。", hint: "比 ㄷ 更緊，舌尖先蓄力。" },
-  { target: "ㄹ", sound: "라", english: "r/l", spirit: "風帶拉", image: "./assets/spirits/27-3139.png?v=1", title: "基本子音音靈", memory: "舌尖輕彈或貼近，聲音像飄帶。", meaning: "ㄹ 是會轉圈的音靈。它讓聲音從路面輕輕捲起來。", hint: "舌尖輕彈或貼近，聲音像飄帶。" },
-  { target: "ㅁ", sound: "마", english: "m", spirit: "工匠姆", image: "./assets/spirits/28-3141.png?v=1", title: "基本子音音靈", memory: "雙唇閉合再打開，聲音柔柔從鼻腔出來。", meaning: "ㅁ 是沉默工匠。閉上嘴的瞬間，它正在替聲音打磨形狀。", hint: "雙唇閉合再打開，聲音柔柔從鼻腔出來。" },
-  { target: "ㅂ", sound: "바", english: "b/p", spirit: "風鈴波", image: "./assets/spirits/29-3142.png?v=1", title: "基本子音音靈", memory: "雙唇合起再彈開，像輕敲風鈴。", meaning: "ㅂ 負責修風鈴。它的聲音有一點彈跳，聽起來很有精神。", hint: "雙唇合起再彈開，像輕敲風鈴。" },
-  { target: "ㅃ", sound: "빠", english: "pp", spirit: "雙風鈴", image: "./assets/spirits/30-3143.png?v=1", title: "雙子音音靈", memory: "比 ㅂ 更緊，雙唇蓄力再彈開。", meaning: "ㅃ 修的是雙層風鈴。聲音短、緊，像小小的爆發。", hint: "比 ㅂ 更緊，雙唇蓄力再彈開。" },
-  { target: "ㅅ", sound: "사", english: "s", spirit: "細沙絲", image: "./assets/spirits/31-3145.png?v=2", title: "基本子音音靈", memory: "氣流從齒間擦過，像沙子流動。", meaning: "ㅅ 帶來星砂。它走過的地方，沉默會被細細刷開。", hint: "氣流從齒間擦過，像沙子流動。" },
-  { target: "ㅆ", sound: "싸", english: "ss", spirit: "雙星砂", image: "./assets/spirits/32-3146.png?v=1", title: "雙子音音靈", memory: "比 ㅅ 更緊更集中。", meaning: "ㅆ 灑下更亮的星砂。它把氣流收成一條細細的線。", hint: "比 ㅅ 更緊更集中。" },
-  { target: "ㅇ", sound: "아", english: "ng/silent", spirit: "透明圓", image: "./assets/spirits/33-3147.png?v=1", title: "基本子音音靈", memory: "在字首常安靜，讓母音自己發光。", meaning: "ㅇ 是透明音靈。它常常不說話，卻替母音留出登場的位置。", hint: "在字首常安靜，讓母音自己發光。" },
-  { target: "ㅈ", sound: "자", english: "j", spirit: "鈴匠吉", image: "./assets/spirits/34-3148.png?v=1", title: "基本子音音靈", memory: "舌面靠近上方，聲音像短短的 j。", meaning: "ㅈ 喜歡修小鈴。它一敲，故事就往前跳一格。", hint: "舌面靠近上方，聲音像短短的 j。" },
-  { target: "ㅉ", sound: "짜", english: "jj", spirit: "雙鈴匠", image: "./assets/spirits/35-3149.png?v=1", title: "雙子音音靈", memory: "比 ㅈ 更緊，像短促的 jj。", meaning: "ㅉ 敲的是雙鈴。它讓故事的下一格跳得更明確。", hint: "比 ㅈ 更緊，像短促的 jj。" },
-  { target: "ㅊ", sound: "차", english: "ch", spirit: "清風恰", image: "./assets/spirits/36-314a.png?v=1", title: "基本子音音靈", memory: "比 ㅈ 多一口氣，像 ch。", meaning: "ㅊ 會把窗打開。它比 ㅈ 更有風，聲音帶著清亮的氣。", hint: "比 ㅈ 多一口氣，像 ch。" },
-  { target: "ㅋ", sound: "카", english: "k", spirit: "石門卡", image: "./assets/spirits/37-314b.png?v=3", title: "基本子音音靈", memory: "比 ㄱ 多一口氣，像 k。", meaning: "ㅋ 是重一點的門聲。它一出現，石門會乾脆地打開。", hint: "比 ㄱ 多一口氣，像 k。" },
-  { target: "ㅌ", sound: "타", english: "t", spirit: "踏步塔", image: "./assets/spirits/38-314c.png?v=4", title: "基本子音音靈", memory: "比 ㄷ 多一口氣，像 t。", meaning: "ㅌ 走路很俐落。它把 ㄷ 的石階踩得更清楚。", hint: "比 ㄷ 多一口氣，像 t。" },
-  { target: "ㅍ", sound: "파", english: "p", spirit: "蒲公英帕", image: "./assets/spirits/39-314d.png?v=1", title: "基本子音音靈", memory: "比 ㅂ 多一口氣，像 p。", meaning: "ㅍ 一吹就讓蒲公英飛起來。它的聲音帶著一陣小風。", hint: "比 ㅂ 多一口氣，像 p。" },
-  { target: "ㅎ", sound: "하", english: "h", spirit: "呼吸哈", image: "./assets/spirits/40-314e.png?v=1", title: "基本子音音靈", memory: "輕輕送氣，像對玻璃呵一口氣。", meaning: "ㅎ 是呼吸音靈。它提醒玩家，發音前先放鬆呼吸。", hint: "輕輕送氣，像對玻璃呵一口氣。" }
+  { target: "ㅏ", sound: "아", english: "a", spirit: "朝光阿", image: "./assets/spirits/01-314f.webp?v=10", title: "基本母音音靈", memory: "嘴巴自然打開，像看見清晨第一道光。", meaning: "ㅏ 是第一位醒來的音靈。它把花園的門推開，說：先把聲音放輕鬆。", hint: "嘴巴自然打開，像看見清晨第一道光。" },
+  { target: "ㅑ", sound: "야", english: "ya", spirit: "招手雅", image: "./assets/spirits/02-3151.webp?v=10", title: "基本母音音靈", memory: "在 a 前面加一點 y 的滑音，像遠遠喊朋友。", meaning: "ㅑ 喜歡站在路口招手。它的聲音比 ㅏ 多一個小小的起步。", hint: "在 a 前面加一點 y 的滑音，像遠遠喊朋友。" },
+  { target: "ㅓ", sound: "어", english: "eo", spirit: "回聲歐", image: "./assets/spirits/03-3153.webp?v=10", title: "基本母音音靈", memory: "聲音往內收，像在山洞裡聽見回音。", meaning: "ㅓ 住在花園深處。它不急著往外跑，而是把聲音收進胸口。", hint: "聲音往內收，像在山洞裡聽見回音。" },
+  { target: "ㅕ", sound: "여", english: "yeo", spirit: "引路悠", image: "./assets/spirits/04-3155.webp?v=10", title: "基本母音音靈", memory: "在 eo 前滑進 y，像轉彎進入小徑。", meaning: "ㅕ 會替迷路的人點燈。它把 ㅓ 的回音加上一個柔軟的開頭。", hint: "在 eo 前滑進 y，像轉彎進入小徑。" },
+  { target: "ㅗ", sound: "오", english: "o", spirit: "高塔喔", image: "./assets/spirits/05-3157.webp?v=10", title: "基本母音音靈", memory: "嘴唇微圓，聲音往上抬。", meaning: "ㅗ 守著一座小高塔。它一出聲，天空就亮一格。", hint: "嘴唇微圓，聲音往上抬。" },
+  { target: "ㅛ", sound: "요", english: "yo", spirit: "小帽悠", image: "./assets/spirits/06-315b.webp?v=10", title: "基本母音音靈", memory: "yo 像先跳一下再往上抬。", meaning: "ㅛ 是 ㅗ 的孩子氣版本，總是戴著小帽子在花叢裡跳。", hint: "yo 像先跳一下再往上抬。" },
+  { target: "ㅜ", sound: "우", english: "u", spirit: "水滴嗚", image: "./assets/spirits/07-315c.webp?v=10", title: "基本母音音靈", memory: "嘴唇微圓，聲音往下流。", meaning: "ㅜ 掌管池塘。它的聲音低低落下，讓乾掉的土重新變軟。", hint: "嘴唇微圓，聲音往下流。" },
+  { target: "ㅠ", sound: "유", english: "yu", spirit: "雨線優", image: "./assets/spirits/08-3160.webp?v=10", title: "基本母音音靈", memory: "yu 像細雨落下前先滑過一點 y。", meaning: "ㅠ 帶來溫柔的雨。它讓 ㅜ 的水滴多了一條細細的起跑線。", hint: "yu 像細雨落下前先滑過一點 y。" },
+  { target: "ㅡ", sound: "으", english: "eu", spirit: "地平恩", image: "./assets/spirits/09-3161.webp?v=10", title: "基本母音音靈", memory: "嘴巴放平，聲音穩穩地貼著地面。", meaning: "ㅡ 是花園的地平線。它不張揚，卻讓所有聲音有地方站。", hint: "嘴巴放平，聲音穩穩地貼著地面。" },
+  { target: "ㅣ", sound: "이", english: "i", spirit: "直光伊", image: "./assets/spirits/10-3163.webp?v=10", title: "基本母音音靈", memory: "嘴角輕輕拉開，聲音細而亮。", meaning: "ㅣ 像一束直直的光。它一出現，圖鑑上的線條都變清楚。", hint: "嘴角輕輕拉開，聲音細而亮。" },
+  { target: "ㅐ", sound: "애", english: "ae", spirit: "琥珀愛", image: "./assets/spirits/11-3150.webp?v=10", title: "複合母音音靈", memory: "ae 像明亮的 e/a 之間。", meaning: "ㅐ 收藏琥珀色的聲音。它讓花園的光變得更清澈。", hint: "ae 像明亮的 e/a 之間。" },
+  { target: "ㅒ", sound: "얘", english: "yae", spirit: "小葉耶", image: "./assets/spirits/12-3152.webp?v=10", title: "複合母音音靈", memory: "在 ae 前滑進 y。", meaning: "ㅒ 是會說悄悄話的音靈。它把 ㅐ 加上一個輕巧的開頭。", hint: "在 ae 前滑進 y。" },
+  { target: "ㅔ", sound: "에", english: "e", spirit: "銀鈴欸", image: "./assets/spirits/13-3154.webp?v=10", title: "複合母音音靈", memory: "e 聲短而乾淨。", meaning: "ㅔ 掛著銀鈴。它的聲音像清楚的一點亮光。", hint: "e 聲短而乾淨。" },
+  { target: "ㅖ", sound: "예", english: "ye", spirit: "禮貌耶", image: "./assets/spirits/14-3156.webp?v=10", title: "複合母音音靈", memory: "在 e 前加 y，像溫柔打招呼。", meaning: "ㅖ 很有禮貌。它出現時，花園入口會輕輕點頭。", hint: "在 e 前加 y，像溫柔打招呼。" },
+  { target: "ㅘ", sound: "와", english: "wa", spirit: "橋上哇", image: "./assets/spirits/15-3158.webp?v=10", title: "複合母音音靈", memory: "ㅗ 和 ㅏ 合在一起，像 wa。", meaning: "ㅘ 是橋樑音靈。它把高塔的 ㅗ 和朝光的 ㅏ 接在一起。", hint: "ㅗ 和 ㅏ 合在一起，像 wa。" },
+  { target: "ㅙ", sound: "왜", english: "wae", spirit: "問號歪", image: "./assets/spirits/16-3159.webp?v=10", title: "複合母音音靈", memory: "wae 像 wa 加明亮 e。", meaning: "ㅙ 喜歡問為什麼。它每問一次，地圖就多一個可探索的角落。", hint: "wae 像 wa 加明亮 e。" },
+  { target: "ㅚ", sound: "외", english: "oe", spirit: "外光喂", image: "./assets/spirits/17-315a.webp?v=10", title: "複合母音音靈", memory: "oe 現代發音常接近 we。", meaning: "ㅚ 站在花園外圍，把遠處的光帶回來。", hint: "oe 現代發音常接近 we。" },
+  { target: "ㅝ", sound: "워", english: "wo", spirit: "水窩沃", image: "./assets/spirits/18-315d.webp?v=15", title: "複合母音音靈", memory: "ㅜ 和 ㅓ 合在一起，像 wo。", meaning: "ㅝ 住在水窩旁。它把往下的水聲轉進深處回音。", hint: "ㅜ 和 ㅓ 合在一起，像 wo。" },
+  { target: "ㅞ", sound: "웨", english: "we", spirit: "波紋威", image: "./assets/spirits/19-315e.webp?v=15", title: "複合母音音靈", memory: "we 像水面一圈圈擴散。", meaning: "ㅞ 會在池塘上畫波紋。它的聲音乾淨又有流動感。", hint: "we 像水面一圈圈擴散。" },
+  { target: "ㅟ", sound: "위", english: "wi", spirit: "風尾微", image: "./assets/spirits/20-315f.webp?v=15", title: "複合母音音靈", memory: "wi 像 u 滑向 i。", meaning: "ㅟ 跟著風尾跑。它把水滴 ㅜ 拉成一條亮亮的線。", hint: "wi 像 u 滑向 i。" },
+  { target: "ㅢ", sound: "의", english: "ui", spirit: "書頁義", image: "./assets/spirits/21-3162.webp?v=10", title: "複合母音音靈", memory: "ui 從 ㅡ 滑向 ㅣ。", meaning: "ㅢ 躲在舊書頁裡。它是比較特別的音，像一段被摺起來的路。", hint: "ui 從 ㅡ 滑向 ㅣ。" },
+  { target: "ㄱ", sound: "가", english: "g/k", spirit: "鑰匙記憶", image: "./assets/spirits/22-3131.webp?v=1", title: "基本子音音靈", memory: "舌根輕碰後放開，像開門的一下。", meaning: "ㄱ 是守門音靈。它用短短的聲音打開第一道花園門。", hint: "舌根輕碰後放開，像開門的一下。" },
+  { target: "ㄲ", sound: "까", english: "kk", spirit: "雙鑰匙", image: "./assets/spirits/23-3132.webp?v=1", title: "雙子音音靈", memory: "比 ㄱ 更緊，像把聲音先收住再放開。", meaning: "ㄲ 帶著兩把鑰匙。它不是更大聲，而是更緊、更集中。", hint: "比 ㄱ 更緊，像把聲音先收住再放開。" },
+  { target: "ㄴ", sound: "나", english: "n", spirit: "小路尼", image: "./assets/spirits/24-3134.webp?v=1", title: "基本子音音靈", memory: "舌尖碰上方，聲音從鼻腔滑出。", meaning: "ㄴ 鋪出一條安靜小路。它說，慢慢走也能到下一個音。", hint: "舌尖碰上方，聲音從鼻腔滑出。" },
+  { target: "ㄷ", sound: "다", english: "d/t", spirit: "石階達", image: "./assets/spirits/25-3137.webp?v=1", title: "基本子音音靈", memory: "舌尖輕敲上方，像踩上一階石階。", meaning: "ㄷ 收集石階。每一次 da，花園就多一個能站穩的地方。", hint: "舌尖輕敲上方，像踩上一階石階。" },
+  { target: "ㄸ", sound: "따", english: "tt", spirit: "雙石階", image: "./assets/spirits/26-3138.webp?v=1", title: "雙子音音靈", memory: "比 ㄷ 更緊，舌尖先蓄力。", meaning: "ㄸ 會把石階敲出清脆聲。它的力量藏在出聲前一瞬間。", hint: "比 ㄷ 更緊，舌尖先蓄力。" },
+  { target: "ㄹ", sound: "라", english: "r/l", spirit: "風帶拉", image: "./assets/spirits/27-3139.webp?v=1", title: "基本子音音靈", memory: "舌尖輕彈或貼近，聲音像飄帶。", meaning: "ㄹ 是會轉圈的音靈。它讓聲音從路面輕輕捲起來。", hint: "舌尖輕彈或貼近，聲音像飄帶。" },
+  { target: "ㅁ", sound: "마", english: "m", spirit: "工匠姆", image: "./assets/spirits/28-3141.webp?v=1", title: "基本子音音靈", memory: "雙唇閉合再打開，聲音柔柔從鼻腔出來。", meaning: "ㅁ 是沉默工匠。閉上嘴的瞬間，它正在替聲音打磨形狀。", hint: "雙唇閉合再打開，聲音柔柔從鼻腔出來。" },
+  { target: "ㅂ", sound: "바", english: "b/p", spirit: "風鈴波", image: "./assets/spirits/29-3142.webp?v=1", title: "基本子音音靈", memory: "雙唇合起再彈開，像輕敲風鈴。", meaning: "ㅂ 負責修風鈴。它的聲音有一點彈跳，聽起來很有精神。", hint: "雙唇合起再彈開，像輕敲風鈴。" },
+  { target: "ㅃ", sound: "빠", english: "pp", spirit: "雙風鈴", image: "./assets/spirits/30-3143.webp?v=1", title: "雙子音音靈", memory: "比 ㅂ 更緊，雙唇蓄力再彈開。", meaning: "ㅃ 修的是雙層風鈴。聲音短、緊，像小小的爆發。", hint: "比 ㅂ 更緊，雙唇蓄力再彈開。" },
+  { target: "ㅅ", sound: "사", english: "s", spirit: "細沙絲", image: "./assets/spirits/31-3145.webp?v=2", title: "基本子音音靈", memory: "氣流從齒間擦過，像沙子流動。", meaning: "ㅅ 帶來星砂。它走過的地方，沉默會被細細刷開。", hint: "氣流從齒間擦過，像沙子流動。" },
+  { target: "ㅆ", sound: "싸", english: "ss", spirit: "雙星砂", image: "./assets/spirits/32-3146.webp?v=1", title: "雙子音音靈", memory: "比 ㅅ 更緊更集中。", meaning: "ㅆ 灑下更亮的星砂。它把氣流收成一條細細的線。", hint: "比 ㅅ 更緊更集中。" },
+  { target: "ㅇ", sound: "아", english: "ng/silent", spirit: "透明圓", image: "./assets/spirits/33-3147.webp?v=1", title: "基本子音音靈", memory: "在字首常安靜，讓母音自己發光。", meaning: "ㅇ 是透明音靈。它常常不說話，卻替母音留出登場的位置。", hint: "在字首常安靜，讓母音自己發光。" },
+  { target: "ㅈ", sound: "자", english: "j", spirit: "鈴匠吉", image: "./assets/spirits/34-3148.webp?v=1", title: "基本子音音靈", memory: "舌面靠近上方，聲音像短短的 j。", meaning: "ㅈ 喜歡修小鈴。它一敲，故事就往前跳一格。", hint: "舌面靠近上方，聲音像短短的 j。" },
+  { target: "ㅉ", sound: "짜", english: "jj", spirit: "雙鈴匠", image: "./assets/spirits/35-3149.webp?v=1", title: "雙子音音靈", memory: "比 ㅈ 更緊，像短促的 jj。", meaning: "ㅉ 敲的是雙鈴。它讓故事的下一格跳得更明確。", hint: "比 ㅈ 更緊，像短促的 jj。" },
+  { target: "ㅊ", sound: "차", english: "ch", spirit: "清風恰", image: "./assets/spirits/36-314a.webp?v=1", title: "基本子音音靈", memory: "比 ㅈ 多一口氣，像 ch。", meaning: "ㅊ 會把窗打開。它比 ㅈ 更有風，聲音帶著清亮的氣。", hint: "比 ㅈ 多一口氣，像 ch。" },
+  { target: "ㅋ", sound: "카", english: "k", spirit: "石門卡", image: "./assets/spirits/37-314b.webp?v=3", title: "基本子音音靈", memory: "比 ㄱ 多一口氣，像 k。", meaning: "ㅋ 是重一點的門聲。它一出現，石門會乾脆地打開。", hint: "比 ㄱ 多一口氣，像 k。" },
+  { target: "ㅌ", sound: "타", english: "t", spirit: "踏步塔", image: "./assets/spirits/38-314c.webp?v=4", title: "基本子音音靈", memory: "比 ㄷ 多一口氣，像 t。", meaning: "ㅌ 走路很俐落。它把 ㄷ 的石階踩得更清楚。", hint: "比 ㄷ 多一口氣，像 t。" },
+  { target: "ㅍ", sound: "파", english: "p", spirit: "蒲公英帕", image: "./assets/spirits/39-314d.webp?v=1", title: "基本子音音靈", memory: "比 ㅂ 多一口氣，像 p。", meaning: "ㅍ 一吹就讓蒲公英飛起來。它的聲音帶著一陣小風。", hint: "比 ㅂ 多一口氣，像 p。" },
+  { target: "ㅎ", sound: "하", english: "h", spirit: "呼吸哈", image: "./assets/spirits/40-314e.webp?v=1", title: "基本子音音靈", memory: "輕輕送氣，像對玻璃呵一口氣。", meaning: "ㅎ 是呼吸音靈。它提醒玩家，發音前先放鬆呼吸。", hint: "輕輕送氣，像對玻璃呵一口氣。" }
 ];
 
 const basicVowelTargets = new Set(["ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅣ"]);
@@ -146,27 +146,27 @@ const englishSoundMap = {
 let prologue = [
   {
     speaker: "旁白",
-    image: "./assets/1-01.png",
+    image: "./assets/1-01.webp",
     text: "雨後聖魔幻境的街角，有一間只在清晨開門的咖啡店。今天，是你在「天使惡魔館」打工的第一天。"
   },
   {
     speaker: "陽",
-    image: "./assets/1-02.png",
+    image: "./assets/1-02.webp",
     text: "Hi,你就是今天開始來幫忙的新同學嗎？但在正式上工前，要先完成新人教育訓練喔！"
   },
   {
     speaker: "你",
-    image: "./assets/1-03.png",
+    image: "./assets/1-03.webp",
     text: "教育訓練是背菜單內容嗎？"
   },
   {
     speaker: "陽",
-    image: "./assets/1-04.png",
+    image: "./assets/1-04.webp",
     text: "NO~NO~NO~我們的菜單、客人留言和收據都用韓文，所以你要先認識熟悉韓語基本 40 音。"
   },
   {
     speaker: "智允",
-    image: "./assets/1-05.png",
+    image: "./assets/1-05.webp",
     text: "來，這是你的導師，Jumbo。",
     choices: [
       { text: "開始教育訓練", feedback: "Jumbo把第一張字卡推到你面前。" },
@@ -179,46 +179,46 @@ const chapter1Lessons = lessons;
 const chapter1Prologue = prologue;
 
 const chapter2Lessons = [
-  { target: "가", sound: "가", english: "ga", spirit: "開門加", image: "./assets/spirits/ch2-ga.png?v=3", title: "第二章音節卡", memory: "ㄱ 加上 ㅏ，像把第一扇門打開。", meaning: "加是第二章的第一杯咖啡，短短一聲把子音和母音接起來。", hint: "ㄱ + ㅏ = 가", category: "basicVowel" },
-  { target: "나", sound: "나", english: "na", spirit: "小路拿", image: "./assets/spirits/ch2-na.png?v=3", title: "第二章音節卡", memory: "ㄴ 加上 ㅏ，舌尖輕碰後走出小路。", meaning: "拿負責把客人帶到座位，聲音柔和但很清楚。", hint: "ㄴ + ㅏ = 나", category: "basicVowel" },
-  { target: "다", sound: "다", english: "da", spirit: "石階達", image: "./assets/spirits/ch2-da.png?v=3", title: "第二章音節卡", memory: "ㄷ 加上 ㅏ，像腳步踏上石階。", meaning: "達會把訂單一步一步送到櫃台。", hint: "ㄷ + ㅏ = 다", category: "basicVowel" },
-  { target: "라", sound: "라", english: "ra/la", spirit: "風帶拉", image: "./assets/spirits/ch2-ra.png?v=3", title: "第二章音節卡", memory: "ㄹ 加上 ㅏ，聲音像飄帶輕輕轉彎。", meaning: "拉在咖啡香裡繞圈，提醒你韓文音節會連起來。", hint: "ㄹ + ㅏ = 라", category: "basicVowel" },
-  { target: "마", sound: "마", english: "ma", spirit: "工匠媽", image: "./assets/spirits/ch2-ma.png?v=3", title: "第二章音節卡", memory: "ㅁ 加上 ㅏ，雙唇合起再打開。", meaning: "媽會把聲音磨得圓圓的，像熱牛奶泡泡。", hint: "ㅁ + ㅏ = 마", category: "basicVowel" },
-  { target: "바", sound: "바", english: "ba/pa", spirit: "風鈴吧", image: "./assets/spirits/ch2-ba.png?v=3", title: "第二章音節卡", memory: "ㅂ 加上 ㅏ，雙唇輕輕彈開。", meaning: "吧是櫃台旁的小風鈴，提醒你出聲要有彈性。", hint: "ㅂ + ㅏ = 바", category: "compoundVowel" },
-  { target: "사", sound: "사", english: "sa", spirit: "細沙撒", image: "./assets/spirits/ch2-sa.png?v=3", title: "第二章音節卡", memory: "ㅅ 加上 ㅏ，氣流像細沙滑過。", meaning: "撒會替咖啡撒上糖粉，聲音細細的。", hint: "ㅅ + ㅏ = 사", category: "compoundVowel" },
-  { target: "아", sound: "아", english: "a", spirit: "透明阿", image: "./assets/spirits/ch2-a.png?v=3", title: "第二章音節卡", memory: "ㅇ 在開頭安靜，讓 ㅏ 自己發光。", meaning: "阿是透明圓端出的第一杯清晨水。", hint: "ㅇ + ㅏ = 아", category: "compoundVowel" },
-  { target: "자", sound: "자", english: "ja", spirit: "鈴匠札", image: "./assets/spirits/ch2-ja.png?v=3", title: "第二章音節卡", memory: "ㅈ 加上 ㅏ，像短短的 j 音。", meaning: "札會把客人的名字寫在杯套上。", hint: "ㅈ + ㅏ = 자", category: "basicConsonant" },
-  { target: "차", sound: "차", english: "cha", spirit: "清風茶", image: "./assets/spirits/ch2-cha.png?v=3", title: "第二章音節卡", memory: "ㅊ 加上 ㅏ，比 ㅈ 多一口氣。", meaning: "茶把窗戶打開，聲音帶著清楚的風。", hint: "ㅊ + ㅏ = 차", category: "basicConsonant" },
-  { target: "카", sound: "카", english: "ka", spirit: "石門卡", image: "./assets/spirits/ch2-ka.png?v=3", title: "第二章音節卡", memory: "ㅋ 加上 ㅏ，比 ㄱ 多一口氣，像推開厚重石門。", meaning: "卡會用清楚的送氣聲推開咖啡館外的石門。", hint: "ㅋ + ㅏ = 카", category: "basicConsonant" },
-  { target: "타", sound: "타", english: "ta", spirit: "踏步塔", image: "./assets/spirits/ch2-ta.png?v=3", title: "第二章音節卡", memory: "ㅌ 加上 ㅏ，比 ㄷ 多一口氣，腳步更俐落。", meaning: "塔沿著送餐路線踏出清楚又有風的步伐。", hint: "ㅌ + ㅏ = 타", category: "basicConsonant" },
-  { target: "파", sound: "파", english: "pa", spirit: "蒲公英帕", image: "./assets/spirits/ch2-pa.png?v=3", title: "第二章音節卡", memory: "ㅍ 加上 ㅏ，比 ㅂ 多一口氣，像吹飛蒲公英。", meaning: "帕吹起一陣小風，讓花園裡的蒲公英一起旅行。", hint: "ㅍ + ㅏ = 파", category: "basicConsonant" },
-  { target: "하", sound: "하", english: "ha", spirit: "呼吸哈", image: "./assets/spirits/ch2-ha.png?v=3", title: "第二章音節卡", memory: "ㅎ 加上 ㅏ，像對玻璃輕輕呵氣後張口說 아。", meaning: "哈在清晨玻璃上留下柔軟霧氣，提醒你放鬆呼吸。", hint: "ㅎ + ㅏ = 하", category: "basicConsonant" }
+  { target: "가", sound: "가", english: "ga", spirit: "開門加", image: "./assets/spirits/ch2-ga.webp?v=3", title: "第二章音節卡", memory: "ㄱ 加上 ㅏ，像把第一扇門打開。", meaning: "加是第二章的第一杯咖啡，短短一聲把子音和母音接起來。", hint: "ㄱ + ㅏ = 가", category: "basicVowel" },
+  { target: "나", sound: "나", english: "na", spirit: "小路拿", image: "./assets/spirits/ch2-na.webp?v=3", title: "第二章音節卡", memory: "ㄴ 加上 ㅏ，舌尖輕碰後走出小路。", meaning: "拿負責把客人帶到座位，聲音柔和但很清楚。", hint: "ㄴ + ㅏ = 나", category: "basicVowel" },
+  { target: "다", sound: "다", english: "da", spirit: "石階達", image: "./assets/spirits/ch2-da.webp?v=3", title: "第二章音節卡", memory: "ㄷ 加上 ㅏ，像腳步踏上石階。", meaning: "達會把訂單一步一步送到櫃台。", hint: "ㄷ + ㅏ = 다", category: "basicVowel" },
+  { target: "라", sound: "라", english: "ra/la", spirit: "風帶拉", image: "./assets/spirits/ch2-ra.webp?v=3", title: "第二章音節卡", memory: "ㄹ 加上 ㅏ，聲音像飄帶輕輕轉彎。", meaning: "拉在咖啡香裡繞圈，提醒你韓文音節會連起來。", hint: "ㄹ + ㅏ = 라", category: "basicVowel" },
+  { target: "마", sound: "마", english: "ma", spirit: "工匠媽", image: "./assets/spirits/ch2-ma.webp?v=3", title: "第二章音節卡", memory: "ㅁ 加上 ㅏ，雙唇合起再打開。", meaning: "媽會把聲音磨得圓圓的，像熱牛奶泡泡。", hint: "ㅁ + ㅏ = 마", category: "basicVowel" },
+  { target: "바", sound: "바", english: "ba/pa", spirit: "風鈴吧", image: "./assets/spirits/ch2-ba.webp?v=3", title: "第二章音節卡", memory: "ㅂ 加上 ㅏ，雙唇輕輕彈開。", meaning: "吧是櫃台旁的小風鈴，提醒你出聲要有彈性。", hint: "ㅂ + ㅏ = 바", category: "compoundVowel" },
+  { target: "사", sound: "사", english: "sa", spirit: "細沙撒", image: "./assets/spirits/ch2-sa.webp?v=3", title: "第二章音節卡", memory: "ㅅ 加上 ㅏ，氣流像細沙滑過。", meaning: "撒會替咖啡撒上糖粉，聲音細細的。", hint: "ㅅ + ㅏ = 사", category: "compoundVowel" },
+  { target: "아", sound: "아", english: "a", spirit: "透明阿", image: "./assets/spirits/ch2-a.webp?v=3", title: "第二章音節卡", memory: "ㅇ 在開頭安靜，讓 ㅏ 自己發光。", meaning: "阿是透明圓端出的第一杯清晨水。", hint: "ㅇ + ㅏ = 아", category: "compoundVowel" },
+  { target: "자", sound: "자", english: "ja", spirit: "鈴匠札", image: "./assets/spirits/ch2-ja.webp?v=3", title: "第二章音節卡", memory: "ㅈ 加上 ㅏ，像短短的 j 音。", meaning: "札會把客人的名字寫在杯套上。", hint: "ㅈ + ㅏ = 자", category: "basicConsonant" },
+  { target: "차", sound: "차", english: "cha", spirit: "清風茶", image: "./assets/spirits/ch2-cha.webp?v=3", title: "第二章音節卡", memory: "ㅊ 加上 ㅏ，比 ㅈ 多一口氣。", meaning: "茶把窗戶打開，聲音帶著清楚的風。", hint: "ㅊ + ㅏ = 차", category: "basicConsonant" },
+  { target: "카", sound: "카", english: "ka", spirit: "石門卡", image: "./assets/spirits/ch2-ka.webp?v=3", title: "第二章音節卡", memory: "ㅋ 加上 ㅏ，比 ㄱ 多一口氣，像推開厚重石門。", meaning: "卡會用清楚的送氣聲推開咖啡館外的石門。", hint: "ㅋ + ㅏ = 카", category: "basicConsonant" },
+  { target: "타", sound: "타", english: "ta", spirit: "踏步塔", image: "./assets/spirits/ch2-ta.webp?v=3", title: "第二章音節卡", memory: "ㅌ 加上 ㅏ，比 ㄷ 多一口氣，腳步更俐落。", meaning: "塔沿著送餐路線踏出清楚又有風的步伐。", hint: "ㅌ + ㅏ = 타", category: "basicConsonant" },
+  { target: "파", sound: "파", english: "pa", spirit: "蒲公英帕", image: "./assets/spirits/ch2-pa.webp?v=3", title: "第二章音節卡", memory: "ㅍ 加上 ㅏ，比 ㅂ 多一口氣，像吹飛蒲公英。", meaning: "帕吹起一陣小風，讓花園裡的蒲公英一起旅行。", hint: "ㅍ + ㅏ = 파", category: "basicConsonant" },
+  { target: "하", sound: "하", english: "ha", spirit: "呼吸哈", image: "./assets/spirits/ch2-ha.webp?v=3", title: "第二章音節卡", memory: "ㅎ 加上 ㅏ，像對玻璃輕輕呵氣後張口說 아。", meaning: "哈在清晨玻璃上留下柔軟霧氣，提醒你放鬆呼吸。", hint: "ㅎ + ㅏ = 하", category: "basicConsonant" }
 ];
 
 const chapter2Prologue = [
   {
     speaker: "旁白",
-    image: "./assets/1-01.png",
+    image: "./assets/1-01.webp",
     text: "第一天的 40 音訓練完成後，天使惡魔館的櫃台亮起第二盞燈。"
   },
   {
     speaker: "智允",
-    image: "./assets/1-04.png",
+    image: "./assets/1-04.webp",
     text: "第二章開始囉。這次不是只認單一字母，要把子音和母音合成一個音節。"
   },
   {
     speaker: "Jumbo",
-    image: "./assets/1-05.png",
+    image: "./assets/1-05.webp",
     text: "汪！先從最常見的 ㅏ 系列開始：가、나、다、라、마。"
   },
   {
     speaker: "你",
-    image: "./assets/1-03.png",
+    image: "./assets/1-03.webp",
     text: "原來韓文像拼積木一樣，子音和母音可以合在同一格。"
   },
   {
     speaker: "智允",
-    image: "./assets/1-02.png",
+    image: "./assets/1-02.webp",
     text: "沒錯。先完成第二章訓練，再試著通過音節測驗吧。",
     choices: [
       { text: "開始第二章", feedback: "Jumbo把第二章音節卡推到你面前。" },
@@ -238,9 +238,9 @@ const chapters = [
     quizLabel: "新人教育訓練測驗",
     quizTitle: "40 音確認",
     quizConfirm: "測驗囉?要確定呢~",
-    quizImage: "./assets/quiz-dog-teacher.png",
-    passImage: "./assets/1O.png",
-    failImage: "./assets/1X.png",
+    quizImage: "./assets/quiz-dog-teacher.webp",
+    passImage: "./assets/1O.webp",
+    failImage: "./assets/1X.webp",
     materials: {
       basicVowel: "基本母音 10",
       compoundVowel: "複合母音 11",
@@ -260,9 +260,9 @@ const chapters = [
     quizLabel: "音節拼讀測驗",
     quizTitle: "ㅏ 系列確認",
     quizConfirm: "第二章測驗囉?要確定呢~",
-    quizImage: "./assets/quiz-dog-teacher.png",
-    passImage: "./assets/1O.png",
-    failImage: "./assets/1X.png",
+    quizImage: "./assets/quiz-dog-teacher.webp",
+    passImage: "./assets/1O.webp",
+    failImage: "./assets/1X.webp",
     materials: {
       basicVowel: "ㅏ 系列 5",
       compoundVowel: "常用音節 3",

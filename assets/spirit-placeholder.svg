@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="音靈佔位圖">
-  <rect width="220" height="220" rx="22" fill="#e8f2ec"/>
-  <circle cx="110" cy="104" r="58" fill="#fffdf8"/>
-  <circle cx="88" cy="96" r="8" fill="#3f3730"/>
-  <circle cx="132" cy="96" r="8" fill="#3f3730"/>
-  <path d="M88 128c18 12 42 12 60 0" fill="none" stroke="#3f3730" stroke-width="8" stroke-linecap="round"/>
-  <path d="M62 52h96v28M62 52v96h96" fill="none" stroke="#78a997" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="110" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2f8b7b">custom image</text>
-</svg>

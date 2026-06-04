@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Ari 音靈卡">
-  <rect width="960" height="540" fill="#f7ead7"/>
-  <rect x="255" y="70" width="450" height="410" rx="26" fill="#fffdf8" stroke="#d7b98f" stroke-width="10"/>
-  <rect x="315" y="115" width="160" height="160" rx="22" fill="#f8d37a"/>
-  <text x="395" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="120" font-weight="700" fill="#4b2b18">ㅏ</text>
-  <text x="520" y="170" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#28221c">Ari</text>
-  <text x="520" y="224" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#734a2c">sound: a</text>
-  <path d="M315 330h330M315 378h250" stroke="#78a997" stroke-width="18" stroke-linecap="round"/>
-</svg>

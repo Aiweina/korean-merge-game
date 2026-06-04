@@ -1111,7 +1111,7 @@ h1 {
   min-height: 0;
   border: 0;
   border-radius: 8px;
-  background: url("./assets/chapter-map-shops-portrait-v11.png?v=1") center / contain no-repeat;
+  background: url("./assets/chapter-map-shops-portrait-v11.webp?v=1") center / contain no-repeat;
   box-shadow: var(--shadow);
   padding: 0;
 }
@@ -1260,7 +1260,7 @@ body.map-active .chapter-map h2 {
   max-width: 520px;
   aspect-ratio: 948 / 1659;
   border-radius: 8px;
-  background: url("./assets/chapter-1-cafe-map.png?v=1") center / contain no-repeat;
+  background: url("./assets/chapter-1-cafe-map.webp?v=1") center / contain no-repeat;
   box-shadow: var(--shadow);
 }
 
@@ -1308,7 +1308,7 @@ body.map-active .chapter-map h2 {
   z-index: -1;
   border: 0;
   border-radius: 50%;
-  background: url("./assets/cute-coffee-node.png?v=1") center / contain no-repeat;
+  background: url("./assets/cute-coffee-node.webp?v=1") center / contain no-repeat;
   box-shadow: none;
 }
 
