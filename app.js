@@ -165,7 +165,7 @@ let prologue = [
     text: "NO~NO~NO~我們的菜單、客人留言和收據都用韓文，所以你要先認識熟悉韓語基本 40 音。"
   },
   {
-    speaker: "智允",
+    speaker: "陽",
     image: "./assets/1-05.webp",
     text: "來，這是你的導師，Jumbo。",
     choices: [
@@ -202,7 +202,7 @@ const chapter2Prologue = [
     text: "第一天的 40 音訓練完成後，天使惡魔館的櫃台亮起第二盞燈。"
   },
   {
-    speaker: "智允",
+    speaker: "陽",
     image: "./assets/1-04.webp",
     text: "第二章開始囉。這次不是只認單一字母，要把子音和母音合成一個音節。"
   },
@@ -217,7 +217,7 @@ const chapter2Prologue = [
     text: "原來韓文像拼積木一樣，子音和母音可以合在同一格。"
   },
   {
-    speaker: "智允",
+    speaker: "陽",
     image: "./assets/1-02.webp",
     text: "沒錯。先完成第二章訓練，再試著通過音節測驗吧。",
     choices: [
