@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="新人疑問">
+  <rect width="960" height="540" fill="#e9f2ee"/>
+  <rect x="100" y="110" width="340" height="300" rx="22" fill="#fffaf1" stroke="#d7b98f" stroke-width="8"/>
+  <rect x="560" y="110" width="260" height="300" rx="22" fill="#fffaf1" stroke="#d7b98f" stroke-width="8"/>
+  <path d="M150 170h240M150 230h180M150 290h220M610 180h170M610 240h120" stroke="#734a2c" stroke-width="18" stroke-linecap="round"/>
+  <text x="690" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="110" font-weight="700" fill="#c7695f">?</text>
+</svg>

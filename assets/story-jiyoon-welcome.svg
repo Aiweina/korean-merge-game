@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="智允歡迎新人">
+  <rect width="960" height="540" fill="#f8e8cc"/>
+  <rect x="0" y="360" width="960" height="180" fill="#7c5134"/>
+  <circle cx="480" cy="190" r="92" fill="#f6d7b2"/>
+  <path d="M390 170c40-86 178-76 196 12" fill="none" stroke="#3d2a20" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="445" cy="188" r="10" fill="#3d2a20"/>
+  <circle cx="523" cy="188" r="10" fill="#3d2a20"/>
+  <path d="M448 230c24 18 66 18 90 0" fill="none" stroke="#3d2a20" stroke-width="10" stroke-linecap="round"/>
+  <path d="M330 360c34-88 112-132 180-132 76 0 150 50 188 132z" fill="#c7695f"/>
+  <rect x="104" y="96" width="200" height="90" rx="16" fill="#fffaf1"/>
+  <text x="204" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#734a2c">Welcome</text>
+</svg>

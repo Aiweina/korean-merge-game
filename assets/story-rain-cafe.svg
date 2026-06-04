@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="雨後的首爾咖啡店">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#8ab0bd"/>
+      <stop offset="1" stop-color="#f1d2a2"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#sky)"/>
+  <rect y="390" width="960" height="150" fill="#5e5147"/>
+  <rect x="160" y="170" width="600" height="260" rx="24" fill="#7b5138"/>
+  <rect x="210" y="230" width="180" height="150" rx="14" fill="#f8e6bd"/>
+  <rect x="430" y="230" width="220" height="150" rx="14" fill="#f8e6bd"/>
+  <rect x="252" y="390" width="100" height="40" fill="#3e2b20"/>
+  <path d="M130 430h700" stroke="#d9b070" stroke-width="12" stroke-linecap="round"/>
+  <text x="480" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#fff7e8">晨光咖啡</text>
+  <path d="M90 70l-30 80M170 42l-28 86M820 58l-36 112M890 90l-30 90" stroke="#e8f4f4" stroke-width="9" stroke-linecap="round" opacity=".75"/>
+</svg>

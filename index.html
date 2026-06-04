@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>韓語合成咖啡店</title>
+  <link rel="stylesheet" href="./styles.css?v=93">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="chapterMapOverlay" class="chapter-map-screen" aria-label="章節路線地圖">
+      <section class="chapter-map">
+        <div class="chapter-map-head">
+          <p class="label">路線大地圖</p>
+          <button id="closeChapterMapBtn" type="button" class="map-close-btn" aria-label="返回目前章節">×</button>
+        </div>
+        <h2>天使惡魔館章節路線</h2>
+        <div id="chapterMapGrid" class="chapter-map-grid"></div>
+        <p id="chapterMapStatus" class="chapter-map-status"></p>
+      </section>
+    </section>
+
+    <section id="subchapterMapScreen" class="subchapter-map-screen" aria-label="第一章小地圖">
+      <section class="subchapter-map">
+        <button id="backToChapterMapBtn" type="button" class="map-back-btn">返回大地圖</button>
+        <div id="subchapterMapGrid" class="subchapter-map-grid"></div>
+        <p id="subchapterMapStatus" class="subchapter-map-status"></p>
+      </section>
+    </section>
+
+    <section class="scene" aria-label="咖啡店場景">
+      <img src="./assets/001.png" alt="溫暖的咖啡店櫃台" class="scene-art">
+      <button id="reviewStoryBtn" type="button" class="review-story-btn">夢迴</button>
+      <button id="returnToSubchapterMapBtn" type="button" class="return-subchapter-map-btn">章節地圖</button>
+      <div class="scene-copy">
+        <p id="sceneChapter" class="chapter">Chapter 1</p>
+        <h1 id="sceneTitle">晨光咖啡新人訓練</h1>
+      </div>
+    </section>
+
+    <section id="prologuePanel" class="prologue-panel" aria-label="開場劇情">
+      <button id="prologueSkipBtn" type="button" class="story-skip">Skip</button>
+      <img id="prologueImage" class="prologue-image" src="./assets//story-rain-cafe.svg" alt="劇情插圖">
+      <div class="dialogue-box">
+        <div class="story-head">
+          <div id="prologueSpeaker" class="story-speaker">旁白</div>
+          <p id="prologueChapter" class="label">Chapter 1：第一天上工</p>
+        </div>
+        <p id="prologueText" class="prologue-text"></p>
+        <div id="prologueChoiceRow" class="choice-row"></div>
+      </div>
+    </section>
+
+    <div id="learningContent" class="learning-content">
+    <section class="spirit-card" aria-label="音靈卡">
+      <div class="spirit-symbol-wrap">
+        <img id="spiritImage" class="spirit-image" src="./assets/spirit-ari.svg" alt="Ari 音靈圖片">
+      </div>
+      <div>
+        <p id="spiritName" class="spirit-name">Ari</p>
+        <p id="spiritTitle" class="spirit-title">太陽窗邊的母音精靈</p>
+        <div class="sound-row">
+          <p id="targetText" class="target-text">ㅏ</p>
+          <div>
+            <p id="pronounceText" class="pronounce-text">發音：a</p>
+          </div>
+        </div>
+        <p id="spiritMemory" class="spirit-memory">ㅏ 像窗邊灑進來的光，張開嘴說 a。</p>
+      </div>
+    </section>
+
+    <section class="materials-panel" aria-label="韓語素材">
+      <p class="label">訓練卡片</p>
+      <p id="basicVowelTitle" class="materials-title">基本母音 10</p>
+      <div id="basicVowelGrid" class="materials-grid vowel-grid"></div>
+      <p id="compoundVowelTitle" class="materials-title compound-title">複合母音 11</p>
+      <div id="compoundVowelGrid" class="materials-grid compound-vowel-grid"></div>
+      <p id="basicConsonantTitle" class="materials-title consonant-title">基本子音 14</p>
+      <div id="basicConsonantGrid" class="materials-grid consonant-grid"></div>
+      <p id="doubleConsonantTitle" class="materials-title double-title">雙子音 5</p>
+      <div id="doubleConsonantGrid" class="materials-grid double-consonant-grid"></div>
+    </section>
+
+    <section id="chapter2Practice" class="chapter2-practice" aria-label="第二章音節實作" hidden>
+      <div class="syllable-builder">
+        <div class="practice-heading">
+          <div>
+            <p class="label">音節組合</p>
+            <h2>把聲音合成一杯</h2>
+          </div>
+          <button id="mergeSyllableBtn" type="button">合成</button>
+        </div>
+        <div id="syllableFormula" class="syllable-formula" aria-live="polite">
+          <span id="builderConsonant" class="formula-tile">ㄱ</span>
+          <span class="formula-operator">+</span>
+          <span class="formula-tile vowel">ㅏ</span>
+          <span class="formula-arrow">→</span>
+          <span id="builderResult" class="formula-tile result">가</span>
+        </div>
+        <p id="builderMemory" class="practice-status">選一張音節卡，再按下合成。</p>
+      </div>
+
+      <div class="aspiration-practice">
+        <div class="practice-heading">
+          <div>
+            <p class="label">送氣音比較</p>
+            <h2>聽出多一口氣</h2>
+          </div>
+          <button id="newAspirationBtn" type="button">換一題</button>
+        </div>
+        <button id="aspirationSpeakBtn" type="button" class="aspiration-listen">播放發音</button>
+        <div id="aspirationOptions" class="aspiration-options"></div>
+        <p id="aspirationStatus" class="practice-status" aria-live="polite">播放聲音後，選出正確音節。</p>
+      </div>
+    </section>
+
+    <div class="quiz-entry-actions">
+      <button id="readyQuizBtn" type="button" class="ready-quiz-btn">基礎測驗：聽音選符號</button>
+      <button id="pronunciationQuizBtn" type="button" class="pronunciation-quiz-btn">發音測驗（選做）</button>
+    </div>
+
+    <section class="feedback-panel" aria-live="polite">
+      <p id="feedbackText">先點選素材，合成出目標句。</p>
+    </section>
+    </div>
+
+    <div id="quizContent" class="quiz-content">
+      <section class="quiz-panel" aria-label="40 音測驗">
+        <div class="quiz-visual">
+          <img id="quizImage" class="quiz-image" src="./assets/quiz-dog-teacher.png" alt="狗狗老師在黑板前出題">
+          <p id="quizBoardQuestion" class="quiz-board-question" aria-live="polite">ya</p>
+        </div>
+        <p id="quizLabel" class="label">新人教育訓練測驗</p>
+        <h2 id="quizTitle">40 音確認</h2>
+        <div class="quiz-progress-track" aria-hidden="true">
+          <div id="quizProgressBar" class="quiz-progress-bar"></div>
+        </div>
+        <div class="quiz-score-row" aria-live="polite">
+          <span id="quizCorrectText">答對：0</span>
+          <span id="quizWrongText">答錯：0</span>
+        </div>
+        <p id="quizPrompt" class="quiz-prompt">請選出發音：a</p>
+        <button id="quizSpeakBtn" type="button" class="quiz-speak-btn">發音</button>
+        <div class="quiz-voice-panel">
+          <button id="quizMicBtn" type="button" class="quiz-mic-btn">用麥克風回答</button>
+          <p id="quizVoiceStatus" class="quiz-voice-status" aria-live="polite">點擊後，念出這張圖卡的韓文發音。</p>
+        </div>
+        <div id="quizOptions" class="quiz-options"></div>
+        <p id="quizStatus" class="quiz-status">第 1 題 / 10 題</p>
+        <div id="answerFlash" class="answer-flash" aria-live="polite"></div>
+        <div id="quizResultPanel" class="quiz-result-panel">
+          <p id="quizResultText"></p>
+          <div id="quizResultActions" class="quiz-result-actions"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="confirmOverlay" class="confirm-overlay" role="dialog" aria-modal="true" aria-label="測驗確認">
+      <section class="confirm-box">
+        <p id="confirmText" class="confirm-text">測驗囉?要確定呢~</p>
+        <div class="confirm-actions">
+          <button id="confirmQuizBtn" type="button">當然</button>
+          <button id="cancelQuizBtn" type="button">再想想</button>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="./app.js?v=91"></script>
+</body>
+</html>

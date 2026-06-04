@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="溫暖的咖啡店櫃台">
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9d6b43"/>
+      <stop offset="1" stop-color="#e0b77c"/>
+    </linearGradient>
+    <linearGradient id="counter" x1="0" x2="1">
+      <stop offset="0" stop-color="#4b2f1d"/>
+      <stop offset="1" stop-color="#8a5a35"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="420" fill="url(#wall)"/>
+  <rect x="0" y="280" width="900" height="140" fill="url(#counter)"/>
+  <rect x="58" y="58" width="250" height="130" rx="16" fill="#fff3dc" opacity=".9"/>
+  <rect x="600" y="52" width="210" height="148" rx="16" fill="#fff3dc" opacity=".86"/>
+  <path d="M94 102h170M94 136h130M632 96h150M632 134h108" stroke="#8b5d37" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="454" cy="126" r="74" fill="#f8dfb6"/>
+  <path d="M412 140c18 34 80 34 98 0" fill="none" stroke="#654126" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="424" cy="112" r="8" fill="#654126"/>
+  <circle cx="488" cy="112" r="8" fill="#654126"/>
+  <path d="M360 280c18-56 72-92 112-92 48 0 100 39 116 92z" fill="#2f8b7b"/>
+  <rect x="116" y="236" width="86" height="80" rx="12" fill="#f7eee0"/>
+  <path d="M202 258h18c18 0 18 32 0 32h-18" fill="none" stroke="#f7eee0" stroke-width="14"/>
+  <rect x="664" y="230" width="116" height="86" rx="14" fill="#d99b35"/>
+  <rect x="686" y="208" width="72" height="42" rx="9" fill="#fff7e9"/>
+  <path d="M0 344h900" stroke="#d4a266" stroke-width="10"/>
+</svg>

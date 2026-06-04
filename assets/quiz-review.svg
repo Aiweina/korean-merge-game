@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="回去重練">
+  <rect width="960" height="540" fill="#fff1e8"/>
+  <rect x="120" y="86" width="720" height="360" rx="30" fill="#fffdf8" stroke="#e1ad8f" stroke-width="10"/>
+  <circle cx="300" cy="250" r="94" fill="#fde5dc"/>
+  <text x="300" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="126" font-weight="700" fill="#c7695f">×</text>
+  <text x="560" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="700" fill="#734a2c">再練一下</text>
+  <text x="560" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#7c6b5c">Sound spirits are waiting</text>
+  <path d="M440 350h240" stroke="#d99b35" stroke-width="18" stroke-linecap="round"/>
+</svg>
