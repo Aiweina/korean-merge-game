@@ -1094,20 +1094,20 @@ h1 {
 }
 
 .chapter-map-screen {
-  min-height: calc(100vh - 28px);
+  min-height: 0;
   display: grid;
   place-items: start center;
   border-radius: 8px;
   overflow: auto;
-  background: #2d2318;
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
 }
 
 .chapter-map {
   position: relative;
   width: 100%;
   max-width: 520px;
-  aspect-ratio: 887 / 1774;
+  aspect-ratio: 886 / 1775;
   min-height: 0;
   border: 0;
   border-radius: 8px;
@@ -1245,20 +1245,20 @@ body.map-active .chapter-map h2 {
 }
 
 .subchapter-map-screen {
-  min-height: calc(100vh - 28px);
+  min-height: 0;
   display: grid;
   place-items: start center;
   border-radius: 8px;
   overflow: hidden auto;
-  background: #2d2318;
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
 }
 
 .subchapter-map {
   position: relative;
   width: 100%;
   max-width: 520px;
-  aspect-ratio: 1024 / 1792;
+  aspect-ratio: 948 / 1659;
   border-radius: 8px;
   background: url("./assets/chapter-1-cafe-map.png?v=1") center / contain no-repeat;
   box-shadow: var(--shadow);
