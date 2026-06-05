@@ -204,6 +204,12 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.prologue-panel.is-character-art {
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 253, 248, 0.94) 0 28%, rgba(255, 249, 239, 0.64) 55%, rgba(234, 220, 200, 0.84) 100%),
+    linear-gradient(180deg, #fff9ef, #eadcc8);
+}
+
 .prologue-image {
   width: 100%;
   height: calc(100vh - 28px);
@@ -212,6 +218,14 @@ h1 {
   border-radius: 8px;
   border: 0;
   background: #1f1713;
+}
+
+.prologue-panel.is-character-art .prologue-image {
+  box-sizing: border-box;
+  padding: 18px 18px 188px;
+  object-fit: contain;
+  object-position: center bottom;
+  background: transparent;
 }
 
 .dialogue-box {

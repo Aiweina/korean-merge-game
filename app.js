@@ -235,17 +235,17 @@ const chapter2Prologue = [
   },
   {
     speaker: "店長",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "你就是陽推薦來的工讀生？開店前把家具放好。"
   },
   {
     speaker: "你",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "隨便放嗎？"
   },
   {
     speaker: "店長",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "...你敢？"
   },
   {
@@ -255,22 +255,22 @@ const chapter2Prologue = [
   },
   {
     speaker: "鹿鹿",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "你好，我是鹿鹿，我們一起努力吧！"
   },
   {
     speaker: "店長",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "你身體不好，不要跑來這邊忙。"
   },
   {
     speaker: "球球",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "鹿鹿，我會努力的~"
   },
   {
     speaker: "店長",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-1.webp",
     text: "滾。",
     choices: [
       { text: "開始佈置", feedback: "店長把鑰匙丟到你手上。" },
@@ -508,27 +508,27 @@ const aspirationPairs = [
 ];
 
 const storeFurniture = [
-  { id: "counter", name: "收銀櫃台", korean: "계산대", mark: "계", image: "./assets/store/counter.webp", width: 62, cost: 40, max: 1 },
-  { id: "shelf", name: "零食貨架", korean: "진열대", mark: "진", image: "./assets/store/shelf.webp", width: 62, cost: 25 },
-  { id: "fridge", name: "飲料冰箱", korean: "냉장고", mark: "냉", image: "./assets/store/fridge.webp", width: 50, cost: 35 },
-  { id: "freezer", name: "冷凍櫃", korean: "냉동고", mark: "동", image: "./assets/store/freezer.webp", width: 64, cost: 45 },
-  { id: "table", name: "試吃桌", korean: "시식대", mark: "식", image: "./assets/store/table.webp", width: 52, cost: 30 },
-  { id: "plant", name: "盆栽", korean: "화분", mark: "화", image: "./assets/store/plant.webp", width: 38, cost: 18 },
-  { id: "coffee", name: "咖啡台", korean: "커피", mark: "커", image: "./assets/store/coffee-stand.webp", width: 52, cost: 30 },
-  { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/magazine-rack.webp", width: 50, cost: 22 }
+  { id: "counter", name: "收銀櫃台", korean: "계산대", mark: "계", image: "./assets/store/counter.webp?v=2", width: 62, cost: 40, max: 1 },
+  { id: "shelf", name: "零食貨架", korean: "진열대", mark: "진", image: "./assets/store/shelf.webp?v=2", width: 62, cost: 25 },
+  { id: "fridge", name: "飲料冰箱", korean: "냉장고", mark: "냉", image: "./assets/store/fridge.webp?v=2", width: 50, cost: 35 },
+  { id: "freezer", name: "冷凍櫃", korean: "냉동고", mark: "동", image: "./assets/store/freezer.webp?v=2", width: 64, cost: 45 },
+  { id: "table", name: "試吃桌", korean: "시식대", mark: "식", image: "./assets/store/table.webp?v=2", width: 52, cost: 30 },
+  { id: "plant", name: "盆栽", korean: "화분", mark: "화", image: "./assets/store/plant.webp?v=2", width: 38, cost: 18 },
+  { id: "coffee", name: "咖啡台", korean: "커피", mark: "커", image: "./assets/store/coffee-stand.webp?v=2", width: 52, cost: 30 },
+  { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/magazine-rack.webp?v=2", width: 50, cost: 22 }
 ];
 
 const storeCustomerTypes = [
-  { name: "學生客人", image: "./assets/store/student.webp", className: "customer-student" },
-  { name: "上班族客人", image: "./assets/store/worker.webp", className: "customer-worker" },
-  { name: "旅客客人", image: "./assets/store/tourist.webp", className: "customer-tourist" },
-  { name: "長輩客人", image: "./assets/store/elder.webp", className: "customer-elder" },
-  { name: "小朋友客人", image: "./assets/store/child.webp", className: "customer-child" },
-  { name: "店員休假客人", image: "./assets/store/clerk.webp", className: "customer-clerk" },
-  { name: "粉色外套客人", image: "./assets/store/student.webp", className: "customer-pink" },
-  { name: "藍色制服客人", image: "./assets/store/worker.webp", className: "customer-blue" },
-  { name: "綠帽旅客", image: "./assets/store/tourist.webp", className: "customer-green" },
-  { name: "暖色小客人", image: "./assets/store/child.webp", className: "customer-warm" }
+  { name: "學生客人", image: "./assets/store/student.webp?v=2", className: "customer-student" },
+  { name: "上班族客人", image: "./assets/store/worker.webp?v=2", className: "customer-worker" },
+  { name: "旅客客人", image: "./assets/store/tourist.webp?v=2", className: "customer-tourist" },
+  { name: "長輩客人", image: "./assets/store/elder.webp?v=2", className: "customer-elder" },
+  { name: "小朋友客人", image: "./assets/store/child.webp?v=2", className: "customer-child" },
+  { name: "店員休假客人", image: "./assets/store/clerk.webp?v=2", className: "customer-clerk" },
+  { name: "粉色外套客人", image: "./assets/store/student.webp?v=2", className: "customer-pink" },
+  { name: "藍色制服客人", image: "./assets/store/worker.webp?v=2", className: "customer-blue" },
+  { name: "綠帽旅客", image: "./assets/store/tourist.webp?v=2", className: "customer-green" },
+  { name: "暖色小客人", image: "./assets/store/child.webp?v=2", className: "customer-warm" }
 ];
 
 const storeCustomerSpots = [
@@ -1554,6 +1554,8 @@ function newAspirationQuestion() {
 
 function updatePrologue() {
   const scene = prologue[prologueIndex];
+  const isCharacterArt = /\.png(?:\?|$)/i.test(scene.image);
+  prologuePanel.classList.toggle("is-character-art", isCharacterArt);
   document.querySelector("#prologueImage").src = scene.image;
   document.querySelector("#prologueImage").alt = `${scene.speaker} 劇情插圖`;
   prologueSpeaker.textContent = scene.speaker;
