@@ -227,11 +227,65 @@ const section12Prologue = [
   }
 ];
 
+const chapter2Prologue = [
+  {
+    speaker: "旁白",
+    image: "./assets/store/chapter-2-store-bg.webp",
+    text: "離開天使惡魔館後，你沿著海邊小路來到陽介紹的打工地點：龜仙CU便利商店。店裡還空著，窗外的光把木地板照得亮亮的。"
+  },
+  {
+    speaker: "店長",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "你就是陽推薦來的工讀生？開店前把家具放好。"
+  },
+  {
+    speaker: "你",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "隨便放嗎？"
+  },
+  {
+    speaker: "店長",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "...你敢？"
+  },
+  {
+    speaker: "迷之聲",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "哥哥，這位新的工讀生嗎？"
+  },
+  {
+    speaker: "鹿鹿",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "你好，我是鹿鹿，我們一起努力吧！"
+  },
+  {
+    speaker: "店長",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "你身體不好，不要跑來這邊忙。"
+  },
+  {
+    speaker: "球球",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "鹿鹿，我會努力的~"
+  },
+  {
+    speaker: "店長",
+    image: "./assets/store/chapter-2-store-bg-room.webp",
+    text: "滾。",
+    choices: [
+      { text: "開始佈置", feedback: "店長把鑰匙丟到你手上。" },
+      { text: "再看一次店內", feedback: "你繞著空店走了一圈，確認地板和牆邊都可以規劃動線。" }
+    ]
+  }
+];
+
 const chapters = [
   {
     number: 1,
     sceneChapter: "Day 1",
     sceneTitle: "天使惡魔館咖啡新人訓練",
+    sceneImage: "./assets/001.webp",
+    sceneImageAlt: "天使惡魔館咖啡店外觀",
     prologueChapter: "第一天：報到",
     trainingIntro: "教育訓練開始。現在跟著Jumbo找出 ㅏ。",
     skippedIntro: "已跳過劇情，進入新人教育訓練。",
@@ -254,6 +308,8 @@ const chapters = [
     number: "1-2",
     sceneChapter: "第一章・1-2",
     sceneTitle: "音節咖啡實作",
+    sceneImage: "./assets/1-02-3.webp?v=2",
+    sceneImageAlt: "狗狗躺在發光魔法陣上的第一章第二節場景",
     prologueChapter: "第一章第二節：音節拼讀",
     trainingIntro: "第二節開始。先從 ㅏ 系列音節練習拼讀。",
     skippedIntro: "已跳過第二節劇情，進入音節訓練。",
@@ -271,6 +327,31 @@ const chapters = [
     },
     lessons: section12Lessons,
     prologue: section12Prologue
+  },
+  {
+    number: 2,
+    kind: "store",
+    sceneChapter: "第二章",
+    sceneTitle: "龜仙CU便利商店",
+    sceneImage: "./assets/chapter-map-shops-portrait-v11.webp?v=1",
+    sceneImageAlt: "龜仙CU便利商店章節地圖",
+    prologueChapter: "第二章：開店準備",
+    trainingIntro: "便利商店開張。先把家具放到棋盤上，再接待客人。",
+    skippedIntro: "已進入龜仙CU便利商店經營。",
+    quizLabel: "便利商店營業確認",
+    quizTitle: "便利商店經營",
+    quizConfirm: "要開始營業嗎？",
+    quizImage: "./assets/quiz-dog-teacher.webp",
+    passImage: "./assets/1O.webp",
+    failImage: "./assets/1X.webp",
+    materials: {
+      basicVowel: "",
+      compoundVowel: "",
+      basicConsonant: "",
+      doubleConsonant: ""
+    },
+    lessons: section12Lessons,
+    prologue: chapter2Prologue
   }
 ];
 
@@ -314,6 +395,7 @@ const basicConsonantGrid = document.querySelector("#basicConsonantGrid");
 const doubleConsonantGrid = document.querySelector("#doubleConsonantGrid");
 const sceneChapter = document.querySelector("#sceneChapter");
 const sceneTitle = document.querySelector("#sceneTitle");
+const sceneImage = document.querySelector("#sceneImage");
 const basicVowelTitle = document.querySelector("#basicVowelTitle");
 const compoundVowelTitle = document.querySelector("#compoundVowelTitle");
 const basicConsonantTitle = document.querySelector("#basicConsonantTitle");
@@ -354,6 +436,7 @@ const chapterMapOverlay = document.querySelector("#chapterMapOverlay");
 const chapterMapGrid = document.querySelector("#chapterMapGrid");
 const chapterMapStatus = document.querySelector("#chapterMapStatus");
 const closeChapterMapBtn = document.querySelector("#closeChapterMapBtn");
+const skipChapterOneBtn = document.querySelector("#skipChapterOneBtn");
 const subchapterMapScreen = document.querySelector("#subchapterMapScreen");
 const subchapterMapGrid = document.querySelector("#subchapterMapGrid");
 const subchapterMapStatus = document.querySelector("#subchapterMapStatus");
@@ -363,6 +446,24 @@ const newAspirationBtn = document.querySelector("#newAspirationBtn");
 const aspirationSpeakBtn = document.querySelector("#aspirationSpeakBtn");
 const aspirationOptions = document.querySelector("#aspirationOptions");
 const aspirationStatus = document.querySelector("#aspirationStatus");
+const storeContent = document.querySelector("#storeContent");
+const storeBoard = document.querySelector("#storeBoard");
+const storePalette = document.querySelector("#storePalette");
+const storeMoneyText = document.querySelector("#storeMoneyText");
+const storeRepText = document.querySelector("#storeRepText");
+const storeDayText = document.querySelector("#storeDayText");
+const storeOrderText = document.querySelector("#storeOrderText");
+const storeStatusText = document.querySelector("#storeStatusText");
+const storeServeBtn = document.querySelector("#storeServeBtn");
+const storeBackMapBtn = document.querySelector("#storeBackMapBtn");
+const storeReviewStoryBtn = document.querySelector("#storeReviewStoryBtn");
+const storeEditLayoutBtn = document.querySelector("#storeEditLayoutBtn");
+const storeSaveLayoutBtn = document.querySelector("#storeSaveLayoutBtn");
+const storeDirectionControls = document.querySelector("#storeDirectionControls");
+const storeOrderPanel = document.querySelector(".store-order-panel");
+const storeManagerDialog = document.querySelector("#storeManagerDialog");
+const storeManagerText = document.querySelector("#storeManagerText");
+const storeManagerCloseBtn = document.querySelector("#storeManagerCloseBtn");
 let activeUtterance = null;
 let quizQuestions = [];
 let quizIndex = 0;
@@ -381,12 +482,97 @@ let activeSubchapterId = "";
 let pendingQuizType = "basic";
 let activeQuizType = "basic";
 let aspirationAnswer = null;
+let selectedFurnitureId = "shelf";
+let selectedDirection = "front";
+let storeEditMode = false;
+let storeState = null;
+let storeCustomerStates = [];
+let storeWalkTimer = null;
+let activeStoreCustomerIndex = 0;
+const storeLayoutVersion = 5;
+
+const storeDirections = [
+  { id: "front", label: "正面" },
+  { id: "right", label: "右面" },
+  { id: "back", label: "背面" },
+  { id: "left", label: "左面" }
+];
+
+const defaultStoreFixtures = [];
 
 const aspirationPairs = [
   ["가", "카"],
   ["다", "타"],
   ["바", "파"],
   ["자", "차"]
+];
+
+const storeFurniture = [
+  { id: "counter", name: "收銀櫃台", korean: "계산대", mark: "계", image: "./assets/store/counter.webp", width: 62, cost: 40, max: 1 },
+  { id: "shelf", name: "零食貨架", korean: "진열대", mark: "진", image: "./assets/store/shelf.webp", width: 62, cost: 25 },
+  { id: "fridge", name: "飲料冰箱", korean: "냉장고", mark: "냉", image: "./assets/store/fridge.webp", width: 50, cost: 35 },
+  { id: "freezer", name: "冷凍櫃", korean: "냉동고", mark: "동", image: "./assets/store/freezer.webp", width: 64, cost: 45 },
+  { id: "table", name: "試吃桌", korean: "시식대", mark: "식", image: "./assets/store/table.webp", width: 52, cost: 30 },
+  { id: "plant", name: "盆栽", korean: "화분", mark: "화", image: "./assets/store/plant.webp", width: 38, cost: 18 },
+  { id: "coffee", name: "咖啡台", korean: "커피", mark: "커", image: "./assets/store/coffee-stand.webp", width: 52, cost: 30 },
+  { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/magazine-rack.webp", width: 50, cost: 22 }
+];
+
+const storeCustomerTypes = [
+  { name: "學生客人", image: "./assets/store/student.webp", className: "customer-student" },
+  { name: "上班族客人", image: "./assets/store/worker.webp", className: "customer-worker" },
+  { name: "旅客客人", image: "./assets/store/tourist.webp", className: "customer-tourist" },
+  { name: "長輩客人", image: "./assets/store/elder.webp", className: "customer-elder" },
+  { name: "小朋友客人", image: "./assets/store/child.webp", className: "customer-child" },
+  { name: "店員休假客人", image: "./assets/store/clerk.webp", className: "customer-clerk" },
+  { name: "粉色外套客人", image: "./assets/store/student.webp", className: "customer-pink" },
+  { name: "藍色制服客人", image: "./assets/store/worker.webp", className: "customer-blue" },
+  { name: "綠帽旅客", image: "./assets/store/tourist.webp", className: "customer-green" },
+  { name: "暖色小客人", image: "./assets/store/child.webp", className: "customer-warm" }
+];
+
+const storeCustomerSpots = [
+  { left: 40, top: 71 },
+  { left: 52, top: 72 },
+  { left: 64, top: 73 },
+  { left: 35, top: 82 },
+  { left: 48, top: 84 },
+  { left: 61, top: 85 },
+  { left: 74, top: 86 },
+  { left: 28, top: 76 }
+];
+
+const storeOrders = [
+  { required: "shelf", word: "라면", chinese: "拉麵", reward: 28 },
+  { required: "shelf", word: "컵라면", chinese: "杯麵", reward: 30 },
+  { required: "shelf", word: "과자", chinese: "餅乾", reward: 24 },
+  { required: "shelf", word: "초콜릿", chinese: "巧克力", reward: 26 },
+  { required: "shelf", word: "사탕", chinese: "糖果", reward: 22 },
+  { required: "shelf", word: "껌", chinese: "口香糖", reward: 20 },
+  { required: "shelf", word: "시리얼", chinese: "穀片", reward: 32 },
+  { required: "fridge", word: "우유", chinese: "牛奶", reward: 34 },
+  { required: "fridge", word: "물", chinese: "水", reward: 18 },
+  { required: "fridge", word: "주스", chinese: "果汁", reward: 28 },
+  { required: "fridge", word: "콜라", chinese: "可樂", reward: 28 },
+  { required: "fridge", word: "요구르트", chinese: "優格飲", reward: 30 },
+  { required: "fridge", word: "두유", chinese: "豆漿", reward: 30 },
+  { required: "fridge", word: "에너지드링크", chinese: "能量飲料", reward: 38 },
+  { required: "freezer", word: "아이스크림", chinese: "冰淇淋", reward: 42 },
+  { required: "freezer", word: "얼음", chinese: "冰塊", reward: 24 },
+  { required: "freezer", word: "냉동만두", chinese: "冷凍水餃", reward: 44 },
+  { required: "freezer", word: "냉동피자", chinese: "冷凍披薩", reward: 48 },
+  { required: "freezer", word: "냉동볶음밥", chinese: "冷凍炒飯", reward: 46 },
+  { required: "table", word: "김밥", chinese: "飯捲", reward: 32 },
+  { required: "table", word: "도시락", chinese: "便當", reward: 46 },
+  { required: "table", word: "샌드위치", chinese: "三明治", reward: 36 },
+  { required: "table", word: "삼각김밥", chinese: "三角飯糰", reward: 34 },
+  { required: "table", word: "핫도그", chinese: "熱狗", reward: 34 },
+  { required: "coffee", word: "커피", chinese: "咖啡", reward: 36 },
+  { required: "coffee", word: "라떼", chinese: "拿鐵", reward: 40 },
+  { required: "coffee", word: "아메리카노", chinese: "美式咖啡", reward: 38 },
+  { required: "magazine", word: "잡지", chinese: "雜誌", reward: 30 },
+  { required: "magazine", word: "신문", chinese: "報紙", reward: 26 },
+  { required: "counter", word: "봉투", chinese: "袋子", reward: 20 }
 ];
 
 function normalizePhrase(parts) {
@@ -449,6 +635,586 @@ function saveProgress() {
   localStorage.setItem("koreanCafeViewedStories", JSON.stringify([...viewedStories]));
 }
 
+function defaultStoreState() {
+  return {
+    layoutVersion: storeLayoutVersion,
+    fixtures: defaultStoreFixtures.map((fixture) => ({ ...fixture })),
+    customers: [],
+    money: 180,
+    reputation: 0,
+    day: 1,
+    orderIndex: 0
+  };
+}
+
+function loadStoreState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("koreanCafeStoreState") || "null");
+    if (
+      saved &&
+      saved.layoutVersion === storeLayoutVersion &&
+      Array.isArray(saved.fixtures) &&
+      Number.isInteger(saved.money) &&
+      Number.isInteger(saved.reputation) &&
+      Number.isInteger(saved.day) &&
+      Number.isInteger(saved.orderIndex)
+    ) {
+      storeState = saved;
+      storeState.customers = Array.isArray(saved.customers) ? saved.customers : [];
+      storeCustomerStates = storeState.customers
+        .filter((customer) => customer && Number.isInteger(customer.spotIndex))
+        .map((customer) => ({ ...customer }));
+      return;
+    }
+  } catch {
+    storeState = null;
+  }
+
+  storeState = defaultStoreState();
+  storeCustomerStates = [];
+}
+
+function saveStoreState() {
+  if (storeState) {
+    storeState.customers = storeCustomerStates.map((customer) => ({ ...customer }));
+  }
+  localStorage.setItem("koreanCafeStoreState", JSON.stringify(storeState));
+}
+
+function placedFurnitureCount(furnitureId) {
+  return storeState.fixtures.filter((item) => item.id === furnitureId).length;
+}
+
+function storeCellPosition(cell) {
+  const x = cell % 8;
+  const y = Math.floor(cell / 8);
+  return {
+    left: 47 + (x - y) * 5.8,
+    top: 34 + (x + y) * 4.25,
+    z: 30 + x + y
+  };
+}
+
+function activeStoreFixture() {
+  return storeState.fixtures.find((fixture) => fixture.id === selectedFurnitureId) || null;
+}
+
+function updateSelectedFixtureDirection() {
+  const fixture = activeStoreFixture();
+  if (fixture) {
+    fixture.direction = selectedDirection;
+  }
+}
+
+function randomStoreOrderIndex(excludeIndex = -1) {
+  if (storeOrders.length <= 1) {
+    return 0;
+  }
+
+  let nextIndex = Math.floor(Math.random() * storeOrders.length);
+  if (nextIndex === excludeIndex) {
+    nextIndex = (nextIndex + 1 + Math.floor(Math.random() * (storeOrders.length - 1))) % storeOrders.length;
+  }
+  return nextIndex;
+}
+
+function randomStoreCustomerTypeIndex(excludeIndex = -1) {
+  if (storeCustomerTypes.length <= 1) {
+    return 0;
+  }
+
+  let nextIndex = Math.floor(Math.random() * storeCustomerTypes.length);
+  if (nextIndex === excludeIndex) {
+    nextIndex = (nextIndex + 1 + Math.floor(Math.random() * (storeCustomerTypes.length - 1))) % storeCustomerTypes.length;
+  }
+  return nextIndex;
+}
+
+function currentStoreOrder(customerIndex = activeStoreCustomerIndex) {
+  const customer = storeCustomerStates[customerIndex];
+  if (customer && Number.isInteger(customer.orderIndex)) {
+    return storeOrders[customer.orderIndex % storeOrders.length];
+  }
+  return storeOrders[(storeState.orderIndex + customerIndex) % storeOrders.length];
+}
+
+function randomStoreDirection(from, to) {
+  if (!from || !to) {
+    return "front";
+  }
+
+  const dx = to.left - from.left;
+  const dy = to.top - from.top;
+  if (Math.abs(dx) > Math.abs(dy)) {
+    return dx >= 0 ? "right" : "left";
+  }
+  return dy >= 0 ? "front" : "back";
+}
+
+function findOpenCustomerSpot(preferredIndex = 0, reservedSpots = new Set()) {
+  for (let offset = 0; offset < storeCustomerSpots.length; offset += 1) {
+    const spotIndex = (preferredIndex + offset) % storeCustomerSpots.length;
+    if (!reservedSpots.has(spotIndex)) {
+      return spotIndex;
+    }
+  }
+  return preferredIndex % storeCustomerSpots.length;
+}
+
+function ensureStoreCustomers() {
+  const visibleCustomers = Math.min(1 + Math.floor(storeState.reputation / 2), storeCustomerSpots.length);
+  const targetCustomers = Math.min(Math.max(visibleCustomers, storeCustomerStates.length), storeCustomerSpots.length);
+  let changed = false;
+  while (storeCustomerStates.length < targetCustomers) {
+    const usedSpots = new Set(storeCustomerStates.map((customer) => customer.spotIndex));
+    const spotIndex = findOpenCustomerSpot(storeCustomerStates.length, usedSpots);
+    const spot = storeCustomerSpots[spotIndex];
+    storeCustomerStates.push({
+      spotIndex,
+      typeIndex: randomStoreCustomerTypeIndex(),
+      orderIndex: randomStoreOrderIndex(),
+      left: spot.left,
+      top: spot.top,
+      direction: "front"
+    });
+    changed = true;
+  }
+  if (storeCustomerStates.length > storeCustomerSpots.length) {
+    storeCustomerStates = storeCustomerStates.slice(0, storeCustomerSpots.length);
+    changed = true;
+  }
+  storeCustomerStates.forEach((customer, index) => {
+    if (!Number.isInteger(customer.typeIndex)) {
+      customer.typeIndex = randomStoreCustomerTypeIndex(index > 0 ? storeCustomerStates[index - 1].typeIndex : -1);
+      changed = true;
+    }
+    if (!Number.isInteger(customer.orderIndex)) {
+      customer.orderIndex = randomStoreOrderIndex(index > 0 ? storeCustomerStates[index - 1].orderIndex : -1);
+      changed = true;
+    }
+    if (!Number.isFinite(customer.left) || !Number.isFinite(customer.top)) {
+      const spot = storeCustomerSpots[customer.spotIndex] || storeCustomerSpots[0];
+      customer.left = spot.left;
+      customer.top = spot.top;
+      changed = true;
+    }
+  });
+  const occupiedSpots = new Set();
+  storeCustomerStates.forEach((customer, index) => {
+    if (!Number.isInteger(customer.spotIndex) || occupiedSpots.has(customer.spotIndex)) {
+      const nextSpotIndex = findOpenCustomerSpot(index, occupiedSpots);
+      const nextSpot = storeCustomerSpots[nextSpotIndex];
+      customer.spotIndex = nextSpotIndex;
+      customer.left = nextSpot.left;
+      customer.top = nextSpot.top;
+      changed = true;
+    }
+    occupiedSpots.add(customer.spotIndex);
+  });
+  if (activeStoreCustomerIndex >= storeCustomerStates.length) {
+    activeStoreCustomerIndex = 0;
+  }
+  if (changed) {
+    saveStoreState();
+  }
+}
+
+function moveStoreCustomers() {
+  if (!document.body.classList.contains("store-active") || storeEditMode || storeState.fixtures.length === 0) {
+    return;
+  }
+
+  ensureStoreCustomers();
+  const reservedSpots = new Set(storeCustomerStates.map((customer) => customer.spotIndex));
+  storeCustomerStates = storeCustomerStates.map((customer, index) => {
+    if (index === activeStoreCustomerIndex) {
+      return customer;
+    }
+
+    const currentSpot = storeCustomerSpots[customer.spotIndex] || storeCustomerSpots[0];
+    reservedSpots.delete(customer.spotIndex);
+    let nextIndex = Math.floor(Math.random() * storeCustomerSpots.length);
+    if (nextIndex === customer.spotIndex || reservedSpots.has(nextIndex)) {
+      nextIndex = findOpenCustomerSpot(nextIndex + 1 + index, reservedSpots);
+    }
+    reservedSpots.add(nextIndex);
+    const nextSpot = storeCustomerSpots[nextIndex];
+    return {
+      ...customer,
+      spotIndex: nextIndex,
+      left: nextSpot.left,
+      top: nextSpot.top,
+      direction: randomStoreDirection(currentSpot, nextSpot)
+    };
+  });
+
+  saveStoreState();
+  renderStoreBoard();
+}
+
+function startStoreCustomerWalk() {
+  stopStoreCustomerWalk();
+  if (storeEditMode || storeState.fixtures.length === 0) {
+    return;
+  }
+
+  ensureStoreCustomers();
+  storeWalkTimer = window.setInterval(moveStoreCustomers, 2800);
+}
+
+function stopStoreCustomerWalk() {
+  if (storeWalkTimer) {
+    window.clearInterval(storeWalkTimer);
+    storeWalkTimer = null;
+  }
+}
+
+function renderStoreStats() {
+  storeMoneyText.textContent = `金幣 ${storeState.money}`;
+  storeRepText.textContent = `評價 ${storeState.reputation}`;
+  storeDayText.textContent = `Day ${storeState.day}`;
+}
+
+function renderStoreDirectionControls() {
+  storeDirectionControls.querySelectorAll("button").forEach((button) => {
+    button.classList.toggle("is-selected", button.dataset.direction === selectedDirection);
+  });
+}
+
+function renderStorePalette() {
+  storePalette.innerHTML = "";
+
+  storeFurniture.forEach((furniture) => {
+    const fixture = storeState.fixtures.find((item) => item.id === furniture.id);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "store-furniture-btn";
+    if (furniture.id === selectedFurnitureId) {
+      button.classList.add("is-selected");
+    }
+    button.innerHTML = `
+        <span class="store-furniture-icon"><img src="${furniture.image}" alt=""></span>
+        <span>
+          <span class="store-furniture-name">${furniture.name} ${furniture.korean}</span>
+        <span class="store-furniture-cost">${
+          storeEditMode
+            ? fixture ? "已放置，可移動" : "尚未放置"
+            : fixture ? `面向：${storeDirections.find((direction) => direction.id === fixture.direction)?.label || "正面"}` : "尚未放置"
+        }</span>
+      </span>
+    `;
+    button.addEventListener("click", () => {
+      selectedFurnitureId = furniture.id;
+      selectedDirection = fixture?.direction || selectedDirection;
+      storeStatusText.textContent = storeEditMode
+        ? `已選擇 ${furniture.name}。選面向後點地板放置。`
+        : `${furniture.name} 已在店裡。按「調整佈置」可以移動位置和面向。`;
+      renderStoreGame();
+    });
+    storePalette.appendChild(button);
+  });
+}
+
+function renderStoreBoard() {
+  storeBoard.innerHTML = "";
+  storeBoard.classList.toggle("is-editing", storeEditMode);
+
+  if (storeEditMode) {
+    for (let cell = 0; cell < 48; cell += 1) {
+      const position = storeCellPosition(cell);
+      const tile = document.createElement("button");
+      tile.type = "button";
+      tile.className = "store-placement-cell";
+      tile.style.left = `${position.left}%`;
+      tile.style.top = `${position.top}%`;
+      tile.style.zIndex = `${position.z - 10}`;
+      tile.setAttribute("aria-label", "可放置位置");
+      tile.addEventListener("click", () => placeSelectedFurniture(cell));
+      storeBoard.appendChild(tile);
+    }
+  }
+
+  storeState.fixtures.forEach((fixture) => {
+    const furniture = storeFurniture.find((item) => item.id === fixture.id);
+    const position = storeCellPosition(fixture.cell);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `store-fixture item-${fixture.id} direction-${fixture.direction || "front"}`;
+    if (fixture.id === selectedFurnitureId && storeEditMode) {
+      button.classList.add("is-selected");
+    }
+    button.style.left = `${position.left}%`;
+    button.style.top = `${position.top}%`;
+    button.style.zIndex = `${position.z + 20}`;
+    button.style.setProperty("--fixture-width", `${furniture.width || 82}px`);
+    button.setAttribute("aria-label", `${furniture.name} ${furniture.korean}`);
+
+    button.innerHTML = `
+      <img class="store-object store-object-${furniture.id}" src="${furniture.image}" alt="">
+    `;
+
+    button.addEventListener("click", () => handleStoreFixtureClick(furniture.id));
+    storeBoard.appendChild(button);
+  });
+
+  if (!storeEditMode && storeState.fixtures.length > 0) {
+    renderStoreCustomers();
+  }
+}
+
+function renderStoreCustomers() {
+  ensureStoreCustomers();
+
+  storeCustomerStates.forEach((customer, index) => {
+    const order = currentStoreOrder(index);
+    const customerType = storeCustomerTypes[customer.typeIndex % storeCustomerTypes.length];
+    const person = document.createElement("div");
+    person.className = `store-customer ${customerType.className} direction-${customer.direction || "front"}`;
+    if (index === activeStoreCustomerIndex) {
+      person.classList.add("is-active");
+    }
+    person.style.left = `${customer.left}%`;
+    person.style.top = `${customer.top}%`;
+    person.style.zIndex = `${80 + index}`;
+    person.setAttribute("role", "button");
+    person.setAttribute("tabindex", "0");
+    person.setAttribute("aria-label", `選擇${customerType.name}，需求 ${order.word}`);
+    person.innerHTML = `
+      <img src="${customerType.image}" alt="">
+    `;
+
+    const bubble = document.createElement("button");
+    bubble.type = "button";
+    bubble.className = "store-speech";
+    bubble.innerHTML = `<span>${order.word}</span>`;
+    bubble.setAttribute("aria-label", `選擇並播放 ${order.word} 的發音`);
+    bubble.addEventListener("click", (event) => {
+      event.stopPropagation();
+      selectStoreCustomer(index, true);
+    });
+    person.appendChild(bubble);
+
+    person.addEventListener("click", () => selectStoreCustomer(index, true));
+    person.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectStoreCustomer(index, true);
+      }
+    });
+
+    storeBoard.appendChild(person);
+  });
+}
+
+function selectStoreCustomer(customerIndex, shouldSpeak = false) {
+  ensureStoreCustomers();
+  activeStoreCustomerIndex = Math.min(customerIndex, storeCustomerStates.length - 1);
+  const order = currentStoreOrder();
+  if (shouldSpeak) {
+    speakKorean(order.word);
+  }
+  storeStatusText.textContent = `正在服務第 ${activeStoreCustomerIndex + 1} 位客人：${order.word}`;
+  renderStoreGame();
+}
+
+function renderStoreOrder() {
+  const order = currentStoreOrder();
+  storeOrderPanel.hidden = storeEditMode || storeState.fixtures.length === 0;
+  storeOrderText.textContent = storeState.reputation >= 5
+    ? "第二章完成。可以回世界地圖，或繼續調整店面。"
+    : `目前服務第 ${activeStoreCustomerIndex + 1} 位客人。聽韓文後，點選店內對應家具。`;
+  storeServeBtn.hidden = true;
+}
+
+function renderStoreGame() {
+  renderStoreStats();
+  renderStoreDirectionControls();
+  storePalette.hidden = !storeEditMode;
+  renderStorePalette();
+  renderStoreBoard();
+  renderStoreOrder();
+}
+
+function handleStoreFixtureClick(furnitureId) {
+  const furniture = storeFurniture.find((item) => item.id === furnitureId);
+  selectedFurnitureId = furnitureId;
+  const fixture = activeStoreFixture();
+  selectedDirection = fixture?.direction || selectedDirection;
+
+  if (storeEditMode) {
+    updateSelectedFixtureDirection();
+    storeStatusText.textContent = `已選擇 ${furniture?.name || "家具"}。可切換面向，或點地板移動位置。`;
+    renderStoreGame();
+    return;
+  }
+
+  handleStoreOrderFurnitureClick(furnitureId);
+}
+
+function placeSelectedFurniture(cell) {
+  if (!storeEditMode) {
+    return;
+  }
+
+  const furniture = storeFurniture.find((item) => item.id === selectedFurnitureId);
+  if (!furniture) {
+    return;
+  }
+
+  let fixture = activeStoreFixture();
+  if (!fixture) {
+    fixture = { id: selectedFurnitureId, cell, direction: selectedDirection };
+    storeState.fixtures.push(fixture);
+  }
+
+  fixture.cell = cell;
+  fixture.direction = selectedDirection;
+  storeStatusText.textContent = `${furniture.name} 已移到新位置，面向：${storeDirections.find((direction) => direction.id === selectedDirection)?.label || "正面"}。`;
+  renderStoreGame();
+}
+
+function enterStoreLayoutEdit() {
+  stopStoreCustomerWalk();
+  closeStoreManagerDialog();
+  storeEditMode = true;
+  storeEditLayoutBtn.hidden = true;
+  storeSaveLayoutBtn.hidden = false;
+  storeDirectionControls.hidden = false;
+  storeServeBtn.disabled = true;
+  storeStatusText.textContent = "佈置模式：選家具、選面向，再點地板放置。按「確定存檔」完成。";
+  renderStoreGame();
+}
+
+function saveStoreLayout() {
+  if (storeState.fixtures.length === 0) {
+    storeStatusText.textContent = "店裡還沒有家具。至少先放一件家具，再確定存檔。";
+    return;
+  }
+
+  storeEditMode = false;
+  storeEditLayoutBtn.hidden = false;
+  storeSaveLayoutBtn.hidden = true;
+  storeDirectionControls.hidden = true;
+  storeServeBtn.disabled = false;
+  saveStoreState();
+  storeStatusText.textContent = "佈置已存檔。現在家具會固定在這個位置。";
+  renderStoreGame();
+  startStoreCustomerWalk();
+}
+
+function setStoreDirection(directionId) {
+  selectedDirection = directionId;
+  updateSelectedFixtureDirection();
+  const furniture = storeFurniture.find((item) => item.id === selectedFurnitureId);
+  storeStatusText.textContent = `${furniture?.name || "家具"} 面向改成：${storeDirections.find((direction) => direction.id === directionId)?.label || "正面"}。`;
+  renderStoreGame();
+}
+
+function showStoreManagerDialog(message) {
+  storeManagerText.textContent = message;
+  storeManagerDialog.hidden = false;
+}
+
+function closeStoreManagerDialog() {
+  storeManagerDialog.hidden = true;
+}
+
+function completeStoreOrder(order) {
+  closeStoreManagerDialog();
+  const shouldCompleteChapter = storeState.reputation < 5;
+  storeState.money += order.reward;
+  storeState.reputation += 1;
+  storeState.day += 1;
+  storeState.orderIndex += 1;
+
+  if (shouldCompleteChapter && storeState.reputation >= 5) {
+    completeChapter(2);
+    storeStatusText.textContent = "第二章完成！龜仙CU便利商店已經能穩定營業。";
+  } else {
+    storeStatusText.textContent = `完成 ${order.word}（${order.chinese}）訂單，收入金幣 ${order.reward}。`;
+  }
+
+  const servedCustomer = storeCustomerStates[activeStoreCustomerIndex];
+  if (servedCustomer) {
+    servedCustomer.orderIndex = randomStoreOrderIndex(servedCustomer.orderIndex);
+    servedCustomer.typeIndex = randomStoreCustomerTypeIndex(servedCustomer.typeIndex);
+  }
+  activeStoreCustomerIndex = 0;
+  saveStoreState();
+  renderStoreGame();
+  startStoreCustomerWalk();
+}
+
+function handleStoreOrderFurnitureClick(furnitureId) {
+  const order = currentStoreOrder();
+  const furniture = storeFurniture.find((item) => item.id === furnitureId);
+
+  if (furnitureId !== order.required) {
+    showStoreManagerDialog(`你在幹嗎？客人要的是 ${order.word}（${order.chinese}）。`);
+    storeStatusText.textContent = `${furniture?.name || "這裡"} 不是客人要的東西。再看一次韓文泡泡。`;
+    return;
+  }
+
+  completeStoreOrder(order);
+}
+
+function serveStoreCustomer() {
+  handleStoreOrderFurnitureClick(currentStoreOrder().required);
+}
+
+function startStorePrologue(chapter) {
+  stopStoreCustomerWalk();
+  activeSubchapterId = "";
+  activeChapterIndex = chapters.indexOf(chapter);
+  prologue = chapter.prologue;
+  prologueIndex = 0;
+  prologueChapter.textContent = chapter.prologueChapter;
+  document.body.classList.add("prologue-active");
+  document.body.classList.remove("map-active", "submap-active", "quiz-active", "store-active");
+  chapterMapOverlay.classList.remove("is-visible");
+  updatePrologue();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function enterStoreGameplay(chapter) {
+  activeSubchapterId = "";
+  activeChapterIndex = chapters.indexOf(chapter);
+  loadStoreState();
+  storeEditMode = storeState.fixtures.length === 0;
+  storeEditLayoutBtn.hidden = storeEditMode;
+  storeSaveLayoutBtn.hidden = !storeEditMode;
+  storeDirectionControls.hidden = !storeEditMode;
+  storeServeBtn.hidden = true;
+  document.body.classList.add("store-active");
+  document.body.classList.remove("map-active", "submap-active", "quiz-active", "prologue-active");
+  chapterMapOverlay.classList.remove("is-visible");
+  quizResultPanel.classList.remove("is-visible");
+  closeQuizConfirm();
+  closeStoreManagerDialog();
+  renderStoreGame();
+  startStoreCustomerWalk();
+  if (storeEditMode) {
+    storeStatusText.textContent = "空店開張前，先選家具、選面向，再點地板放置。完成後按「確定存檔」。";
+  } else {
+    storeStatusText.textContent = storeState.reputation >= 5
+      ? "第二章已完成。可以按「調整佈置」重新整理店面。"
+      : "按「調整佈置」可以重新擺家具和面向；存檔後就用那個店面營業。";
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openStoreChapter(chapter) {
+  activeSubchapterId = "";
+  activeChapterIndex = chapters.indexOf(chapter);
+
+  if (!viewedStories.has(`chapter-${chapter.number}`)) {
+    startStorePrologue(chapter);
+    return;
+  }
+
+  enterStoreGameplay(chapter);
+}
+
 function currentStoryId() {
   return activeSubchapterId || `chapter-${currentChapter().number}`;
 }
@@ -474,13 +1240,35 @@ function completePronunciationSubchapter(subchapterId) {
 }
 
 function isChapterComplete(chapterNumber) {
+  if (completedChapters.has(chapterNumber)) {
+    return true;
+  }
+
   const subchapters = chapterSubchapters[chapterNumber];
 
   if (!subchapters) {
-    return completedChapters.has(chapterNumber);
+    return false;
   }
 
   return subchapters.every((subchapter) => completedSubchapters.has(subchapter.id));
+}
+
+function skipChapterOneTraining() {
+  if (isChapterComplete(1)) {
+    return;
+  }
+
+  const builtSubchapters = (chapterSubchapters[1] || []).filter((subchapter) => subchapter.built);
+  builtSubchapters.forEach((subchapter) => {
+    completedSubchapters.add(subchapter.id);
+    viewedStories.add(subchapter.id);
+  });
+  completedChapters.add(1);
+  viewedStories.add("chapter-1");
+  saveProgress();
+  activeSubchapterId = "";
+  feedbackText.textContent = "已使用熟手通行證，第二章路線開放。第一章仍可回來複習。";
+  renderChapterMap();
 }
 
 function highestUnlockedChapter() {
@@ -496,9 +1284,10 @@ function highestUnlockedChapter() {
 }
 
 function openChapterMap() {
+  stopStoreCustomerWalk();
   renderChapterMap();
   document.body.classList.add("map-active");
-  document.body.classList.remove("quiz-active", "prologue-active");
+  document.body.classList.remove("quiz-active", "prologue-active", "store-active");
   chapterMapOverlay.classList.add("is-visible");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -631,7 +1420,9 @@ function renderChapterMap() {
     if (chapter && isUnlocked) {
       button.addEventListener("click", () => {
         closeChapterMap();
-        if (chapterSubchapters[chapter.number]) {
+        if (chapter.kind === "store") {
+          openStoreChapter(chapter);
+        } else if (chapterSubchapters[chapter.number]) {
           openSubchapterMap(chapter.number);
         } else {
           activeSubchapterId = "";
@@ -649,6 +1440,10 @@ function renderChapterMap() {
   const unlockedChapter = chapters.find((chapter) => chapter.number === unlocked);
   const unlockedText = unlockedChapter ? `目前可選擇第 ${unlocked} 章。` : `第 ${unlocked} 章尚未建置。`;
   chapterMapStatus.textContent = `${completedText}${unlockedText}`;
+
+  if (skipChapterOneBtn) {
+    skipChapterOneBtn.hidden = isChapterComplete(1);
+  }
 }
 
 function setCategoryVisibility(titleElement, gridElement, label) {
@@ -675,6 +1470,8 @@ function applyChapter(index, showPrologue = true, updateUrl = true) {
 
   sceneChapter.textContent = chapter.sceneChapter;
   sceneTitle.textContent = subchapter?.sceneTitle || chapter.sceneTitle;
+  sceneImage.src = subchapter?.sceneImage || chapter.sceneImage;
+  sceneImage.alt = subchapter?.sceneImageAlt || chapter.sceneImageAlt;
   prologueChapter.textContent = subchapter?.prologueChapter || chapter.prologueChapter;
   quizLabel.textContent = subchapter?.quizLabel || chapter.quizLabel;
   quizTitle.textContent = subchapter?.quizTitle || chapter.quizTitle;
@@ -691,6 +1488,7 @@ function applyChapter(index, showPrologue = true, updateUrl = true) {
   document.body.classList.remove("quiz-active");
   document.body.classList.remove("map-active");
   document.body.classList.remove("submap-active");
+  document.body.classList.remove("store-active");
   quizResultPanel.classList.remove("is-visible");
   closeQuizConfirm();
   buildMaterials();
@@ -795,6 +1593,10 @@ function nextPrologue() {
 
   markCurrentStoryViewed();
   document.body.classList.remove("prologue-active");
+  if (currentChapter().kind === "store") {
+    enterStoreGameplay(currentChapter());
+    return;
+  }
   feedbackText.textContent = currentSubchapter()?.trainingIntro || currentChapter().trainingIntro;
   speakKorean(lessons[lessonIndex].sound);
 }
@@ -802,13 +1604,19 @@ function nextPrologue() {
 function skipPrologue() {
   markCurrentStoryViewed();
   document.body.classList.remove("prologue-active");
+  if (currentChapter().kind === "store") {
+    enterStoreGameplay(currentChapter());
+    return;
+  }
   feedbackText.textContent = currentSubchapter()?.skippedIntro || currentChapter().skippedIntro;
   updateView();
 }
 
 function reviewStory() {
+  prologue = currentChapter().prologue;
   prologueIndex = 0;
-  document.body.classList.remove("quiz-active", "map-active", "submap-active");
+  prologueChapter.textContent = currentChapter().prologueChapter;
+  document.body.classList.remove("quiz-active", "map-active", "submap-active", "store-active");
   document.body.classList.add("prologue-active");
   updatePrologue();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1286,6 +2094,10 @@ returnToSubchapterMapBtn.addEventListener("click", () => {
 confirmQuizBtn.addEventListener("click", enterQuiz);
 cancelQuizBtn.addEventListener("click", closeQuizConfirm);
 closeChapterMapBtn.addEventListener("click", closeChapterMap);
+skipChapterOneBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  skipChapterOneTraining();
+});
 chapterMapOverlay.addEventListener("click", (event) => {
   if (!document.body.classList.contains("map-active") && event.target === chapterMapOverlay) {
     closeChapterMap();
@@ -1294,6 +2106,20 @@ chapterMapOverlay.addEventListener("click", (event) => {
 backToChapterMapBtn.addEventListener("click", () => {
   closeSubchapterMap();
   openChapterMap();
+});
+storeServeBtn.addEventListener("click", serveStoreCustomer);
+storeManagerCloseBtn.addEventListener("click", closeStoreManagerDialog);
+storeManagerDialog.addEventListener("click", (event) => {
+  if (event.target === storeManagerDialog) {
+    closeStoreManagerDialog();
+  }
+});
+storeBackMapBtn.addEventListener("click", openChapterMap);
+storeReviewStoryBtn.addEventListener("click", reviewStory);
+storeEditLayoutBtn.addEventListener("click", enterStoreLayoutEdit);
+storeSaveLayoutBtn.addEventListener("click", saveStoreLayout);
+storeDirectionControls.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", () => setStoreDirection(button.dataset.direction));
 });
 quizSpeakBtn.addEventListener("click", () => {
   if (quizQuestions[quizIndex]) {
@@ -1323,6 +2149,7 @@ if (initialSearchParams.get("resetProgress") === "1") {
   localStorage.removeItem("koreanCafeCompletedSubchapters");
   localStorage.removeItem("koreanCafeCompletedPronunciationSubchapters");
   localStorage.removeItem("koreanCafeViewedStories");
+  localStorage.removeItem("koreanCafeStoreState");
   initialSearchParams.delete("resetProgress");
   const resetUrl = new URL(window.location.href);
   resetUrl.search = initialSearchParams.toString();

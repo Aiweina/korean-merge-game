@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>韓語合成咖啡店</title>
-  <link rel="stylesheet" href="./styles.css?v=95">
+  <link rel="stylesheet" href="./styles.css?v=113">
 </head>
 <body>
   <main class="app-shell">
@@ -15,6 +15,10 @@
           <button id="closeChapterMapBtn" type="button" class="map-close-btn" aria-label="返回目前章節">×</button>
         </div>
         <h2>天使惡魔館章節路線</h2>
+        <button id="skipChapterOneBtn" type="button" class="chapter-skip-pass">
+          <span>熟手通行證</span>
+          <small>跳過第一章</small>
+        </button>
         <div id="chapterMapGrid" class="chapter-map-grid"></div>
         <p id="chapterMapStatus" class="chapter-map-status"></p>
       </section>
@@ -29,7 +33,7 @@
     </section>
 
     <section class="scene" aria-label="咖啡店場景">
-      <img src="./assets/001.webp" alt="溫暖的咖啡店櫃台" class="scene-art" loading="lazy" decoding="async">
+      <img id="sceneImage" src="./assets/001.webp" alt="溫暖的咖啡店櫃台" class="scene-art" loading="lazy" decoding="async">
       <button id="reviewStoryBtn" type="button" class="review-story-btn">夢迴</button>
       <button id="returnToSubchapterMapBtn" type="button" class="return-subchapter-map-btn">章節地圖</button>
       <div class="scene-copy">
@@ -104,6 +108,54 @@
     </section>
     </div>
 
+    <div id="storeContent" class="store-content">
+      <section class="store-scene" aria-label="龜仙CU便利商店經營">
+        <div class="store-topbar">
+          <button id="storeBackMapBtn" type="button" class="store-map-btn">世界地圖</button>
+          <button id="storeReviewStoryBtn" type="button" class="store-map-btn">夢迴</button>
+          <div class="store-stats" aria-live="polite">
+            <span id="storeMoneyText">金幣 120</span>
+            <span id="storeRepText">評價 0</span>
+            <span id="storeDayText">Day 1</span>
+          </div>
+        </div>
+        <div class="store-heading">
+          <p class="label">第二章：龜仙CU便利商店</p>
+          <h2>空店開張前，先決定家具位置和面向</h2>
+        </div>
+        <div id="storeBoard" class="store-board" aria-label="便利商店家具棋盤"></div>
+        <div class="store-layout-actions">
+          <button id="storeEditLayoutBtn" type="button">調整佈置</button>
+          <button id="storeSaveLayoutBtn" type="button" hidden>確定存檔</button>
+        </div>
+        <div id="storeDirectionControls" class="store-direction-controls" aria-label="家具面向" hidden>
+          <button type="button" data-direction="front">正面</button>
+          <button type="button" data-direction="right">右面</button>
+          <button type="button" data-direction="back">背面</button>
+          <button type="button" data-direction="left">左面</button>
+        </div>
+        <div id="storePalette" class="store-palette" aria-label="家具清單"></div>
+        <section class="store-order-panel" aria-label="今日客人需求">
+          <div>
+            <p class="label">今日客人</p>
+            <p id="storeOrderText" class="store-order-text">放置貨架和冰箱後開始營業。</p>
+          </div>
+          <button id="storeServeBtn" type="button">開始營業</button>
+        </section>
+        <p id="storeStatusText" class="store-status-text" aria-live="polite">按「調整佈置」可以重新擺家具和面向；存檔後就用那個店面營業。</p>
+        <div id="storeManagerDialog" class="store-manager-dialog" role="dialog" aria-modal="true" aria-labelledby="storeManagerTitle" hidden>
+          <section class="store-manager-box">
+            <img class="store-manager-image" src="./assets/store/manager.webp" alt="店長">
+            <div class="store-manager-bubble">
+              <p id="storeManagerTitle" class="store-manager-title">店長</p>
+              <p id="storeManagerText" class="store-manager-text">你在幹嗎？</p>
+              <button id="storeManagerCloseBtn" type="button">知道了</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+
     <div id="quizContent" class="quiz-content">
       <section class="quiz-panel" aria-label="40 音測驗">
         <div class="quiz-visual">
@@ -147,6 +199,6 @@
 
   </main>
 
-  <script src="./app.js?v=93"></script>
+  <script src="./app.js?v=111"></script>
 </body>
 </html>
