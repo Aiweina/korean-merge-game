@@ -230,42 +230,42 @@ const section12Prologue = [
 const chapter2Prologue = [
   {
     speaker: "旁白",
-    image: "./assets/store/chapter-2-store-bg.webp",
+    image: "./assets/store/2-0.webp",
     text: "離開天使惡魔館後，你沿著海邊小路來到陽介紹的打工地點：龜仙CU便利商店。店裡還空著，窗外的光把木地板照得亮亮的。"
   },
   {
     speaker: "店長",
-    image: "./assets/store/2-2.webp",
+    image: "./assets/store/2-1.webp",
     text: "你就是陽推薦來的工讀生？"
   },
   {
     speaker: "你",
-    image: "./assets/store/2-3.webp",
+    image: "./assets/store/2-2.webp",
     text: "你好，我是龍野翔。"
   },
   {
     speaker: "迷之聲",
-    image: "./assets/store/2-4.webp",
+    image: "./assets/store/2-3.webp",
     text: "哥哥，這位新的工讀生嗎？"
   },
   {
     speaker: "牧野紫",
-    image: "./assets/store/2-5.webp",
+    image: "./assets/store/2-4.webp",
     text: "你好，我是牧野紫，這是哥哥速水，我們一起努力吧！"
   },
   {
     speaker: "速水",
-    image: "./assets/store/2-6.webp",
+    image: "./assets/store/2-5.webp",
     text: "你身體不好，不要跑來這邊忙。"
   },
   {
     speaker: "龍野翔",
-    image: "./assets/store/2-7.webp",
+    image: "./assets/store/2-6.webp",
     text: "牧野紫，我會努力的~"
   },
   {
     speaker: "速水",
-    image: "./assets/store/2-1.webp",
+    image: "./assets/store/2-7.webp",
     text: "滾。",
     choices: [
       { text: "開店準備開工", feedback: "店長把鑰匙丟到你手上。" },
