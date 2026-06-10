@@ -1511,21 +1511,36 @@ body.map-active .chapter-map h2 {
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 1.223;
+  aspect-ratio: 16 / 9;
   border: 3px solid #7cb7b1;
   border-radius: 8px;
-  background: url("./assets/store/chapter-2-store-bg-room.webp?v=2") center / cover no-repeat;
+  background: url("./assets/store/generated/empty-store-background-v2.webp?v=1") center / cover no-repeat;
   box-shadow: 0 14px 28px rgba(61, 41, 28, 0.18);
+}
+
+.store-board.has-baked-furniture {
+  background-image: url("./assets/store/generated/fixed-store-ai-v2.webp?v=1");
+}
+
+.store-board.has-baked-furniture .store-object {
+  display: none;
+}
+
+.store-board.has-baked-furniture .store-fixture {
+  width: 104px;
+  height: 92px;
+  transform: translate(-50%, -70%);
 }
 
 .store-fixture {
   position: absolute;
-  width: 68px;
-  height: 68px;
+  width: 128px;
+  height: 128px;
   min-height: 0;
   padding: 0;
   transform: translate(-50%, -100%);
   transform-origin: center;
+  overflow: visible;
   border: 0;
   background: transparent;
   box-shadow: none;
@@ -1551,42 +1566,46 @@ body.map-active .chapter-map h2 {
   left: 50%;
   bottom: 0;
   width: var(--fixture-width, 82px);
+  max-width: none;
   height: auto;
   display: block;
   transform: translateX(-50%);
+  transform-origin: center bottom;
   filter: drop-shadow(0 7px 5px rgba(61, 41, 28, 0.24));
   pointer-events: none;
 }
 
 .direction-right .store-object {
-  transform: translateX(-50%) scaleX(-1);
+  transform: translateX(-50%) skewY(7deg) scaleY(0.98);
+  opacity: 0.96;
 }
 
 .direction-back .store-object {
-  transform: translateX(-50%) scale(0.86) rotate(180deg);
-  opacity: 0.92;
+  transform: translateX(-50%) skewY(-8deg) scaleY(0.98);
+  opacity: 0.94;
 }
 
 .direction-left .store-object {
-  transform: translateX(-50%) scaleX(-1) rotate(180deg);
-  opacity: 0.92;
+  transform: translateX(-50%) skewY(-7deg) scaleY(0.98);
+  opacity: 0.96;
 }
 
 .store-placement-cell {
   position: absolute;
-  width: 12.5%;
-  height: 7.2%;
+  width: 7.4%;
+  height: 7.4%;
   min-height: 0;
   padding: 0;
-  transform: translate(-50%, -50%) rotate(45deg) skew(-10deg, -10deg);
-  border: 1px solid rgba(255, 250, 241, 0.24);
-  border-radius: 2px;
-  background: rgba(255, 236, 195, 0.07);
+  transform: translate(-50%, -50%) rotate(45deg) scaleY(0.52);
+  transform-origin: center center;
+  border: 1px solid rgba(255, 250, 241, 0.28);
+  border-radius: 1px;
+  background: rgba(255, 236, 195, 0.06);
   box-shadow: none;
 }
 
 .store-placement-cell:active {
-  transform: translate(-50%, -47%) rotate(45deg) skew(-10deg, -10deg);
+  transform: translate(-50%, -47%) rotate(45deg) scaleY(0.52);
   box-shadow: none;
 }
 

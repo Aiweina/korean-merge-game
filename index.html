@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>韓語合成咖啡店</title>
-  <link rel="stylesheet" href="./styles.css?v=114">
+  <link rel="stylesheet" href="./styles.css?v=126">
 </head>
 <body>
   <main class="app-shell">
@@ -121,11 +121,11 @@
         </div>
         <div class="store-heading">
           <p class="label">第二章：龜仙CU便利商店</p>
-          <h2>空店開張前，先決定家具位置和面向</h2>
+          <h2>龜仙CU便利商店營業中</h2>
         </div>
         <div id="storeBoard" class="store-board" aria-label="便利商店家具棋盤"></div>
         <div class="store-layout-actions">
-          <button id="storeEditLayoutBtn" type="button">調整佈置</button>
+          <button id="storeEditLayoutBtn" type="button" hidden>調整佈置</button>
           <button id="storeSaveLayoutBtn" type="button" hidden>確定存檔</button>
         </div>
         <div id="storeDirectionControls" class="store-direction-controls" aria-label="家具面向" hidden>
@@ -134,7 +134,7 @@
           <button type="button" data-direction="back">背面</button>
           <button type="button" data-direction="left">左面</button>
         </div>
-        <div id="storePalette" class="store-palette" aria-label="家具清單"></div>
+        <div id="storePalette" class="store-palette" aria-label="家具清單" hidden></div>
         <section class="store-order-panel" aria-label="今日客人需求">
           <div>
             <p class="label">今日客人</p>
@@ -142,7 +142,7 @@
           </div>
           <button id="storeServeBtn" type="button">開始營業</button>
         </section>
-        <p id="storeStatusText" class="store-status-text" aria-live="polite">按「調整佈置」可以重新擺家具和面向；存檔後就用那個店面營業。</p>
+        <p id="storeStatusText" class="store-status-text" aria-live="polite">店內家具已固定配置。點選客人後，再點店內對應家具完成訂單。</p>
         <div id="storeManagerDialog" class="store-manager-dialog" role="dialog" aria-modal="true" aria-labelledby="storeManagerTitle" hidden>
           <section class="store-manager-box">
             <img class="store-manager-image" src="./assets/store/manager.webp" alt="店長">
@@ -199,6 +199,6 @@
 
   </main>
 
-  <script src="./app.js?v=113"></script>
+  <script src="./app.js?v=129"></script>
 </body>
 </html>

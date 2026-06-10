@@ -235,45 +235,40 @@ const chapter2Prologue = [
   },
   {
     speaker: "店長",
-    image: "./assets/store/2-1.webp",
-    text: "你就是陽推薦來的工讀生？開店前把家具放好。"
+    image: "./assets/store/2-2.webp",
+    text: "你就是陽推薦來的工讀生？"
   },
   {
     speaker: "你",
-    image: "./assets/store/2-1.webp",
-    text: "隨便放嗎？"
-  },
-  {
-    speaker: "店長",
-    image: "./assets/store/2-1.webp",
-    text: "...你敢？"
+    image: "./assets/store/2-3.webp",
+    text: "你好，我是龍野翔。"
   },
   {
     speaker: "迷之聲",
-    image: "./assets/store/chapter-2-store-bg-room.webp",
+    image: "./assets/store/2-4.webp",
     text: "哥哥，這位新的工讀生嗎？"
   },
   {
-    speaker: "鹿鹿",
-    image: "./assets/store/2-1.webp",
-    text: "你好，我是鹿鹿，我們一起努力吧！"
+    speaker: "牧野紫",
+    image: "./assets/store/2-5.webp",
+    text: "你好，我是牧野紫，這是哥哥速水，我們一起努力吧！"
   },
   {
-    speaker: "店長",
-    image: "./assets/store/2-1.webp",
+    speaker: "速水",
+    image: "./assets/store/2-6.webp",
     text: "你身體不好，不要跑來這邊忙。"
   },
   {
-    speaker: "球球",
-    image: "./assets/store/2-1.webp",
-    text: "鹿鹿，我會努力的~"
+    speaker: "龍野翔",
+    image: "./assets/store/2-7.webp",
+    text: "牧野紫，我會努力的~"
   },
   {
-    speaker: "店長",
+    speaker: "速水",
     image: "./assets/store/2-1.webp",
     text: "滾。",
     choices: [
-      { text: "開始佈置", feedback: "店長把鑰匙丟到你手上。" },
+      { text: "開店準備開工", feedback: "店長把鑰匙丟到你手上。" },
       { text: "再看一次店內", feedback: "你繞著空店走了一圈，確認地板和牆邊都可以規劃動線。" }
     ]
   }
@@ -489,7 +484,7 @@ let storeState = null;
 let storeCustomerStates = [];
 let storeWalkTimer = null;
 let activeStoreCustomerIndex = 0;
-const storeLayoutVersion = 5;
+const storeLayoutVersion = 9;
 
 const storeDirections = [
   { id: "front", label: "正面" },
@@ -498,7 +493,23 @@ const storeDirections = [
   { id: "left", label: "左面" }
 ];
 
-const defaultStoreFixtures = [];
+const storeGridCols = 12;
+const storeGridRows = 8;
+const storeFloorCorners = {
+  back: { left: 49.6, top: 24.2 },
+  leftWall: { left: 4.2, top: 55.8 },
+  rightWall: { left: 98.6, top: 56.4 }
+};
+
+const defaultStoreFixtures = [
+  { id: "shelf", left: 26, top: 41, z: 64, direction: "front" },
+  { id: "fridge", left: 39, top: 29, z: 58, direction: "front" },
+  { id: "coffee", left: 64, top: 29, z: 66, direction: "front" },
+  { id: "freezer", left: 74, top: 51, z: 86, direction: "front" },
+  { id: "counter", left: 56, top: 79, z: 96, direction: "front" },
+  { id: "table", left: 28, top: 77, z: 90, direction: "front" },
+  { id: "magazine", left: 76, top: 83, z: 104, direction: "front" }
+];
 
 const aspirationPairs = [
   ["가", "카"],
@@ -508,38 +519,46 @@ const aspirationPairs = [
 ];
 
 const storeFurniture = [
-  { id: "counter", name: "收銀櫃台", korean: "계산대", mark: "계", image: "./assets/store/counter.webp?v=2", width: 62, cost: 40, max: 1 },
-  { id: "shelf", name: "零食貨架", korean: "진열대", mark: "진", image: "./assets/store/shelf.webp?v=2", width: 62, cost: 25 },
-  { id: "fridge", name: "飲料冰箱", korean: "냉장고", mark: "냉", image: "./assets/store/fridge.webp?v=2", width: 50, cost: 35 },
-  { id: "freezer", name: "冷凍櫃", korean: "냉동고", mark: "동", image: "./assets/store/freezer.webp?v=2", width: 64, cost: 45 },
-  { id: "table", name: "試吃桌", korean: "시식대", mark: "식", image: "./assets/store/table.webp?v=2", width: 52, cost: 30 },
-  { id: "plant", name: "盆栽", korean: "화분", mark: "화", image: "./assets/store/plant.webp?v=2", width: 38, cost: 18 },
-  { id: "coffee", name: "咖啡台", korean: "커피", mark: "커", image: "./assets/store/coffee-stand.webp?v=2", width: 52, cost: 30 },
-  { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/magazine-rack.webp?v=2", width: 50, cost: 22 }
+  { id: "counter", name: "收銀櫃台", korean: "계산대", mark: "계", image: "./assets/store/generated/split-v6/furniture/counter-front.png?v=1", width: 90, cost: 40, max: 1 },
+  { id: "shelf", name: "零食貨架", korean: "진열대", mark: "진", image: "./assets/store/generated/split-v6/furniture/shelf-front.png?v=1", width: 84, cost: 25 },
+  { id: "fridge", name: "飲料冰箱", korean: "냉장고", mark: "냉", image: "./assets/store/generated/split-v6/furniture/fridge-front.png?v=1", width: 76, cost: 35 },
+  { id: "freezer", name: "冷凍櫃", korean: "냉동고", mark: "동", image: "./assets/store/generated/split-v6/furniture/freezer-front.png?v=1", width: 96, cost: 45 },
+  { id: "table", name: "試吃桌", korean: "시식대", mark: "식", image: "./assets/store/generated/split-v6/furniture/table-front.png?v=1", width: 72, cost: 30 },
+  { id: "coffee", name: "咖啡台", korean: "커피", mark: "커", image: "./assets/store/generated/split-v6/furniture/coffee-front.png?v=1", width: 76, cost: 30 },
+  { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/generated/split-v6/furniture/magazine-front.png?v=1", width: 64, cost: 22 }
 ];
 
+storeFurniture.forEach((furniture) => {
+  furniture.images = Object.fromEntries(
+    storeDirections.map((direction) => [
+      direction.id,
+      `./assets/store/generated/split-v6/furniture/${furniture.id}-${direction.id}.png?v=1`
+    ])
+  );
+});
+
 const storeCustomerTypes = [
-  { name: "學生客人", image: "./assets/store/student.webp?v=2", className: "customer-student" },
-  { name: "上班族客人", image: "./assets/store/worker.webp?v=2", className: "customer-worker" },
-  { name: "旅客客人", image: "./assets/store/tourist.webp?v=2", className: "customer-tourist" },
-  { name: "長輩客人", image: "./assets/store/elder.webp?v=2", className: "customer-elder" },
-  { name: "小朋友客人", image: "./assets/store/child.webp?v=2", className: "customer-child" },
-  { name: "店員休假客人", image: "./assets/store/clerk.webp?v=2", className: "customer-clerk" },
-  { name: "粉色外套客人", image: "./assets/store/student.webp?v=2", className: "customer-pink" },
-  { name: "藍色制服客人", image: "./assets/store/worker.webp?v=2", className: "customer-blue" },
-  { name: "綠帽旅客", image: "./assets/store/tourist.webp?v=2", className: "customer-green" },
-  { name: "暖色小客人", image: "./assets/store/child.webp?v=2", className: "customer-warm" }
+  { name: "學生客人", image: "./assets/store/generated/split/customers/student.png", className: "customer-student" },
+  { name: "上班族客人", image: "./assets/store/generated/split/customers/worker.png", className: "customer-worker" },
+  { name: "旅客客人", image: "./assets/store/generated/split/customers/tourist.png", className: "customer-tourist" },
+  { name: "長輩客人", image: "./assets/store/generated/split/customers/elder.png", className: "customer-elder" },
+  { name: "小朋友客人", image: "./assets/store/generated/split/customers/child.png", className: "customer-child" },
+  { name: "運動少年", image: "./assets/store/generated/split/customers/sporty.png", className: "customer-sporty" },
+  { name: "時尚客人", image: "./assets/store/generated/split/customers/shopper.png", className: "customer-shopper" },
+  { name: "外送客人", image: "./assets/store/generated/split/customers/delivery.png", className: "customer-delivery" },
+  { name: "親子客人", image: "./assets/store/generated/split/customers/parent.png", className: "customer-parent" },
+  { name: "深夜客人", image: "./assets/store/generated/split/customers/sleepy.png", className: "customer-sleepy" }
 ];
 
 const storeCustomerSpots = [
-  { left: 40, top: 71 },
-  { left: 52, top: 72 },
-  { left: 64, top: 73 },
-  { left: 35, top: 82 },
-  { left: 48, top: 84 },
-  { left: 61, top: 85 },
-  { left: 74, top: 86 },
-  { left: 28, top: 76 }
+  { left: 47, top: 56 },
+  { left: 55, top: 58 },
+  { left: 41, top: 61 },
+  { left: 49, top: 66 },
+  { left: 60, top: 65 },
+  { left: 38, top: 70 },
+  { left: 47, top: 72 },
+  { left: 58, top: 73 }
 ];
 
 const storeOrders = [
@@ -686,12 +705,18 @@ function placedFurnitureCount(furnitureId) {
 }
 
 function storeCellPosition(cell) {
-  const x = cell % 8;
-  const y = Math.floor(cell / 8);
+  const x = cell % storeGridCols;
+  const y = Math.floor(cell / storeGridCols);
+  const u = storeGridCols <= 1 ? 0 : x / (storeGridCols - 1);
+  const v = storeGridRows <= 1 ? 0 : y / (storeGridRows - 1);
+  const origin = storeFloorCorners.back;
+  const rightAxis = storeFloorCorners.rightWall;
+  const leftAxis = storeFloorCorners.leftWall;
+
   return {
-    left: 47 + (x - y) * 5.8,
-    top: 34 + (x + y) * 4.25,
-    z: 30 + x + y
+    left: origin.left + (rightAxis.left - origin.left) * u + (leftAxis.left - origin.left) * v,
+    top: origin.top + (rightAxis.top - origin.top) * u + (leftAxis.top - origin.top) * v,
+    z: 30 + y * storeGridCols + x
   };
 }
 
@@ -809,6 +834,12 @@ function ensureStoreCustomers() {
       customer.top = nextSpot.top;
       changed = true;
     }
+    const spot = storeCustomerSpots[customer.spotIndex] || storeCustomerSpots[0];
+    if (customer.left !== spot.left || customer.top !== spot.top) {
+      customer.left = spot.left;
+      customer.top = spot.top;
+      changed = true;
+    }
     occupiedSpots.add(customer.spotIndex);
   });
   if (activeStoreCustomerIndex >= storeCustomerStates.length) {
@@ -908,7 +939,7 @@ function renderStorePalette() {
       selectedDirection = fixture?.direction || selectedDirection;
       storeStatusText.textContent = storeEditMode
         ? `已選擇 ${furniture.name}。選面向後點地板放置。`
-        : `${furniture.name} 已在店裡。按「調整佈置」可以移動位置和面向。`;
+        : `${furniture.name} 已固定在店裡。`;
       renderStoreGame();
     });
     storePalette.appendChild(button);
@@ -918,9 +949,10 @@ function renderStorePalette() {
 function renderStoreBoard() {
   storeBoard.innerHTML = "";
   storeBoard.classList.toggle("is-editing", storeEditMode);
+  storeBoard.classList.toggle("has-baked-furniture", !storeEditMode);
 
   if (storeEditMode) {
-    for (let cell = 0; cell < 48; cell += 1) {
+    for (let cell = 0; cell < storeGridCols * storeGridRows; cell += 1) {
       const position = storeCellPosition(cell);
       const tile = document.createElement("button");
       tile.type = "button";
@@ -936,10 +968,14 @@ function renderStoreBoard() {
 
   storeState.fixtures.forEach((fixture) => {
     const furniture = storeFurniture.find((item) => item.id === fixture.id);
-    const position = storeCellPosition(fixture.cell);
+    const position = Number.isFinite(fixture.left) && Number.isFinite(fixture.top)
+      ? { left: fixture.left, top: fixture.top, z: fixture.z || 60 }
+      : storeCellPosition(fixture.cell);
+    const fixtureDirection = fixture.direction || "front";
+    const fixtureImage = furniture.images?.[fixtureDirection] || furniture.image;
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `store-fixture item-${fixture.id} direction-${fixture.direction || "front"}`;
+    button.className = `store-fixture item-${fixture.id} direction-${fixtureDirection}`;
     if (fixture.id === selectedFurnitureId && storeEditMode) {
       button.classList.add("is-selected");
     }
@@ -950,7 +986,7 @@ function renderStoreBoard() {
     button.setAttribute("aria-label", `${furniture.name} ${furniture.korean}`);
 
     button.innerHTML = `
-      <img class="store-object store-object-${furniture.id}" src="${furniture.image}" alt="">
+      <img class="store-object store-object-${furniture.id}" src="${fixtureImage}" alt="">
     `;
 
     button.addEventListener("click", () => handleStoreFixtureClick(furniture.id));
@@ -1021,7 +1057,7 @@ function renderStoreOrder() {
   const order = currentStoreOrder();
   storeOrderPanel.hidden = storeEditMode || storeState.fixtures.length === 0;
   storeOrderText.textContent = storeState.reputation >= 5
-    ? "第二章完成。可以回世界地圖，或繼續調整店面。"
+    ? "第二章完成。可以回世界地圖，或繼續服務客人。"
     : `目前服務第 ${activeStoreCustomerIndex + 1} 位客人。聽韓文後，點選店內對應家具。`;
   storeServeBtn.hidden = true;
 }
@@ -1029,7 +1065,10 @@ function renderStoreOrder() {
 function renderStoreGame() {
   renderStoreStats();
   renderStoreDirectionControls();
-  storePalette.hidden = !storeEditMode;
+  storeEditLayoutBtn.hidden = true;
+  storeSaveLayoutBtn.hidden = true;
+  storeDirectionControls.hidden = true;
+  storePalette.hidden = true;
   renderStorePalette();
   renderStoreBoard();
   renderStoreOrder();
@@ -1074,30 +1113,18 @@ function placeSelectedFurniture(cell) {
 }
 
 function enterStoreLayoutEdit() {
-  stopStoreCustomerWalk();
-  closeStoreManagerDialog();
-  storeEditMode = true;
-  storeEditLayoutBtn.hidden = true;
-  storeSaveLayoutBtn.hidden = false;
-  storeDirectionControls.hidden = false;
-  storeServeBtn.disabled = true;
-  storeStatusText.textContent = "佈置模式：選家具、選面向，再點地板放置。按「確定存檔」完成。";
+  storeEditMode = false;
+  storeStatusText.textContent = "店內家具已固定配置，直接服務客人就可以。";
   renderStoreGame();
 }
 
 function saveStoreLayout() {
-  if (storeState.fixtures.length === 0) {
-    storeStatusText.textContent = "店裡還沒有家具。至少先放一件家具，再確定存檔。";
-    return;
-  }
-
   storeEditMode = false;
-  storeEditLayoutBtn.hidden = false;
   storeSaveLayoutBtn.hidden = true;
   storeDirectionControls.hidden = true;
   storeServeBtn.disabled = false;
   saveStoreState();
-  storeStatusText.textContent = "佈置已存檔。現在家具會固定在這個位置。";
+  storeStatusText.textContent = "店內家具已固定配置。";
   renderStoreGame();
   startStoreCustomerWalk();
 }
@@ -1180,10 +1207,11 @@ function enterStoreGameplay(chapter) {
   activeSubchapterId = "";
   activeChapterIndex = chapters.indexOf(chapter);
   loadStoreState();
-  storeEditMode = storeState.fixtures.length === 0;
-  storeEditLayoutBtn.hidden = storeEditMode;
-  storeSaveLayoutBtn.hidden = !storeEditMode;
-  storeDirectionControls.hidden = !storeEditMode;
+  storeEditMode = false;
+  storeState.fixtures = defaultStoreFixtures.map((fixture) => ({ ...fixture }));
+  storeEditLayoutBtn.hidden = true;
+  storeSaveLayoutBtn.hidden = true;
+  storeDirectionControls.hidden = true;
   storeServeBtn.hidden = true;
   document.body.classList.add("store-active");
   document.body.classList.remove("map-active", "submap-active", "quiz-active", "prologue-active");
@@ -1193,13 +1221,9 @@ function enterStoreGameplay(chapter) {
   closeStoreManagerDialog();
   renderStoreGame();
   startStoreCustomerWalk();
-  if (storeEditMode) {
-    storeStatusText.textContent = "空店開張前，先選家具、選面向，再點地板放置。完成後按「確定存檔」。";
-  } else {
-    storeStatusText.textContent = storeState.reputation >= 5
-      ? "第二章已完成。可以按「調整佈置」重新整理店面。"
-      : "按「調整佈置」可以重新擺家具和面向；存檔後就用那個店面營業。";
-  }
+  storeStatusText.textContent = storeState.reputation >= 5
+    ? "第二章已完成。可以回世界地圖，或繼續服務客人。"
+    : "店內家具已固定配置。點選客人後，再點店內對應家具完成訂單。";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
