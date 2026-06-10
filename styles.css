@@ -1623,6 +1623,33 @@ body.map-active .chapter-map h2 {
   cursor: pointer;
 }
 
+.store-clerk {
+  position: absolute;
+  width: 35px;
+  height: 61px;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  transition: left 0.55s ease, top 0.55s ease;
+}
+
+.store-clerk img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 5px rgba(61, 41, 28, 0.24));
+}
+
+.store-clerk::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  bottom: 1px;
+  width: 17px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(61, 41, 28, 0.2);
+}
+
 .store-customer img {
   width: 100%;
   height: 100%;
@@ -1683,52 +1710,37 @@ body.map-active .chapter-map h2 {
 
 .store-speech {
   position: absolute;
-  left: 50%;
-  top: -46px;
+  right: -4px;
+  top: -9px;
   z-index: 110;
-  min-width: 74px;
-  padding: 8px 10px;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  padding: 0;
   border: 2px solid #244b50;
-  border-radius: 8px;
-  background: #fffdf8;
+  border-radius: 50%;
+  background: #ffd85c;
   color: #244b50;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 1000;
   text-align: center;
-  transform: translateX(-50%);
-  box-shadow: 0 5px 0 rgba(36, 75, 80, 0.18);
+  line-height: 16px;
+  transform: none;
+  box-shadow: 0 3px 0 rgba(36, 75, 80, 0.18);
   pointer-events: auto;
 }
 
 .store-speech:active {
-  transform: translate(-50%, 2px);
-  box-shadow: 0 3px 0 rgba(36, 75, 80, 0.18);
-}
-
-.store-speech span,
-.store-speech small {
-  display: block;
-  line-height: 1.15;
-}
-
-.store-speech small {
-  margin-top: 3px;
-  color: #2f8b7b;
-  font-size: 12px;
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(36, 75, 80, 0.18);
 }
 
 .store-speech::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  width: 16px;
-  height: 16px;
-  transform: rotate(45deg);
-  margin-left: -8px;
-  border-right: 2px solid #244b50;
-  border-bottom: 2px solid #244b50;
-  background: #fffdf8;
+  content: none;
+}
+
+.store-customer:not(.is-active) .store-speech {
+  display: none;
 }
 
 .store-palette {
@@ -1839,6 +1851,32 @@ body.map-active .chapter-map h2 {
 
 .store-order-text {
   font-size: 17px;
+}
+
+.store-demand-card {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.store-demand-label {
+  color: #2f6f83;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.store-demand-word {
+  min-width: 74px;
+  padding: 6px 10px;
+  border: 2px solid #244b50;
+  border-radius: 8px;
+  background: #fff6cf;
+  color: #244b50;
+  font-size: 22px;
+  font-weight: 1000;
+  text-align: center;
+  box-shadow: 0 4px 0 rgba(36, 75, 80, 0.14);
 }
 
 .store-status-text {

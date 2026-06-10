@@ -483,8 +483,10 @@ let storeEditMode = false;
 let storeState = null;
 let storeCustomerStates = [];
 let storeWalkTimer = null;
+let storeClerkMotionTimer = null;
 let activeStoreCustomerIndex = 0;
 const storeLayoutVersion = 9;
+const storeReputationGoal = 50;
 
 const storeDirections = [
   { id: "front", label: "正面" },
@@ -528,6 +530,13 @@ const storeFurniture = [
   { id: "magazine", name: "雜誌架", korean: "잡지", mark: "잡", image: "./assets/store/generated/split-v6/furniture/magazine-front.png?v=1", width: 64, cost: 22 }
 ];
 
+const storeClerk = {
+  image: "./assets/store/clerk-map-sprite.png?v=1",
+  alt: "收銀店員"
+};
+
+let storeClerkPosition = null;
+
 storeFurniture.forEach((furniture) => {
   furniture.images = Object.fromEntries(
     storeDirections.map((direction) => [
@@ -551,14 +560,14 @@ const storeCustomerTypes = [
 ];
 
 const storeCustomerSpots = [
-  { left: 47, top: 56 },
-  { left: 55, top: 58 },
-  { left: 41, top: 61 },
-  { left: 49, top: 66 },
-  { left: 60, top: 65 },
-  { left: 38, top: 70 },
-  { left: 47, top: 72 },
-  { left: 58, top: 73 }
+  { left: 42, top: 58 },
+  { left: 34, top: 60 },
+  { left: 52, top: 62 },
+  { left: 63, top: 61 },
+  { left: 29, top: 66 },
+  { left: 43, top: 70 },
+  { left: 56, top: 70 },
+  { left: 68, top: 71 }
 ];
 
 const storeOrders = [
@@ -776,13 +785,75 @@ function randomStoreDirection(from, to) {
   return dy >= 0 ? "front" : "back";
 }
 
+function storePointDistance(a, b) {
+  const dx = a.left - b.left;
+  const dy = (a.top - b.top) * 1.35;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function storeCustomerAvoidancePoints() {
+  const points = [];
+  storeState.fixtures.forEach((fixture) => {
+    const position = storeFixturePosition(fixture);
+    const radiusByFurniture = {
+      shelf: 8.5,
+      fridge: 8,
+      coffee: 8,
+      freezer: 9.5,
+      counter: 11,
+      table: 8.5,
+      magazine: 8
+    };
+    points.push({
+      left: position.left,
+      top: position.top,
+      radius: radiusByFurniture[fixture.id] || 8
+    });
+  });
+
+  points.push({ ...storeClerkHomePosition(), radius: 8 });
+  storeFurniture.forEach((furniture) => {
+    points.push({ ...storeClerkServicePosition(furniture.id), radius: 6.5 });
+  });
+
+  return points;
+}
+
+function isStoreCustomerSpotSafe(spotIndex, reservedSpots = new Set()) {
+  if (reservedSpots.has(spotIndex)) {
+    return false;
+  }
+
+  const spot = storeCustomerSpots[spotIndex];
+  if (!spot) {
+    return false;
+  }
+
+  for (const reservedSpotIndex of reservedSpots) {
+    const reservedSpot = storeCustomerSpots[reservedSpotIndex];
+    if (reservedSpot && storePointDistance(spot, reservedSpot) < 9.5) {
+      return false;
+    }
+  }
+
+  return storeCustomerAvoidancePoints().every((point) => storePointDistance(spot, point) >= point.radius);
+}
+
 function findOpenCustomerSpot(preferredIndex = 0, reservedSpots = new Set()) {
+  for (let offset = 0; offset < storeCustomerSpots.length; offset += 1) {
+    const spotIndex = (preferredIndex + offset) % storeCustomerSpots.length;
+    if (isStoreCustomerSpotSafe(spotIndex, reservedSpots)) {
+      return spotIndex;
+    }
+  }
+
   for (let offset = 0; offset < storeCustomerSpots.length; offset += 1) {
     const spotIndex = (preferredIndex + offset) % storeCustomerSpots.length;
     if (!reservedSpots.has(spotIndex)) {
       return spotIndex;
     }
   }
+
   return preferredIndex % storeCustomerSpots.length;
 }
 
@@ -826,7 +897,11 @@ function ensureStoreCustomers() {
   });
   const occupiedSpots = new Set();
   storeCustomerStates.forEach((customer, index) => {
-    if (!Number.isInteger(customer.spotIndex) || occupiedSpots.has(customer.spotIndex)) {
+    if (
+      !Number.isInteger(customer.spotIndex) ||
+      occupiedSpots.has(customer.spotIndex) ||
+      !isStoreCustomerSpotSafe(customer.spotIndex, occupiedSpots)
+    ) {
       const nextSpotIndex = findOpenCustomerSpot(index, occupiedSpots);
       const nextSpot = storeCustomerSpots[nextSpotIndex];
       customer.spotIndex = nextSpotIndex;
@@ -865,7 +940,7 @@ function moveStoreCustomers() {
     const currentSpot = storeCustomerSpots[customer.spotIndex] || storeCustomerSpots[0];
     reservedSpots.delete(customer.spotIndex);
     let nextIndex = Math.floor(Math.random() * storeCustomerSpots.length);
-    if (nextIndex === customer.spotIndex || reservedSpots.has(nextIndex)) {
+    if (nextIndex === customer.spotIndex || !isStoreCustomerSpotSafe(nextIndex, reservedSpots)) {
       nextIndex = findOpenCustomerSpot(nextIndex + 1 + index, reservedSpots);
     }
     reservedSpots.add(nextIndex);
@@ -994,8 +1069,71 @@ function renderStoreBoard() {
   });
 
   if (!storeEditMode && storeState.fixtures.length > 0) {
+    renderStoreClerk();
     renderStoreCustomers();
   }
+}
+
+function renderStoreClerk() {
+  const counter = storeState.fixtures.find((fixture) => fixture.id === "counter");
+  if (!counter) {
+    return;
+  }
+
+  if (!storeClerkPosition) {
+    storeClerkPosition = storeClerkHomePosition();
+  }
+
+  const position = storeClerkPosition;
+  const clerk = document.createElement("div");
+  clerk.className = "store-clerk";
+  clerk.style.left = `${position.left}%`;
+  clerk.style.top = `${position.top}%`;
+  clerk.style.zIndex = `${position.z}`;
+  clerk.innerHTML = `<img src="${storeClerk.image}" alt="${storeClerk.alt}">`;
+  storeBoard.appendChild(clerk);
+}
+
+function storeFixturePosition(fixture) {
+  return Number.isFinite(fixture.left) && Number.isFinite(fixture.top)
+    ? { left: fixture.left, top: fixture.top, z: fixture.z || 60 }
+    : storeCellPosition(fixture.cell);
+}
+
+function storeClerkHomePosition() {
+  const counter = storeState.fixtures.find((fixture) => fixture.id === "counter");
+  if (!counter) {
+    return { left: 59.5, top: 65.5, z: 114 };
+  }
+  const position = storeFixturePosition(counter);
+  return {
+    left: position.left + 3.5,
+    top: position.top - 13.5,
+    z: position.z + 18
+  };
+}
+
+function storeClerkServicePosition(furnitureId) {
+  const fixture = storeState.fixtures.find((item) => item.id === furnitureId);
+  if (!fixture) {
+    return storeClerkHomePosition();
+  }
+  const position = storeFixturePosition(fixture);
+  const offsets = {
+    shelf: { left: 4.5, top: 4.5 },
+    fridge: { left: 4, top: 5 },
+    coffee: { left: -4, top: 5 },
+    freezer: { left: -5, top: 5 },
+    table: { left: 3.5, top: 3 },
+    magazine: { left: -4, top: 2 },
+    counter: { left: 3.5, top: -13.5 }
+  };
+  const offset = offsets[furnitureId] || { left: 0, top: 4 };
+  return {
+    left: position.left + offset.left,
+    top: position.top + offset.top,
+    z: position.z + 22
+  };
 }
 
 function renderStoreCustomers() {
@@ -1022,7 +1160,7 @@ function renderStoreCustomers() {
     const bubble = document.createElement("button");
     bubble.type = "button";
     bubble.className = "store-speech";
-    bubble.innerHTML = `<span>${order.word}</span>`;
+    bubble.textContent = index === activeStoreCustomerIndex ? "!" : "";
     bubble.setAttribute("aria-label", `選擇並播放 ${order.word} 的發音`);
     bubble.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -1049,16 +1187,21 @@ function selectStoreCustomer(customerIndex, shouldSpeak = false) {
   if (shouldSpeak) {
     speakKorean(order.word);
   }
-  storeStatusText.textContent = `正在服務第 ${activeStoreCustomerIndex + 1} 位客人：${order.word}`;
+  storeStatusText.textContent = "需求小牌已更新。點選對應家具完成訂單。";
   renderStoreGame();
 }
 
 function renderStoreOrder() {
   const order = currentStoreOrder();
   storeOrderPanel.hidden = storeEditMode || storeState.fixtures.length === 0;
-  storeOrderText.textContent = storeState.reputation >= 5
+  storeOrderText.innerHTML = storeState.reputation >= storeReputationGoal
     ? "第二章完成。可以回世界地圖，或繼續服務客人。"
-    : `目前服務第 ${activeStoreCustomerIndex + 1} 位客人。聽韓文後，點選店內對應家具。`;
+    : `
+      <span class="store-demand-card">
+        <span class="store-demand-label">第 ${activeStoreCustomerIndex + 1} 位客人需求</span>
+        <span class="store-demand-word">${order.word}</span>
+      </span>
+    `;
   storeServeBtn.hidden = true;
 }
 
@@ -1074,6 +1217,46 @@ function renderStoreGame() {
   renderStoreOrder();
 }
 
+function clearStoreClerkMotion() {
+  if (storeClerkMotionTimer) {
+    window.clearTimeout(storeClerkMotionTimer);
+    storeClerkMotionTimer = null;
+  }
+}
+
+function moveStoreClerkTo(position) {
+  storeClerkPosition = position;
+  const clerk = storeBoard.querySelector(".store-clerk");
+  if (!clerk) {
+    renderStoreBoard();
+    return;
+  }
+  clerk.style.left = `${position.left}%`;
+  clerk.style.top = `${position.top}%`;
+  clerk.style.zIndex = `${position.z}`;
+}
+
+function returnStoreClerkHome(delay = 760) {
+  clearStoreClerkMotion();
+  storeClerkMotionTimer = window.setTimeout(() => {
+    storeClerkMotionTimer = null;
+    if (!document.body.classList.contains("store-active") || storeEditMode) {
+      return;
+    }
+    moveStoreClerkTo(storeClerkHomePosition());
+  }, delay);
+}
+
+function visitStoreFurniture(furnitureId, afterArrive) {
+  clearStoreClerkMotion();
+  moveStoreClerkTo(storeClerkServicePosition(furnitureId));
+  storeClerkMotionTimer = window.setTimeout(() => {
+    storeClerkMotionTimer = null;
+    afterArrive();
+    returnStoreClerkHome();
+  }, 650);
+}
+
 function handleStoreFixtureClick(furnitureId) {
   const furniture = storeFurniture.find((item) => item.id === furnitureId);
   selectedFurnitureId = furnitureId;
@@ -1087,7 +1270,7 @@ function handleStoreFixtureClick(furnitureId) {
     return;
   }
 
-  handleStoreOrderFurnitureClick(furnitureId);
+  visitStoreFurniture(furnitureId, () => handleStoreOrderFurnitureClick(furnitureId));
 }
 
 function placeSelectedFurniture(cell) {
@@ -1148,13 +1331,13 @@ function closeStoreManagerDialog() {
 
 function completeStoreOrder(order) {
   closeStoreManagerDialog();
-  const shouldCompleteChapter = storeState.reputation < 5;
+  const shouldCompleteChapter = storeState.reputation < storeReputationGoal;
   storeState.money += order.reward;
   storeState.reputation += 1;
   storeState.day += 1;
   storeState.orderIndex += 1;
 
-  if (shouldCompleteChapter && storeState.reputation >= 5) {
+  if (shouldCompleteChapter && storeState.reputation >= storeReputationGoal) {
     completeChapter(2);
     storeStatusText.textContent = "第二章完成！龜仙CU便利商店已經能穩定營業。";
   } else {
@@ -1186,11 +1369,13 @@ function handleStoreOrderFurnitureClick(furnitureId) {
 }
 
 function serveStoreCustomer() {
-  handleStoreOrderFurnitureClick(currentStoreOrder().required);
+  const furnitureId = currentStoreOrder().required;
+  visitStoreFurniture(furnitureId, () => handleStoreOrderFurnitureClick(furnitureId));
 }
 
 function startStorePrologue(chapter) {
   stopStoreCustomerWalk();
+  clearStoreClerkMotion();
   activeSubchapterId = "";
   activeChapterIndex = chapters.indexOf(chapter);
   prologue = chapter.prologue;
@@ -1207,6 +1392,8 @@ function enterStoreGameplay(chapter) {
   activeSubchapterId = "";
   activeChapterIndex = chapters.indexOf(chapter);
   loadStoreState();
+  clearStoreClerkMotion();
+  storeClerkPosition = null;
   storeEditMode = false;
   storeState.fixtures = defaultStoreFixtures.map((fixture) => ({ ...fixture }));
   storeEditLayoutBtn.hidden = true;
@@ -1221,7 +1408,7 @@ function enterStoreGameplay(chapter) {
   closeStoreManagerDialog();
   renderStoreGame();
   startStoreCustomerWalk();
-  storeStatusText.textContent = storeState.reputation >= 5
+  storeStatusText.textContent = storeState.reputation >= storeReputationGoal
     ? "第二章已完成。可以回世界地圖，或繼續服務客人。"
     : "店內家具已固定配置。點選客人後，再點店內對應家具完成訂單。";
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1309,6 +1496,7 @@ function highestUnlockedChapter() {
 
 function openChapterMap() {
   stopStoreCustomerWalk();
+  clearStoreClerkMotion();
   renderChapterMap();
   document.body.classList.add("map-active");
   document.body.classList.remove("quiz-active", "prologue-active", "store-active");
