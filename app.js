@@ -483,7 +483,9 @@ let storeEditMode = false;
 let storeState = null;
 let storeCustomerStates = [];
 let storeWalkTimer = null;
+let storeCustomerWalkOrigins = new Map();
 let storeClerkMotionTimer = null;
+let storeClerkArrivalTimer = null;
 let activeStoreCustomerIndex = 0;
 const storeLayoutVersion = 9;
 const storeReputationGoal = 50;
@@ -531,11 +533,17 @@ const storeFurniture = [
 ];
 
 const storeClerk = {
-  image: "./assets/store/clerk-map-sprite.png?v=1",
+  images: {
+    front: "./assets/store/clerk-map-front.png?v=3",
+    back: "./assets/store/clerk-map-back.png?v=3",
+    left: "./assets/store/clerk-map-left.png?v=3",
+    right: "./assets/store/clerk-map-left.png?v=3"
+  },
   alt: "收銀店員"
 };
 
 let storeClerkPosition = null;
+let storeClerkDirection = "front";
 
 storeFurniture.forEach((furniture) => {
   furniture.images = Object.fromEntries(
@@ -559,15 +567,36 @@ const storeCustomerTypes = [
   { name: "深夜客人", image: "./assets/store/generated/split/customers/sleepy.png", className: "customer-sleepy" }
 ];
 
+storeCustomerTypes.forEach((customerType) => {
+  const imageBase = customerType.image.replace(/\.png$/, "");
+  customerType.images = {
+    front: `${imageBase}-front.png?v=3`,
+    back: `${imageBase}-back.png?v=3`,
+    left: `${imageBase}-left.png?v=3`,
+    right: `${imageBase}-left.png?v=3`
+  };
+});
+
 const storeCustomerSpots = [
-  { left: 42, top: 58 },
-  { left: 34, top: 60 },
-  { left: 52, top: 62 },
-  { left: 63, top: 61 },
-  { left: 29, top: 66 },
-  { left: 43, top: 70 },
-  { left: 56, top: 70 },
-  { left: 68, top: 71 }
+  { left: 24, top: 55 },
+  { left: 36, top: 55 },
+  { left: 47, top: 55 },
+  { left: 24, top: 68 },
+  { left: 36, top: 69 },
+  { left: 47, top: 69 },
+  { left: 76, top: 60 },
+  { left: 76, top: 72 }
+];
+
+const storeCustomerPaths = [
+  [1, 3],
+  [0, 2, 4],
+  [1, 5],
+  [0, 4],
+  [1, 3, 5],
+  [2, 4],
+  [7],
+  [6]
 ];
 
 const storeOrders = [
@@ -785,6 +814,19 @@ function randomStoreDirection(from, to) {
   return dy >= 0 ? "front" : "back";
 }
 
+function storeClerkMovementDirection(from, to) {
+  if (!from || !to) {
+    return "front";
+  }
+
+  const dx = to.left - from.left;
+  const dy = to.top - from.top;
+  if (Math.abs(dx) >= 3) {
+    return dx >= 0 ? "right" : "left";
+  }
+  return dy >= 0 ? "front" : "back";
+}
+
 function storePointDistance(a, b) {
   const dx = a.left - b.left;
   const dy = (a.top - b.top) * 1.35;
@@ -895,6 +937,18 @@ function ensureStoreCustomers() {
       changed = true;
     }
   });
+  if (
+    storeCustomerStates.length >= 6 &&
+    !storeCustomerStates.some((customer) => customer.spotIndex >= 6)
+  ) {
+    const rightAisleSpot = storeCustomerSpots[6];
+    const customer = storeCustomerStates[storeCustomerStates.length - 1];
+    customer.spotIndex = 6;
+    customer.left = rightAisleSpot.left;
+    customer.top = rightAisleSpot.top;
+    customer.direction = "front";
+    changed = true;
+  }
   const occupiedSpots = new Set();
   storeCustomerStates.forEach((customer, index) => {
     if (
@@ -931,20 +985,24 @@ function moveStoreCustomers() {
   }
 
   ensureStoreCustomers();
+  storeCustomerWalkOrigins = new Map();
   const reservedSpots = new Set(storeCustomerStates.map((customer) => customer.spotIndex));
   storeCustomerStates = storeCustomerStates.map((customer, index) => {
-    if (index === activeStoreCustomerIndex) {
-      return customer;
-    }
-
     const currentSpot = storeCustomerSpots[customer.spotIndex] || storeCustomerSpots[0];
     reservedSpots.delete(customer.spotIndex);
-    let nextIndex = Math.floor(Math.random() * storeCustomerSpots.length);
-    if (nextIndex === customer.spotIndex || !isStoreCustomerSpotSafe(nextIndex, reservedSpots)) {
-      nextIndex = findOpenCustomerSpot(nextIndex + 1 + index, reservedSpots);
-    }
+    const nearbySpots = (storeCustomerPaths[customer.spotIndex] || [])
+      .filter((spotIndex) => isStoreCustomerSpotSafe(spotIndex, reservedSpots));
+    const nextIndex = nearbySpots.length > 0
+      ? nearbySpots[Math.floor(Math.random() * nearbySpots.length)]
+      : customer.spotIndex;
     reservedSpots.add(nextIndex);
     const nextSpot = storeCustomerSpots[nextIndex];
+    if (nextIndex !== customer.spotIndex) {
+      storeCustomerWalkOrigins.set(index, {
+        left: customer.left,
+        top: customer.top
+      });
+    }
     return {
       ...customer,
       spotIndex: nextIndex,
@@ -965,7 +1023,7 @@ function startStoreCustomerWalk() {
   }
 
   ensureStoreCustomers();
-  storeWalkTimer = window.setInterval(moveStoreCustomers, 2800);
+  storeWalkTimer = window.setInterval(moveStoreCustomers, 5200);
 }
 
 function stopStoreCustomerWalk() {
@@ -1086,11 +1144,11 @@ function renderStoreClerk() {
 
   const position = storeClerkPosition;
   const clerk = document.createElement("div");
-  clerk.className = "store-clerk";
+  clerk.className = `store-clerk direction-${storeClerkDirection}`;
   clerk.style.left = `${position.left}%`;
   clerk.style.top = `${position.top}%`;
   clerk.style.zIndex = `${position.z}`;
-  clerk.innerHTML = `<img src="${storeClerk.image}" alt="${storeClerk.alt}">`;
+  clerk.innerHTML = `<img src="${storeClerk.images[storeClerkDirection]}" alt="${storeClerk.alt}">`;
   storeBoard.appendChild(clerk);
 }
 
@@ -1108,7 +1166,7 @@ function storeClerkHomePosition() {
   const position = storeFixturePosition(counter);
   return {
     left: position.left + 3.5,
-    top: position.top - 13.5,
+    top: position.top - 18,
     z: position.z + 18
   };
 }
@@ -1126,7 +1184,7 @@ function storeClerkServicePosition(furnitureId) {
     freezer: { left: -5, top: 5 },
     table: { left: 3.5, top: 3 },
     magazine: { left: -4, top: 2 },
-    counter: { left: 3.5, top: -13.5 }
+    counter: { left: 3.5, top: -18 }
   };
   const offset = offsets[furnitureId] || { left: 0, top: 4 };
   return {
@@ -1138,23 +1196,30 @@ function storeClerkServicePosition(furnitureId) {
 
 function renderStoreCustomers() {
   ensureStoreCustomers();
+  const walkOrigins = storeCustomerWalkOrigins;
+  storeCustomerWalkOrigins = new Map();
 
   storeCustomerStates.forEach((customer, index) => {
     const order = currentStoreOrder(index);
     const customerType = storeCustomerTypes[customer.typeIndex % storeCustomerTypes.length];
+    const customerDirection = customer.direction || "front";
     const person = document.createElement("div");
-    person.className = `store-customer ${customerType.className} direction-${customer.direction || "front"}`;
+    person.className = `store-customer ${customerType.className} direction-${customerDirection}`;
     if (index === activeStoreCustomerIndex) {
       person.classList.add("is-active");
     }
-    person.style.left = `${customer.left}%`;
-    person.style.top = `${customer.top}%`;
-    person.style.zIndex = `${80 + index}`;
+    const walkOrigin = walkOrigins.get(index);
+    person.style.left = `${walkOrigin?.left ?? customer.left}%`;
+    person.style.top = `${walkOrigin?.top ?? customer.top}%`;
+    person.style.zIndex = `${35 + Math.round(customer.top)}`;
+    if (walkOrigin) {
+      person.classList.add("is-walking");
+    }
     person.setAttribute("role", "button");
     person.setAttribute("tabindex", "0");
     person.setAttribute("aria-label", `選擇${customerType.name}，需求 ${order.word}`);
     person.innerHTML = `
-      <img src="${customerType.image}" alt="">
+      <img src="${customerType.images[customerDirection]}" alt="">
     `;
 
     const bubble = document.createElement("button");
@@ -1177,6 +1242,18 @@ function renderStoreCustomers() {
     });
 
     storeBoard.appendChild(person);
+
+    if (walkOrigin) {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          person.style.left = `${customer.left}%`;
+          person.style.top = `${customer.top}%`;
+        });
+      });
+      person.addEventListener("transitionend", () => {
+        person.classList.remove("is-walking");
+      }, { once: true });
+    }
   });
 }
 
@@ -1189,6 +1266,31 @@ function selectStoreCustomer(customerIndex, shouldSpeak = false) {
   }
   storeStatusText.textContent = "需求小牌已更新。點選對應家具完成訂單。";
   renderStoreGame();
+}
+
+function selectStoreCustomerAtPoint(event) {
+  if (storeEditMode || event.button > 0) {
+    return;
+  }
+
+  const customers = [...storeBoard.querySelectorAll(".store-customer")];
+  const customerIndex = customers.findIndex((customer) => {
+    const rect = customer.getBoundingClientRect();
+    return (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    );
+  });
+
+  if (customerIndex < 0) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+  selectStoreCustomer(customerIndex, true);
 }
 
 function renderStoreOrder() {
@@ -1222,9 +1324,27 @@ function clearStoreClerkMotion() {
     window.clearTimeout(storeClerkMotionTimer);
     storeClerkMotionTimer = null;
   }
+  if (storeClerkArrivalTimer) {
+    window.clearTimeout(storeClerkArrivalTimer);
+    storeClerkArrivalTimer = null;
+  }
 }
 
-function moveStoreClerkTo(position) {
+function setStoreClerkDirection(clerk, direction) {
+  storeClerkDirection = direction;
+  clerk.className = `store-clerk direction-${direction}`;
+  const clerkImage = clerk.querySelector("img");
+  if (clerkImage) {
+    clerkImage.src = storeClerk.images[direction];
+  }
+}
+
+function moveStoreClerkTo(position, arrivalDirection = null) {
+  if (storeClerkArrivalTimer) {
+    window.clearTimeout(storeClerkArrivalTimer);
+    storeClerkArrivalTimer = null;
+  }
+  storeClerkDirection = storeClerkMovementDirection(storeClerkPosition || position, position);
   storeClerkPosition = position;
   const clerk = storeBoard.querySelector(".store-clerk");
   if (!clerk) {
@@ -1234,16 +1354,38 @@ function moveStoreClerkTo(position) {
   clerk.style.left = `${position.left}%`;
   clerk.style.top = `${position.top}%`;
   clerk.style.zIndex = `${position.z}`;
+  clerk.className = `store-clerk direction-${storeClerkDirection} is-walking`;
+  const clerkImage = clerk.querySelector("img");
+  if (clerkImage) {
+    clerkImage.src = storeClerk.images[storeClerkDirection];
+  }
+  const finishStoreClerkMove = () => {
+    if (storeClerkArrivalTimer) {
+      window.clearTimeout(storeClerkArrivalTimer);
+      storeClerkArrivalTimer = null;
+    }
+    const currentClerk = storeBoard.querySelector(".store-clerk");
+    if (arrivalDirection) {
+      storeClerkDirection = arrivalDirection;
+      if (currentClerk) {
+        setStoreClerkDirection(currentClerk, arrivalDirection);
+      }
+    } else if (currentClerk) {
+      currentClerk.classList.remove("is-walking");
+    }
+  };
+  clerk.addEventListener("transitionend", finishStoreClerkMove, { once: true });
+  storeClerkArrivalTimer = window.setTimeout(finishStoreClerkMove, 580);
 }
 
-function returnStoreClerkHome(delay = 760) {
+function returnStoreClerkHome(delay = 260) {
   clearStoreClerkMotion();
   storeClerkMotionTimer = window.setTimeout(() => {
     storeClerkMotionTimer = null;
     if (!document.body.classList.contains("store-active") || storeEditMode) {
       return;
     }
-    moveStoreClerkTo(storeClerkHomePosition());
+    moveStoreClerkTo(storeClerkHomePosition(), "front");
   }, delay);
 }
 
@@ -1394,6 +1536,7 @@ function enterStoreGameplay(chapter) {
   loadStoreState();
   clearStoreClerkMotion();
   storeClerkPosition = null;
+  storeClerkDirection = "front";
   storeEditMode = false;
   storeState.fixtures = defaultStoreFixtures.map((fixture) => ({ ...fixture }));
   storeEditLayoutBtn.hidden = true;
@@ -2332,6 +2475,7 @@ storeBackMapBtn.addEventListener("click", openChapterMap);
 storeReviewStoryBtn.addEventListener("click", reviewStory);
 storeEditLayoutBtn.addEventListener("click", enterStoreLayoutEdit);
 storeSaveLayoutBtn.addEventListener("click", saveStoreLayout);
+storeBoard.addEventListener("click", selectStoreCustomerAtPoint, true);
 storeDirectionControls.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", () => setStoreDirection(button.dataset.direction));
 });

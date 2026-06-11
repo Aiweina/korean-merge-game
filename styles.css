@@ -1619,56 +1619,108 @@ body.map-active .chapter-map h2 {
   height: 70px;
   transform: translate(-50%, -100%);
   pointer-events: auto;
-  transition: left 0.7s ease, top 0.7s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: left 2.6s linear, top 2.6s linear;
   cursor: pointer;
 }
 
 .store-clerk {
   position: absolute;
-  width: 35px;
-  height: 61px;
+  width: 43px;
+  height: 72px;
   transform: translate(-50%, -100%);
   pointer-events: none;
   transition: left 0.55s ease, top 0.55s ease;
 }
 
 .store-clerk img {
+  --clerk-facing-transform: none;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform-origin: center bottom;
+  transform: var(--clerk-facing-transform);
   filter: drop-shadow(0 7px 5px rgba(61, 41, 28, 0.24));
+}
+
+.store-clerk.direction-right img {
+  --clerk-facing-transform: scaleX(-1);
+}
+
+.store-clerk.is-walking img {
+  animation: store-clerk-step 0.28s ease-in-out infinite alternate;
+}
+
+@keyframes store-clerk-step {
+  from {
+    transform: var(--clerk-facing-transform) translateY(0);
+  }
+
+  to {
+    transform: var(--clerk-facing-transform) translateY(-3px);
+  }
 }
 
 .store-clerk::after {
   content: "";
   position: absolute;
-  left: 9px;
+  left: 11px;
   bottom: 1px;
-  width: 17px;
+  width: 21px;
   height: 5px;
   border-radius: 50%;
   background: rgba(61, 41, 28, 0.2);
 }
 
 .store-customer img {
+  --customer-facing-transform: none;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform-origin: center bottom;
+  transform: var(--customer-facing-transform);
   filter: drop-shadow(0 7px 5px rgba(61, 41, 28, 0.24));
 }
 
 .store-customer.direction-right img {
-  transform: scaleX(-1);
+  --customer-facing-transform: scaleX(-1);
 }
 
 .store-customer.direction-back img {
-  transform: scale(0.88);
-  opacity: 0.92;
+  --customer-facing-transform: none;
 }
 
 .store-customer.direction-left img {
-  transform: scaleX(-1) scale(0.88);
-  opacity: 0.92;
+  --customer-facing-transform: none;
+}
+
+.store-customer.is-walking img {
+  animation: store-customer-step 0.32s ease-in-out infinite alternate;
+}
+
+@keyframes store-customer-step {
+  from {
+    transform: var(--customer-facing-transform) translateY(0);
+  }
+
+  to {
+    transform: var(--customer-facing-transform) translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-customer {
+    transition-duration: 0.01ms;
+  }
+
+  .store-customer.is-walking img {
+    animation: none;
+  }
+
+  .store-clerk.is-walking img {
+    animation: none;
+  }
 }
 
 .store-customer.customer-pink img {
@@ -2019,6 +2071,100 @@ body.map-active .chapter-map h2 {
 }
 
 @media (max-width: 430px) {
+  body.store-active .app-shell {
+    width: 100%;
+    padding: 2px;
+    gap: 4px;
+  }
+
+  .store-scene {
+    gap: 7px;
+    min-height: calc(100vh - 8px);
+    align-content: start;
+    padding: 4px;
+    border-width: 1px;
+  }
+
+  .store-topbar {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .store-map-btn {
+    min-height: 36px;
+    padding: 0 8px;
+    border-width: 1px;
+    font-size: 12px;
+    box-shadow: 0 2px 0 #d8b987;
+  }
+
+  .store-stats {
+    gap: 3px;
+  }
+
+  .store-stats span {
+    min-height: 36px;
+    padding: 3px 2px;
+    border-width: 1px;
+    font-size: 11px;
+  }
+
+  .store-heading {
+    gap: 1px;
+  }
+
+  .store-heading .label {
+    display: none;
+  }
+
+  .store-heading h2 {
+    font-size: 18px;
+  }
+
+  .store-board {
+    border-width: 2px;
+    box-shadow: 0 8px 18px rgba(61, 41, 28, 0.16);
+  }
+
+  .store-order-panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px;
+    padding: 7px 8px;
+    border-width: 1px;
+  }
+
+  .store-order-panel .label {
+    display: none;
+  }
+
+  .store-demand-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 5px;
+  }
+
+  .store-demand-label {
+    font-size: 11px;
+  }
+
+  .store-demand-word {
+    min-width: 68px;
+    padding: 4px 8px;
+    border-width: 1px;
+    font-size: 19px;
+    box-shadow: 0 2px 0 rgba(36, 75, 80, 0.14);
+  }
+
+  .store-status-text {
+    min-height: 34px;
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .store-layout-actions button,
+  .store-direction-controls button {
+    min-height: 38px;
+  }
+
   .chapter-map-status {
     left: 50%;
     width: min(86%, 360px);
@@ -2031,11 +2177,6 @@ body.map-active .chapter-map h2 {
 
   .material-letter {
     font-size: 26px;
-  }
-
-  .store-order-panel,
-  .store-topbar {
-    grid-template-columns: 1fr;
   }
 
 }
